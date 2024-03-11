@@ -1,8 +1,12 @@
 import { redirect } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+import type { Actions } from '@sveltejs/kit';
 
-export const load: PageServerLoad = ({ locals }) => {
-	locals.pb.authStore.clear();
-	locals.user = null;
-	redirect(307, '/');
-};
+export const actions = {
+	default: async ({ locals }) => {
+		console.log('HEREERWERFASDFSAD');
+		locals.pb.authStore.clear();
+		locals.user = null;
+		console.log('redirect');
+		throw redirect(301, '/');
+	}
+} satisfies Actions;

@@ -2,38 +2,43 @@
 import { pb } from '$lib/db/client';
 
 // Types and constant
-import { redirect, type Actions, type ServerLoad } from '@sveltejs/kit';
-import type { User } from '$lib/types';
+import { redirect, type Actions, fail } from '@sveltejs/kit';
+import type { ErrorDetails, ErrorLoginUser, FormErrors, User } from '$lib/types';
+import type { PageServerLoad } from './$types';
 
-/**
- *
- */
-export const load = (async ({}) => {
-	console.log(pb.authStore.token);
+export const load: PageServerLoad = async ({}) => {
 	if (pb.authStore.isValid) {
-		throw redirect(307, '/');
+		console.log('Here logged');
+		throw redirect(301, '/');
 	}
+	console.log('not logged');
 	return {};
-}) satisfies ServerLoad;
+};
 
 /**
  *
  */
 export const actions = {
 	login: async ({ request }) => {
-		console.log('Login!');
 		const data = Object.fromEntries(await request.formData()) as User;
 
 		try {
-			const { record, token } = await pb
-				.collection('users')
-				.authWithPassword(data.email, data.password);
-
-			console.log(record, token);
-		} catch (error: any) {
-			console.log(error);
-			console.log(error.response.data);
+			await pb.collection('users').authWithPassword(data.email, data.password);
+		} catch (err: any) {
+			// Here we parse the response from pocketbase and match the form of the object
+			// to the ErrorRegisterUser type which is used on the form to provide validation
+			// information in case of errors.
+			const errorDetails: ErrorDetails = err.response;
+			const errors: ErrorLoginUser = Object.entries(errorDetails.data).reduce<FormErrors>(
+				(acc, [key, { message }]) => {
+					acc[key] = message;
+					return acc;
+				},
+				{} as ErrorLoginUser
+			);
+			return fail(400, errors);
 		}
-		// throw redirect(303, '/');
+		console.log('redirecting login');
+		throw redirect(307, '/');
 	}
 } satisfies Actions;

@@ -1,15 +1,16 @@
 <script lang="ts">
 	import { deserialize } from '$app/forms';
 	import { invalidateAll } from '$app/navigation';
-
+	import { applyAction, enhance } from '$app/forms';
+	import { pb } from '$lib/db/client';
 	// Types and constants
 	import type { ActionResult } from '@sveltejs/kit';
-	import type { ErrorRegisterUser } from '$lib/types';
 
-	let email = '';
-	let password = '';
+	let email = 'al@al.com';
+	let password = 'password';
+	let error = '';
 
-	async function handleSubmit(event: { currentTarget: EventTarget & HTMLFormElement }) {
+	const handleSubmit = async (event: { currentTarget: EventTarget & HTMLFormElement }) => {
 		const formData = new FormData(event.currentTarget);
 
 		const response = await fetch(event.currentTarget.action, {
@@ -18,16 +19,22 @@
 		});
 
 		const result: ActionResult = deserialize(await response.text());
-		console.log(result);
 
-		// if (result.type === 'success') {
-		// 	await invalidateAll();
-		// } else if (result.type == 'failure') {
-		// 	errors = result.data as unknown as ErrorRegisterUser;
-		// } else {
-		// 	// TODO handle other type coming back?
-		// }
-	}
+		if (result.type === 'redirect') {
+			// console.log('COOKIE', document.cookie);
+			// pb.authStore.loadFromCookie(document.cookie);
+			// await invalidateAll();
+			await applyAction(result);
+		} else if (result.type == 'failure') {
+			error = 'Invalid username or password';
+		} else {
+			// TODO handle other type coming back?
+		}
+	};
+
+	const handleKeyboardInput = (event: KeyboardEvent) => {
+		error = '';
+	};
 </script>
 
 <div class="flex flex-col items-center justify-center min-h-screen -mt-20">
@@ -41,6 +48,7 @@
 					placeholder="Email"
 					name="email"
 					class="std-input-field"
+					on:keydown={handleKeyboardInput}
 					bind:value={email}
 				/>
 			</div>
@@ -52,10 +60,14 @@
 					placeholder="Password"
 					name="password"
 					class="std-input-field"
+					on:keydown={handleKeyboardInput}
 					bind:value={password}
 				/>
 			</div>
-			<div class="flex justify-center mt-4">
+			<div class="flex justify-center mt-2">
+				<p class="std-input-error">{error}</p>
+			</div>
+			<div class="flex justify-center mt-1">
 				<button class="px-6 py-2 leading-5 duration-200 transform rounded-md btn btn-primary"
 					>Login</button
 				>

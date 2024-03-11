@@ -36,7 +36,7 @@
 	}
 </script>
 
-<div class="flex flex-col items-center justify-center min-h-screen">
+<div class="flex flex-col items-center min-h-screen lg:mt-20 md:mt-20">
 	<div class="w-full max-w-md px-8 text-left">
 		<h3 class="text-2xl font-bold text-center">Sign up</h3>
 		<form

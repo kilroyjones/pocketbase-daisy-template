@@ -17,6 +17,11 @@ export type ErrorRegisterUser = {
 	passwordConfirm?: string;
 };
 
+export type ErrorLoginUser = {
+	email?: string;
+	password?: string;
+};
+
 export type FormErrors = Record<string, string>;
 
 export type ErrorDetails = {
