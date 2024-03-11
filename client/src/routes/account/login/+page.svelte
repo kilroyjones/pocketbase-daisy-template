@@ -23,7 +23,7 @@
 		if (result.type === 'redirect') {
 			// console.log('COOKIE', document.cookie);
 			// pb.authStore.loadFromCookie(document.cookie);
-			// await invalidateAll();
+			await invalidateAll();
 			await applyAction(result);
 		} else if (result.type == 'failure') {
 			error = 'Invalid username or password';

@@ -1,6 +1,6 @@
 // Modules
 import { pb } from '$lib/db/client';
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 
 // Types and constants
 import type { Actions } from './$types';
@@ -10,7 +10,7 @@ export const actions = {
 	register: async ({ request }) => {
 		const data = Object.fromEntries(await request.formData()) as RegisterUser;
 		try {
-			const record = await pb.collection('users').create(data);
+			await pb.collection('users').create(data);
 		} catch (err: any) {
 			// Here we parse the response from pocketbase and match the form of the object
 			// to the ErrorRegisterUser type which is used on the form to provide validation
@@ -25,5 +25,6 @@ export const actions = {
 			);
 			return fail(400, errors);
 		}
+		throw redirect(301, '/account/login');
 	}
 } satisfies Actions;

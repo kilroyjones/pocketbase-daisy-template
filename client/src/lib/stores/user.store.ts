@@ -26,5 +26,6 @@ export const getUsername = () => {
 
 export const UserStore = {
 	setState,
-	getState
+	getState,
+	getUsername
 };

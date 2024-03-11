@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Modules
-	import { deserialize } from '$app/forms';
+	import { applyAction, deserialize } from '$app/forms';
 	import { invalidateAll } from '$app/navigation';
 
 	// Types and constants
@@ -26,8 +26,9 @@
 
 		const result: ActionResult = deserialize(await response.text());
 
-		if (result.type === 'success') {
+		if (result.type === 'redirect') {
 			await invalidateAll();
+			await applyAction(result);
 		} else if (result.type == 'failure') {
 			errors = result.data as unknown as ErrorRegisterUser;
 		} else {
