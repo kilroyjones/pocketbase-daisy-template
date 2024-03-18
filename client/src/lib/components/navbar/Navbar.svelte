@@ -1,4 +1,5 @@
 <script lang="ts">
+	// Components
 	import LoggedIn from './LoggedIn.svelte';
 	import LoggedOut from './LoggedOut.svelte';
 	import ToggleLightDarkMode from './ToggleLightDarkMode.svelte';
@@ -8,7 +9,7 @@
 
 <div class="navbar bg-base-100">
 	<div class="flex-1">
-		<a href="/" class="text-xl btn btn-ghost">templateUI</a>
+		<a href="/" class="text-xl btn btn-ghost">Roadmap Editor</a>
 		<div class="flex-none">
 			<ToggleLightDarkMode></ToggleLightDarkMode>
 		</div>

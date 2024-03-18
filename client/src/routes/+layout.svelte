@@ -1,12 +1,16 @@
 <script lang="ts">
-	import Navbar from '$lib/components/navbar/Navbar.svelte';
-	import '../app.css';
+	// Modules
 	import { UserStore, isLoggedIn } from '$lib/stores/user.store';
+
+	// Components
+	import Navbar from '$lib/components/navbar/Navbar.svelte';
+
+	// Types and constants
+	import '../app.css';
 	import type { LayoutServerData } from './$types';
 
 	export let data: LayoutServerData;
 
-	console.log('USER', data.user);
 	$: UserStore.setState(data.user);
 </script>
 

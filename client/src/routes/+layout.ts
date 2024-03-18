@@ -1,3 +1,5 @@
+// Needed the Svelteflow graph
+export const ssr = false;
 export const prerender = false;
 
 // Modules
@@ -9,8 +11,8 @@ import type { LayoutLoad } from './$types';
 
 export const load: LayoutLoad = async () => {
 	if (typeof window == 'undefined') {
+		// TODO: Handle error
 	} else {
-		console.log('STORES');
 		pb.authStore.loadFromCookie(document.cookie);
 		pb.authStore.onChange(() => {
 			UserStore.setState(pb.authStore.model);

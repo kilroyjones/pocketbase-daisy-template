@@ -12,7 +12,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 	// If the cookie exists, check if the token is still valid and if not the
 	// clear it so the user will need to re-login.
 	try {
-		console.log(pb.authStore.isValid);
 		if (pb.authStore.isValid) {
 			await pb.collection('users').authRefresh();
 		}
@@ -27,7 +26,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 	 */
 	event.locals.pb = pb;
 	event.locals.user = pb.authStore.model;
-	console.log('HOOKS', event.locals);
 
 	// Pass the event through other middleware as need be
 	const response = await resolve(event);
