@@ -22,6 +22,16 @@
 		>
 			Title Node
 		</div>
+
+		<div
+			role="button"
+			tabindex="0"
+			class="text-white node"
+			on:dragstart={(event) => onDragStart(event, 'iconTitleNode')}
+			draggable={true}
+		>
+			Icon title node
+		</div>
 	</div>
 </footer>
 

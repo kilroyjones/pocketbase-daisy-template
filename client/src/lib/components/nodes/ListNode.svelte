@@ -25,24 +25,26 @@
 </script>
 
 <Handle type="target" position={Position.Left} style="background: #555;" {isConnectable} />
-<div class="border-2 rounded-div border-accent" role="button" tabindex="0">
-	{data['text']}
+
+<div class="flex flex-col border-2 rounded-div border-accent">
+	<div class="text-left">
+		<p>{data['text']}</p>
+	</div>
+
+	<div class="flex flex-col p-0 m-0">
+		<label class="p-0 m-0 cursor-pointer label">
+			<input type="checkbox" class="w-2.5 h-2.5 mr-2 checkbox" />
+			<span class="label-text text-[10px]">Option 1</span>
+		</label>
+	</div>
 </div>
 
 <Handle type="source" position={Position.Right} id="b" {isConnectable} />
 
 <style>
-	:root {
-		--color-text-accent: theme('colors.accent'); /* Fallback to your accent color */
-	}
-
 	.rounded-div {
 		border-radius: 10px;
-		display: flex;
-		font-size: 12px;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
-		padding: 10px 16px 10px 16px;
+		font-size: 10px;
+		padding: 6px 10px 6px 10px;
 	}
 </style>

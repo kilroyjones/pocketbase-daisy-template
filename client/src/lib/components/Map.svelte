@@ -1,7 +1,9 @@
 <script lang="ts">
 	// Libraries
 	import { onMount } from 'svelte';
+	import { get } from 'svelte/store';
 	import { SvelteFlow, useSvelteFlow } from '@xyflow/svelte';
+	
 
 	// Modules
 	import { NodeStore, nodes } from '$lib/stores/nodes.store';
@@ -10,18 +12,22 @@
 	// Components
 	import ContentEditor from './editor/ContentEditor.svelte';
 	import Directional from '$lib/components/edges/Directional.svelte';
-	import TitleNode from '$lib/components/nodes/TitleNode.svelte';
+	import IconTitleNode from './nodes/IconNode.svelte';
+	import ListNode from './nodes/ListNode.svelte';
+	import TextNode from '$lib/components/nodes/TextNode.svelte';
 	import Tray from './drawer/Tray.svelte';
 
-	// Types and contants
+	// Types and variables
 	import '@xyflow/svelte/dist/style.css';
 	import { currentSelection, showContentEditor } from '$lib/stores/ui.store';
-	import { get } from 'svelte/store';
+	import type { FitViewOptions, Viewport } from '@xyflow/svelte';}
 
 	let selectedElement: any;
 
 	const nodeTypes = {
-		titleNode: TitleNode
+		textNode: TextNode,
+		iconNode: IconNode,
+		listNode: ListNode
 	};
 
 	const edgeTypes = {
@@ -45,29 +51,12 @@
 		}
 
 		const type = event.dataTransfer.getData('application/svelteflow');
-
 		const position = screenToFlowPosition({
 			x: event.clientX,
 			y: event.clientY
 		});
 
-		const newNode = {
-			// TODO: Fix this if possible for typess
-			// @ts-ignore
-			id: `${Math.random()}`,
-			type,
-			position,
-			data: { label: `${type} node` },
-			origin: [0.5, 0.0]
-		} satisfies Node;
 
-		console.log(newNode);
-
-		// TODO: Fix this on types
-		// @ts-ignore
-		$nodes.push(newNode);
-		$nodes = $nodes;
-		console.log(get(nodes).length);
 	};
 
 	const snapGrid = [25, 25];
@@ -80,6 +69,14 @@
 		NodeStore.init();
 		EdgeStore.init();
 	});
+
+	let fit: FitViewOptions = {};
+	let viewPort: Viewport = {
+		x: 0,
+		y: 0,
+		zoom: 2
+	};
+	let r = Array<string>();
 </script>
 
 <!--
@@ -94,12 +91,20 @@
 		{nodeTypes}
 		{edges}
 		{edgeTypes}
-		fitView
+		initialViewport={viewPort}
+		maxZoom={5}
+		minZoom={1}
 		on:nodeclick={(event) => {
 			console.log(event);
 			if (get(showContentEditor) == false) {
 				showContentEditor.update((n) => !n);
 			}
+
+			let temp = event.detail.node.data['items'];
+			// let items: Array<string> | undefined;
+			// if (Array.isArray(temp)) {
+			// 	console.log('asdfasdf');
+			// }
 
 			// TODO: Parse based on type
 			$currentSelection = {
@@ -109,7 +114,8 @@
 				y: event.detail.node.position.y,
 				width: event.detail.node?.computed?.width || 0,
 				height: event.detail.node?.computed?.height || 0,
-				text: event.detail.node.data['text'] || ''
+				text: event.detail.node.data['text'] || '',
+				items: r
 			};
 		}}
 		on:dragstart={(event) => {
@@ -120,5 +126,5 @@
 		class="bg-base-100"
 	></SvelteFlow>
 </div>
-<Tray />
 <ContentEditor selectedElement={$currentSelection}></ContentEditor>
+<Tray />

@@ -1,6 +1,5 @@
 <script lang="ts">
 	// Libraries
-	import { onMount } from 'svelte';
 	import { useSvelteFlow } from '@xyflow/svelte';
 
 	// Modules
@@ -9,10 +8,11 @@
 	// Components
 	import ChevronLeft from '../icons/ChevronLeft.svelte';
 	import ChevronRight from '../icons/ChevronRight.svelte';
-	import TitleEditor from './nodes/TitleEditor.svelte';
+	import TitleEditor from './nodes/TextEditor.svelte';
 
 	// Types and constants
 	import type { NodeTitle } from '$lib/types';
+	import IconTitleEditor from './nodes/IconEditor.svelte';
 
 	export let selectedElement: NodeTitle | undefined;
 
@@ -74,6 +74,9 @@
 				<div class="divider"></div>
 				{#if selectedElement.type == 'titleNode'}
 					<TitleEditor updater={update} node={selectedElement}></TitleEditor>
+				{/if}
+				{#if selectedElement.type == 'iconTitleNode'}
+					<IconTitleEditor updater={update} node={selectedElement}></IconTitleEditor>
 				{/if}
 			</div>
 		{/if}

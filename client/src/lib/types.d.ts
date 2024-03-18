@@ -48,4 +48,5 @@ export type NodeTitle = NodeBase & {
 	text: any;
 	width?: number;
 	height?: number;
+	items?: Array<string>;
 };

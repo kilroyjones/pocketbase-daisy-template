@@ -39,7 +39,7 @@
 	.rounded-div {
 		border-radius: 10px;
 		display: flex;
-		font-size: 12px;
+		font-size: 10px;
 		align-items: center;
 		justify-content: center;
 		text-align: center;
