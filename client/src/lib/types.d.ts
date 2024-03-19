@@ -1,3 +1,5 @@
+import type { Position } from '@xyflow/svelte';
+
 /**
  *
  */
@@ -42,11 +44,34 @@ export type NodeBase = {
 	type: string;
 	x: number;
 	y: number;
+	width: number;
+	height: number;
 };
 
-export type NodeTitle = NodeBase & {
-	text: any;
-	width?: number;
-	height?: number;
-	items?: Array<string>;
+export type NodeText = NodeBase & {
+	data: {
+		text: string;
+	};
 };
+
+export type NodeIcon = NodeBase & {
+	data: {
+		text: string;
+		icon: string;
+	};
+};
+
+export type ListItem = {
+	id: string;
+	text: string;
+	checked: boolean;
+};
+
+export type NodeList = NodeBase & {
+	data: {
+		text: string;
+		items: Array<ListItem>;
+	};
+};
+
+export type NodeUnion = NodeText & NodeList & NodeIcon;

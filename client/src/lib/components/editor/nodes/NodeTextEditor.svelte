@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { NodeTitle } from '$lib/types';
+	import type { NodeUnion } from '$lib/types';
 
-	export let node: NodeTitle;
+	export let node: NodeUnion;
 	export let updater: Function;
 
 	// TODO: Add validation for input to check
@@ -18,11 +18,11 @@
 		<input
 			type="text"
 			placeholder="Your text here"
-			bind:value={node.text}
+			bind:value={node.data.text}
 			class="w-full max-w-xs input input-bordered"
 		/>
 		<div class="divider"></div>
-		<div class="flex flex-wrap -mx-2">
+		<div class="flex flex-wrap">
 			<div class="w-full px-2 mb-4 md:w-1/2">
 				<div class="flex items-center">
 					<label for="text" class="w-1/5">x:</label>
@@ -38,7 +38,7 @@
 			</div>
 		</div>
 
-		<div class="flex flex-wrap -mx-2">
+		<div class="flex flex-wrap">
 			<div class="w-full px-2 mb-4 md:w-1/2">
 				<div class="flex items-center">
 					<label for="text" class="w-1/5">y:</label>

@@ -3,49 +3,53 @@
 	import { useSvelteFlow } from '@xyflow/svelte';
 
 	// Modules
+	import { nodes } from '$lib/stores/nodes.store';
 	import { showContentEditor } from '$lib/stores/ui.store';
 
 	// Components
 	import ChevronLeft from '../icons/ChevronLeft.svelte';
 	import ChevronRight from '../icons/ChevronRight.svelte';
-	import TitleEditor from './nodes/TextEditor.svelte';
+	import NodeIconEditor from './nodes/NodeListEditor.svelte';
+	import NodeListEditor from './nodes/NodeListEditor.svelte';
+	import NodeTextEditor from './nodes/NodeTextEditor.svelte';
 
 	// Types and constants
-	import type { NodeTitle } from '$lib/types';
-	import IconTitleEditor from './nodes/IconEditor.svelte';
+	import type { NodeUnion } from '$lib/types';
 
-	export let selectedElement: NodeTitle | undefined;
-
-	let nodeType = 'Title node';
+	export let selectedNode: NodeUnion | undefined;
 
 	const { updateNode, updateNodeData } = useSvelteFlow();
+
 	const toggleModal = () => {
 		showContentEditor.update((n) => !n);
 	};
 
-	const update = (data: any) => {
-		console.log(data);
+	const update = (updatedNode: any) => {
+		console.log('update', updatedNode);
 		//  * updateNode('node-1', (node) => ({ position: { x: node.position.x + 10, y: node.position.y } }));
 		updateNode(
-			data.id,
+			updatedNode.id,
 			(node) => ({
 				...node, // Spread the existing node to preserve other properties
 				position: {
-					x: parseFloat(data.x), // New x coordinate
-					y: parseFloat(data.y) // New y coordinate
+					x: parseFloat(updatedNode.x), // New x coordinate
+					y: parseFloat(updatedNode.y) // New y coordinate
 				}
 			}),
 			{ replace: false }
 		);
-		updateNodeData(data.id, data);
+		console.log('update', updatedNode.id, updatedNode.data);
+		const res = updateNodeData(updatedNode.id, updatedNode.data, { replace: true });
+		console.log(res);
+		$nodes = $nodes;
 	};
 </script>
 
 <div
-	class="modal-overlay fixed top-0 right-0 w-[{$showContentEditor
-		? 300
-		: 0}px] h-full flex pointer-events-none"
+	class="fixed top-0 right-0 flex h-full pointer-events-none modal-overlay"
+	style="width:{showContentEditor ? '400px' : '0px'};"
 >
+	{$showContentEditor}
 	<div
 		class="relative flex flex-col w-full pointer-events-auto bg-neutral"
 		style="top: 100px; min-height: 400px;"
@@ -62,21 +66,16 @@
 			{/if}
 		</button>
 
-		{#if $showContentEditor && selectedElement}
-			<div class="w-full max-w-xs p-4">
-				<label for="type" class="pb-1 mt-2 label">
-					<span class="text-xs label-text">Type</span>
-				</label>
-				<select class="w-full max-w-xs mt-2 select">
-					<option disabled selected>{nodeType}</option>
-					<option>Other types</option>
-				</select>
-				<div class="divider"></div>
-				{#if selectedElement.type == 'titleNode'}
-					<TitleEditor updater={update} node={selectedElement}></TitleEditor>
+		{#if $showContentEditor && selectedNode}
+			<div class="w-full p-4 pr-10">
+				{#if selectedNode.type == 'nodeText'}
+					<NodeTextEditor updater={update} node={selectedNode} on:updateFlow></NodeTextEditor>
 				{/if}
-				{#if selectedElement.type == 'iconTitleNode'}
-					<IconTitleEditor updater={update} node={selectedElement}></IconTitleEditor>
+				{#if selectedNode.type == 'nodeIcon'}
+					<NodeIconEditor updater={update} node={selectedNode} on:updateFlow></NodeIconEditor>
+				{/if}
+				{#if selectedNode.type == 'nodeList'}
+					<NodeListEditor updater={update} node={selectedNode} on:updateFlow></NodeListEditor>
 				{/if}
 			</div>
 		{/if}
@@ -85,12 +84,6 @@
 
 <style>
 	.modal-overlay {
-		/* Allow clicks through */
 		pointer-events: none;
-	}
-	.modal-content,
-	.close-button {
-		/* Enable clicks on content and button */
-		pointer-events: auto;
 	}
 </style>

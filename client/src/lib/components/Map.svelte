@@ -1,40 +1,61 @@
 <script lang="ts">
 	// Libraries
-	import { onMount } from 'svelte';
-	import { get } from 'svelte/store';
+	import { onMount, type ComponentType, type EventDispatcher } from 'svelte';
 	import { SvelteFlow, useSvelteFlow } from '@xyflow/svelte';
-	
 
 	// Modules
-	import { NodeStore, nodes } from '$lib/stores/nodes.store';
 	import { EdgeStore, edges } from '$lib/stores/edges.store';
+	import { NodeStore, nodes } from '$lib/stores/nodes.store';
 
 	// Components
 	import ContentEditor from './editor/ContentEditor.svelte';
-	import Directional from '$lib/components/edges/Directional.svelte';
-	import IconTitleNode from './nodes/IconNode.svelte';
-	import ListNode from './nodes/ListNode.svelte';
-	import TextNode from '$lib/components/nodes/TextNode.svelte';
 	import Tray from './drawer/Tray.svelte';
 
 	// Types and variables
 	import '@xyflow/svelte/dist/style.css';
-	import { currentSelection, showContentEditor } from '$lib/stores/ui.store';
-	import type { FitViewOptions, Viewport } from '@xyflow/svelte';}
+	import { selectedNode } from '$lib/stores/nodes.store';
+	import type { Viewport } from '@xyflow/svelte';
+	import { showContentEditor } from '$lib/stores/ui.store';
+	import type { NodeBase, NodeUnion } from '$lib/types';
 
-	let selectedElement: any;
-
-	const nodeTypes = {
-		textNode: TextNode,
-		iconNode: IconNode,
-		listNode: ListNode
-	};
-
-	const edgeTypes = {
-		directionalEdge: Directional
-	};
+	export let nodeTypes: Record<string, ComponentType>;
+	export let edgeTypes: Record<string, ComponentType>;
+	export let viewport: Viewport;
 
 	const { screenToFlowPosition } = useSvelteFlow();
+
+	const { updateNode, updateNodeData } = useSvelteFlow();
+	/**
+	 *
+	 */
+	//  const loginHandle = function (a: CustomEvent<{username:string, password:string}>) {
+
+	const updateFlow = (event: CustomEvent<{ node: NodeUnion }>) => {
+		const updatedNode = event.detail.node;
+
+		updateNode(
+			updatedNode.id,
+			(node) => ({
+				...node, // Spread the existing node to preserve other properties
+				position: {
+					x: updatedNode.x, // New x coordinate
+					y: updatedNode.y // New y coordinate
+				}
+			}),
+			{ replace: false }
+		);
+
+		$nodes.forEach((node) => {
+			if (node.id === updatedNode.id) {
+				node.data = {
+					...updatedNode.data
+				};
+			}
+		});
+	};
+	/**
+	 *
+	 */
 	const onDragOver = (event: DragEvent) => {
 		event.preventDefault();
 
@@ -43,6 +64,9 @@
 		}
 	};
 
+	/**
+	 *
+	 */
 	const onDrop = (event: DragEvent) => {
 		event.preventDefault();
 
@@ -55,28 +79,25 @@
 			x: event.clientX,
 			y: event.clientY
 		});
-
-
 	};
 
-	const snapGrid = [25, 25];
-
-	// const closeModal = () => {
-	// 	showModal = false;
-	// };
+	const handleNodeSelection = (event: CustomEvent) => {
+		const type = event.detail.node.type;
+		if (type) {
+			const data = event.detail.node;
+			if (data) {
+				if ($showContentEditor == false) {
+					$showContentEditor = !$showContentEditor;
+				}
+				NodeStore.setSelected(data);
+			}
+		}
+	};
 
 	onMount(() => {
 		NodeStore.init();
 		EdgeStore.init();
 	});
-
-	let fit: FitViewOptions = {};
-	let viewPort: Viewport = {
-		x: 0,
-		y: 0,
-		zoom: 2
-	};
-	let r = Array<string>();
 </script>
 
 <!--
@@ -91,32 +112,12 @@
 		{nodeTypes}
 		{edges}
 		{edgeTypes}
-		initialViewport={viewPort}
+		initialViewport={viewport}
 		maxZoom={5}
 		minZoom={1}
 		on:nodeclick={(event) => {
 			console.log(event);
-			if (get(showContentEditor) == false) {
-				showContentEditor.update((n) => !n);
-			}
-
-			let temp = event.detail.node.data['items'];
-			// let items: Array<string> | undefined;
-			// if (Array.isArray(temp)) {
-			// 	console.log('asdfasdf');
-			// }
-
-			// TODO: Parse based on type
-			$currentSelection = {
-				id: event.detail.node.id,
-				type: event.detail.node.type || '',
-				x: event.detail.node.position.x,
-				y: event.detail.node.position.y,
-				width: event.detail.node?.computed?.width || 0,
-				height: event.detail.node?.computed?.height || 0,
-				text: event.detail.node.data['text'] || '',
-				items: r
-			};
+			handleNodeSelection(event);
 		}}
 		on:dragstart={(event) => {
 			console.log(event);
@@ -125,6 +126,6 @@
 		on:drop={onDrop}
 		class="bg-base-100"
 	></SvelteFlow>
+	<ContentEditor on:updateFlow={updateFlow} selectedNode={$selectedNode}></ContentEditor>
+	<Tray />
 </div>
-<ContentEditor selectedElement={$currentSelection}></ContentEditor>
-<Tray />
