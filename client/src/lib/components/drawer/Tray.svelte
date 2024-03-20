@@ -62,6 +62,6 @@
 		font-weight: 700;
 		border-radius: 3px;
 		cursor: grab;
-		white-space: nowrap; /* Keeps the text in a single line */
+		white-space: nowrap;
 	}
 </style>

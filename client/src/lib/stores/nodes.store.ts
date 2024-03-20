@@ -5,8 +5,10 @@ import { writable } from 'svelte/store';
 import type { Node, XYPosition } from '@xyflow/svelte';
 import type { NodeIcon, NodeText, NodeUnion } from '$lib/types';
 import type { Writable } from 'svelte/store';
+import type { NodeProps } from '@xyflow/svelte';
 
 export const nodes: Writable<Array<Node>> = writable([]);
+// export const selectedNode: Writable<NodeUnion | undefined> =
 export const selectedNode: Writable<NodeUnion | undefined> =
 	// export const selectedNode: Writable<NodeList | NodeText | NodeIcon | undefined> =
 	writable(undefined);
@@ -93,58 +95,21 @@ const init = () => {
 			position: { x: 150, y: 10 }
 		}
 	]);
-	/////
 };
 const remove = (id: string) => {};
 
-/**
- * TODO: Fix this to align Svelteflow's types at somepoint. Hacky right now
- */
-const setSelected = (node: any) => {
-	selectedNode.update(() => ({
-		id: node.id,
-		type: node.type,
-		x: node.computed.positionAbsolute.x,
-		y: node.computed.positionAbsolute.y,
-		width: node.computed.width,
-		height: node.computed.height,
-		data: node.data
-	}));
+const update = (node: NodeUnion) => {
+	console.log('Slected', node);
+	selectedNode.update(() => {
+		console.log('h');
+		return node;
+	});
+	console.log('update');
 };
 
 export const NodeStore = {
 	add,
 	init,
 	remove,
-	setSelected
+	update
 };
-
-// export type NodeBase = {
-// 	id: string;
-// 	type: string;
-// 	position: Position;
-// 	width: number;
-// 	height: number;
-// };
-
-// export type NodeText = NodeBase & {
-// 	data: {
-// 		text: string;
-// 	};
-// };
-
-// export type NodeIcon = NodeBase & {
-// 	data: {
-// 		text: string;
-// 		icon: string;
-// 	};
-// };
-
-// export type NodeList = NodeBase & {
-// 	data: {
-// 		text: string;
-// 		items: string;
-// 	};
-// };
-
-// export type NodeUnion = NodeText | NodeList | NodeIcon;

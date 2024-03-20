@@ -14,7 +14,7 @@
 	// Types and variables
 	import '@xyflow/svelte/dist/style.css';
 	import { selectedNode } from '$lib/stores/nodes.store';
-	import type { Viewport } from '@xyflow/svelte';
+	import type { NodeProps, Viewport } from '@xyflow/svelte';
 	import { showContentEditor } from '$lib/stores/ui.store';
 	import type { NodeBase, NodeUnion } from '$lib/types';
 
@@ -30,28 +30,45 @@
 	 */
 	//  const loginHandle = function (a: CustomEvent<{username:string, password:string}>) {
 
+	// const updateFlow = (event: CustomEvent<{ node: NodeUnion }>) => {
 	const updateFlow = (event: CustomEvent<{ node: NodeUnion }>) => {
 		const updatedNode = event.detail.node;
+		console.log('Update', updatedNode);
+
+		// updateNode(
+		// 	updatedNode.id,
+		// 	(node) => ({
+		// 		...node, // Spread the existing node to preserve other properties
+		// 		position: {
+		// 			x: updatedNode.x, // New x coordinate
+		// 			y: updatedNode.y // New y coordinate
+		// 		}
+		// 	}),
+		// 	{ replace: false }
+		// );
 
 		updateNode(
 			updatedNode.id,
 			(node) => ({
 				...node, // Spread the existing node to preserve other properties
 				position: {
-					x: updatedNode.x, // New x coordinate
-					y: updatedNode.y // New y coordinate
+					x: updatedNode.positionAbsoluteX, // New x coordinate
+					y: updatedNode.positionAbsoluteY // New y coordinate
 				}
 			}),
 			{ replace: false }
 		);
 
-		$nodes.forEach((node) => {
-			if (node.id === updatedNode.id) {
-				node.data = {
-					...updatedNode.data
-				};
-			}
-		});
+		updateNodeData(updatedNode.id, updatedNode.data, { replace: false });
+
+		// KEEP: In face the above fails
+		// $nodes.forEach((node) => {
+		// 	if (node.id === updatedNode.id) {
+		// 		node.data = {
+		// 			...updatedNode.data
+		// 		};
+		// 	}
+		// });
 	};
 	/**
 	 *
@@ -82,6 +99,7 @@
 	};
 
 	const handleNodeSelection = (event: CustomEvent) => {
+		console.log('handling selection');
 		const type = event.detail.node.type;
 		if (type) {
 			const data = event.detail.node;
@@ -89,7 +107,7 @@
 				if ($showContentEditor == false) {
 					$showContentEditor = !$showContentEditor;
 				}
-				NodeStore.setSelected(data);
+				// NodeStore.setSelected(data);
 			}
 		}
 	};
@@ -116,8 +134,8 @@
 		maxZoom={5}
 		minZoom={1}
 		on:nodeclick={(event) => {
-			console.log(event);
-			handleNodeSelection(event);
+			// console.log(event);
+			// handleNodeSelection(event);
 		}}
 		on:dragstart={(event) => {
 			console.log(event);
@@ -126,6 +144,6 @@
 		on:drop={onDrop}
 		class="bg-base-100"
 	></SvelteFlow>
-	<ContentEditor on:updateFlow={updateFlow} selectedNode={$selectedNode}></ContentEditor>
+	<ContentEditor on:updateFlow={updateFlow}></ContentEditor>
 	<Tray />
 </div>

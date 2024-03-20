@@ -1,4 +1,4 @@
-import type { Position } from '@xyflow/svelte';
+import type { NodeProps, Position } from '@xyflow/svelte';
 
 /**
  *
@@ -46,19 +46,7 @@ export type NodeBase = {
 	y: number;
 	width: number;
 	height: number;
-};
-
-export type NodeText = NodeBase & {
-	data: {
-		text: string;
-	};
-};
-
-export type NodeIcon = NodeBase & {
-	data: {
-		text: string;
-		icon: string;
-	};
+	link: any;
 };
 
 export type ListItem = {
@@ -67,11 +55,24 @@ export type ListItem = {
 	checked: boolean;
 };
 
-export type NodeList = NodeBase & {
+export type NodeText = NodeProps & {
+	data: {
+		text: string;
+	};
+};
+
+export type NodeIcon = NodeProps & {
+	data: {
+		text: string;
+		icon: string;
+	};
+};
+
+export type NodeList = NodeProps & {
 	data: {
 		text: string;
 		items: Array<ListItem>;
 	};
 };
 
-export type NodeUnion = NodeText & NodeList & NodeIcon;
+export type NodeUnion = NodeList | NodeText | NodeIcon;

@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
+	// const dispatch = createEventDispatcher<{ updateFlow: { node: NodeUnion } }>();
 
 	import Remove from '$lib/components/icons/Remove.svelte';
-	import type { NodeUnion } from '$lib/types';
-
-	export let node: NodeUnion;
-	export let updater: Function;
-
+	import type { NodeList, NodeUnion } from '$lib/types';
+	import type { NodeProps } from '@xyflow/svelte';
+	import { selectedNode } from '$lib/stores/nodes.store';
 	const dispatch = createEventDispatcher<{ updateFlow: { node: NodeUnion } }>();
+
 	let toAdd: string = '';
 
 	// Function to add an item
@@ -39,6 +39,8 @@
 			node: node
 		});
 	};
+
+	$: node = $selectedNode as NodeList;
 </script>
 
 <div class="form-control" on:input={handleInput}>
@@ -54,39 +56,32 @@
 				class="w-full input input-bordered"
 			/>
 		</div>
-		<div class="divider"></div>
 
-		<div class="flex flex-wrap">
-			<div class="w-1/2 mb-2">
+		<div class="flex gap-5 mt-3 flex-between">
+			<div class="w-1/2">
 				<div class="flex items-center">
 					<label for="text text-xs" class="w-1/6">x:</label>
-					<input type="number" bind:value={node.x} class="w-5/6 input input-bordered" />
+					<input
+						type="number"
+						bind:value={node.positionAbsoluteX}
+						class="w-5/6 input input-bordered"
+					/>
 				</div>
 			</div>
 
-			<div class="w-1/2 pl-2 mb-2">
-				<div class="flex items-center">
-					<label for="text text-xs" class="w-1/6">w:</label>
-					<input type="number" bind:value={node.width} class="w-5/6 input input-bordered" />
-				</div>
-			</div>
-		</div>
-
-		<div class="flex flex-wrap">
-			<div class="w-1/2 mb-2">
+			<div class="w-1/2">
 				<div class="flex items-center">
 					<label for="text text-xs" class="w-1/6">y:</label>
-					<input type="number" bind:value={node.y} class="w-5/6 input input-bordered" />
-				</div>
-			</div>
-
-			<div class="w-1/2 pl-2 mb-2">
-				<div class="flex items-center">
-					<label for="text text-xs" class="w-1/6">h:</label>
-					<input type="number" bind:value={node.height} class="w-5/6 input input-bordered" />
+					<input
+						type="number"
+						bind:value={node.positionAbsoluteX}
+						class="w-5/6 input input-bordered"
+					/>
 				</div>
 			</div>
 		</div>
+
+		<div class="divider"></div>
 
 		<div class="flex flex-col mt-2">
 			<div class="form-control">

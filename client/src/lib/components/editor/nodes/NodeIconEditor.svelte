@@ -1,13 +1,19 @@
 <script lang="ts">
-	import type { NodeUnion } from '$lib/types';
+	import type { NodeUnion, NodeIcon } from '$lib/types';
+	import { createEventDispatcher } from 'svelte';
+	import { selectedNode } from '$lib/stores/nodes.store';
 
-	export let node: NodeUnion;
-	export let updater: Function;
+	const dispatch = createEventDispatcher<{ updateFlow: { node: NodeUnion } }>();
 
 	// TODO: Add validation for input to check
 	const handleInput = () => {
-		updater(node);
+		console.log('upper', node);
+		dispatch('updateFlow', {
+			node: node
+		});
 	};
+
+	$: node = $selectedNode as NodeIcon;
 </script>
 
 <div class="form-control" on:input={handleInput}>
@@ -22,34 +28,26 @@
 			class="w-full max-w-xs input input-bordered"
 		/>
 		<div class="divider"></div>
-		<div class="flex flex-wrap">
-			<div class="w-full px-2 mb-4 md:w-1/2">
+		<div class="flex gap-5 mt-3 flex-between">
+			<div class="w-1/2">
 				<div class="flex items-center">
-					<label for="text" class="w-1/5">x:</label>
-					<input type="number" bind:value={node.x} class="w-4/5 input input-bordered" />
+					<label for="text text-xs" class="w-1/6">x:</label>
+					<input
+						type="number"
+						bind:value={node.positionAbsoluteX}
+						class="w-5/6 input input-bordered"
+					/>
 				</div>
 			</div>
 
-			<div class="w-full px-2 mb-4 md:w-1/2">
+			<div class="w-1/2">
 				<div class="flex items-center">
-					<label for="text" class="w-1/5">w:</label>
-					<input type="number" bind:value={node.width} class="w-4/5 input input-bordered" />
-				</div>
-			</div>
-		</div>
-
-		<div class="flex flex-wrap">
-			<div class="w-full px-2 mb-4 md:w-1/2">
-				<div class="flex items-center">
-					<label for="text" class="w-1/5">y:</label>
-					<input type="number" bind:value={node.y} class="w-4/5 input input-bordered" />
-				</div>
-			</div>
-
-			<div class="w-full px-2 mb-4 md:w-1/2">
-				<div class="flex items-center">
-					<label for="text" class="w-1/5">h:</label>
-					<input type="number" bind:value={node.height} class="w-4/5 input input-bordered" />
+					<label for="text text-xs" class="w-1/6">y:</label>
+					<input
+						type="number"
+						bind:value={node.positionAbsoluteX}
+						class="w-5/6 input input-bordered"
+					/>
 				</div>
 			</div>
 		</div>

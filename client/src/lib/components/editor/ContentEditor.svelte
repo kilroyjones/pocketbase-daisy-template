@@ -1,47 +1,19 @@
 <script lang="ts">
-	// Libraries
-	import { useSvelteFlow } from '@xyflow/svelte';
-
 	// Modules
-	import { nodes } from '$lib/stores/nodes.store';
 	import { showContentEditor } from '$lib/stores/ui.store';
 
 	// Components
 	import ChevronLeft from '../icons/ChevronLeft.svelte';
 	import ChevronRight from '../icons/ChevronRight.svelte';
-	import NodeIconEditor from './nodes/NodeListEditor.svelte';
+	import NodeIconEditor from './nodes/NodeIconEditor.svelte';
 	import NodeListEditor from './nodes/NodeListEditor.svelte';
 	import NodeTextEditor from './nodes/NodeTextEditor.svelte';
 
 	// Types and constants
-	import type { NodeUnion } from '$lib/types';
-
-	export let selectedNode: NodeUnion | undefined;
-
-	const { updateNode, updateNodeData } = useSvelteFlow();
+	import { selectedNode } from '$lib/stores/nodes.store';
 
 	const toggleModal = () => {
 		showContentEditor.update((n) => !n);
-	};
-
-	const update = (updatedNode: any) => {
-		console.log('update', updatedNode);
-		//  * updateNode('node-1', (node) => ({ position: { x: node.position.x + 10, y: node.position.y } }));
-		updateNode(
-			updatedNode.id,
-			(node) => ({
-				...node, // Spread the existing node to preserve other properties
-				position: {
-					x: parseFloat(updatedNode.x), // New x coordinate
-					y: parseFloat(updatedNode.y) // New y coordinate
-				}
-			}),
-			{ replace: false }
-		);
-		console.log('update', updatedNode.id, updatedNode.data);
-		const res = updateNodeData(updatedNode.id, updatedNode.data, { replace: true });
-		console.log(res);
-		$nodes = $nodes;
 	};
 </script>
 
@@ -49,7 +21,6 @@
 	class="fixed top-0 right-0 flex h-full pointer-events-none modal-overlay"
 	style="width:{showContentEditor ? '400px' : '0px'};"
 >
-	{$showContentEditor}
 	<div
 		class="relative flex flex-col w-full pointer-events-auto bg-neutral"
 		style="top: 100px; min-height: 400px;"
@@ -66,16 +37,16 @@
 			{/if}
 		</button>
 
-		{#if $showContentEditor && selectedNode}
+		{#if $showContentEditor && $selectedNode}
 			<div class="w-full p-4 pr-10">
-				{#if selectedNode.type == 'nodeText'}
-					<NodeTextEditor updater={update} node={selectedNode} on:updateFlow></NodeTextEditor>
+				{#if $selectedNode.type == 'nodeText'}
+					<NodeTextEditor on:updateFlow></NodeTextEditor>
 				{/if}
-				{#if selectedNode.type == 'nodeIcon'}
-					<NodeIconEditor updater={update} node={selectedNode} on:updateFlow></NodeIconEditor>
+				{#if $selectedNode.type == 'nodeIcon'}
+					<NodeIconEditor on:updateFlow></NodeIconEditor>
 				{/if}
-				{#if selectedNode.type == 'nodeList'}
-					<NodeListEditor updater={update} node={selectedNode} on:updateFlow></NodeListEditor>
+				{#if $selectedNode.type == 'nodeList'}
+					<NodeListEditor on:updateFlow></NodeListEditor>
 				{/if}
 			</div>
 		{/if}
