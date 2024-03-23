@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Libraries
-	import { getSmoothStepPath } from '@xyflow/svelte';
+	import { getBezierPath, getSmoothStepPath } from '@xyflow/svelte';
 	import daisyuiColors from 'daisyui/src/theming/themes';
 
 	// Modules
@@ -31,7 +31,8 @@
 	export let label: EdgeProps['label'] = undefined;
 	export let labelStyle: EdgeProps['labelStyle'] = undefined;
 	export let data: EdgeProps['data'] = undefined;
-	export let style: EdgeProps['style'] = `stroke: oklch(var(${data.color}))`;
+	console.log(data);
+	export let style: EdgeProps['style'] = `stroke-width: ${data.width}; stroke: oklch(var(${data.color}))`;
 	export let markerStart: EdgeProps['markerStart'] = undefined;
 	export let markerEnd: EdgeProps['markerEnd'] = undefined;
 	export let interactionWidth: EdgeProps['interactionWidth'] = undefined;
@@ -115,7 +116,7 @@
 		if (isBidirectionalEdge) {
 			path = getSpecialPath(edgePathParams, sourceX < targetX ? 25 : -25);
 		} else {
-			[path] = getSmoothStepPath(edgePathParams);
+			[path] = getBezierPath(edgePathParams);
 		}
 	}
 

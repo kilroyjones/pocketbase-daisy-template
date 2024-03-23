@@ -15,6 +15,7 @@ export const nodes: Writable<Node[]> = writable([]);
 
 const save = () => {
 	localStorage.setItem('nodes', JSON.stringify(get(nodes)));
+	console.log('saved');
 };
 
 export const reset = (): void => {
@@ -22,10 +23,10 @@ export const reset = (): void => {
 };
 
 export const selectedNode: Writable<NodeUnion | undefined> = writable(undefined);
+
 /**
  *
  */
-
 const defaultColorData = {
 	color: {
 		foreground: 'primary-content',
@@ -36,19 +37,23 @@ const defaultColorData = {
 
 const defaultTextData = {
 	text: 'Text',
-	color: { ...defaultColorData }
+	color: { foreground: 'primary-content', background: 'base-100', border: 'base-100' }
 };
 
 const defaultIconData = {
 	text: 'Icon',
 	icon: '<insert something here>',
-	color: { ...defaultColorData }
+	color: { foreground: 'base-300', background: 'primary opacity-70', border: 'primary opacity-70' }
 };
 
 const defaultListData = {
 	text: 'List',
 	items: Array.from([]),
-	color: { ...defaultColorData }
+	color: {
+		foreground: 'base-300',
+		background: 'warning opacity-70',
+		border: 'warning border-opacity-70'
+	}
 };
 
 /**
@@ -83,6 +88,7 @@ const add = (type: string, position: XYPosition) => {
 			return [...currentNodes, newNode];
 		});
 	}
+	save();
 };
 
 /**

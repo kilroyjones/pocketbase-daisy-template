@@ -60,7 +60,7 @@
 />
 
 <div
-	class="flex justify-center py-1 px-2 border-2 rounded-xl border-{node.data.color
+	class="flex justify-center py-2 px-3 border-2 rounded-xl border-{node.data.color
 		.border} text-{node.data.color.foreground} bg-{node.data.color.background} align-center"
 >
 	{node.data.text}

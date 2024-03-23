@@ -18,7 +18,7 @@ export const reset = (): void => {
 	edges.set([]);
 };
 
-const getColorVariables = () => {};
+// const getColorVariables = () => {};
 
 const add = (sourceNode: string, targetNode: string, type: string) => {
 	edges.update((currentEdges) => {
@@ -30,7 +30,11 @@ const add = (sourceNode: string, targetNode: string, type: string) => {
 			id: `${Math.random()}`,
 			type,
 			source: sourceNode,
-			target: targetNode
+			target: targetNode,
+			data: {
+				width: 3,
+				color: 'base-300'
+			}
 		};
 
 		return [...filteredEdges, newEdge];
@@ -50,7 +54,8 @@ const remove = (id: string) => {};
 export const EdgeStore = {
 	add,
 	init,
-	remove
+	remove,
+	reset
 };
 
 // const color = [

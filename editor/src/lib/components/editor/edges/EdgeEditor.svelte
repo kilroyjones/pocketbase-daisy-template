@@ -6,6 +6,9 @@
 
 	const dispatch = createEventDispatcher<{ updateEdges: { edge: EdgeUnion } }>();
 
+	/**
+	 *
+	 */
 	const handleUpdate = () => {
 		console.log('updating');
 		dispatch('updateEdges', {
@@ -13,6 +16,9 @@
 		});
 	};
 
+	/**
+	 *
+	 */
 	const colors: Map<string, string> = new Map([
 		['primary', '--p'],
 		['primary-content', '--pc'],
@@ -35,21 +41,15 @@
 		['error', '--er'],
 		['error-content', '--erc']
 	]);
-	// 'base-100',
-	// 'primary-content',
-	// 'primary',
-	// 'secondary',
-	// 'success',
-	// 'info',
-	// 'warning',
-	// 'error'
+
+	/**
+	 *
+	 */
 	const handleColor = (type: string, color: string) => {
-		console.log(color);
 		const colorVar = colors.get(color);
-		console.log(colorVar);
 		if (colorVar) {
-			console.log(edge);
-			edge.style = `stroke: oklch(var(${colorVar}))`;
+			edge.style = `stroke-width: ${edge.data.width}; stroke: oklch(var(${edge.data.color}))`;
+			console.log(edge.style);
 		}
 		handleUpdate();
 	};

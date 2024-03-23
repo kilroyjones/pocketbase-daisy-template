@@ -8,6 +8,7 @@
 	// Types and constants
 	import type { NodeProps } from '@xyflow/svelte';
 	import type { NodeList } from '$lib/types';
+	import { handleEdgeConnect } from '$lib/actions/edge.actions';
 
 	export let isConnectable: NodeProps['isConnectable'];
 	export let data: NodeList['data'];
@@ -42,6 +43,7 @@
 	} satisfies NodeList;
 
 	const select = () => {
+		console.log('sadf');
 		if (node.selected) {
 			NodeStore.update(node);
 		}
@@ -50,10 +52,15 @@
 	$: node && select();
 </script>
 
-<Handle type="target" position={Position.Left} style="background: #555;" {isConnectable} />
-
+<Handle
+	type="target"
+	position={Position.Left}
+	style="background: #555;"
+	{isConnectable}
+	onconnect={handleEdgeConnect}
+/>
 <div
-	class="flex justify-center py-1 px-2 border-2 rounded-xl border-{node.data.color
+	class="flex flex-col justify-center py-2 px-3 border-2 rounded-xl border-{node.data.color
 		.border} text-{node.data.color.foreground} bg-{node.data.color.background} align-center"
 >
 	<div class="text-left">
@@ -62,17 +69,18 @@
 
 	{#each data.items as item}
 		<div class="flex flex-col p-0 m-0">
-			<label class="p-0 m-0 cursor-pointer">
-				<input
-					id={item.id}
-					type="checkbox"
-					checked={item.checked}
-					class="w-2.5 h-2.5 mr-2 checkbox checkbox-lg checkbox-accent"
-				/>
+			<label class="flex items-center pt-1 m-0 cursor-pointer">
+				<input id={item.id} type="checkbox" checked={item.checked} class="w-3 h-3 mr-1 checkbox" />
 				<span class="top-0 text-xs">{item.text}</span>
 			</label>
 		</div>
 	{/each}
 </div>
 
-<Handle type="source" position={Position.Right} id="b" {isConnectable} />
+<Handle
+	type="source"
+	position={Position.Right}
+	id="b"
+	{isConnectable}
+	onconnect={handleEdgeConnect}
+/>

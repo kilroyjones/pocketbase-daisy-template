@@ -6,6 +6,7 @@
 	import type { NodeProps } from '@xyflow/svelte';
 	import type { NodeIcon } from '$lib/types';
 	import { NodeStore } from '$lib/stores/nodes.store';
+	import { handleEdgeConnect } from '$lib/actions/edge.actions';
 
 	export let isConnectable: NodeProps['isConnectable'];
 	export let data: NodeIcon['data'];
@@ -48,10 +49,16 @@
 	$: node && select();
 </script>
 
-<Handle type="target" position={Position.Left} style="background: #555;" {isConnectable} />
+<Handle
+	type="target"
+	position={Position.Left}
+	style="background: #555;"
+	{isConnectable}
+	onconnect={handleEdgeConnect}
+/>
 
 <div
-	class="flex justify-center py-1 px-2 border-2 rounded-xl border-{node.data.color
+	class="flex justify-center py-2 px-3 border-2 rounded-xl border-{node.data.color
 		.border} text-{node.data.color.foreground} bg-{node.data.color.background} align-center"
 >
 	<div class="mr-2">
@@ -62,4 +69,10 @@
 	</div>
 </div>
 
-<Handle type="source" position={Position.Right} id="b" {isConnectable} />
+<Handle
+	type="source"
+	position={Position.Right}
+	id="b"
+	{isConnectable}
+	onconnect={handleEdgeConnect}
+/>
