@@ -2,21 +2,35 @@
 	import type { NodeUnion, NodeIcon } from '$lib/types';
 	import { createEventDispatcher } from 'svelte';
 	import { selectedNode } from '$lib/stores/nodes.store';
+	import ColorPicker from '../ColorPicker.svelte';
 
-	const dispatch = createEventDispatcher<{ updateFlow: { node: NodeUnion } }>();
+	const dispatch = createEventDispatcher<{ updateNodes: { node: NodeUnion } }>();
 
-	// TODO: Add validation for input to check
-	const handleInput = () => {
-		console.log('upper', node);
-		dispatch('updateFlow', {
+	const handleUpdate = () => {
+		dispatch('updateNodes', {
 			node: node
 		});
 	};
 
+	const handleColor = (type: string, color: string) => {
+		switch (type) {
+			case 'foreground':
+				node.data.color.foreground = color;
+				break;
+			case 'background':
+				node.data.color.background = color;
+				break;
+			case 'border':
+				node.data.color.border = color;
+				break;
+		}
+		console.log(node.data.color);
+		handleUpdate();
+	};
 	$: node = $selectedNode as NodeIcon;
 </script>
 
-<div class="form-control" on:input={handleInput}>
+<div class="form-control" on:input={handleUpdate}>
 	<form class="form-control">
 		<label for="text" class="pb-1 label">
 			<span class="text-xs label-text">Text</span>
@@ -51,5 +65,22 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="divider"></div>
+
+		<label for="text" class="pb-1 label">
+			<span class="text-sm label-text">Foreground</span>
+		</label>
+		<ColorPicker type="foreground" {handleColor}></ColorPicker>
+
+		<label for="text" class="pb-1 label">
+			<span class="text-sm label-text">Background</span>
+		</label>
+		<ColorPicker type="background" {handleColor}></ColorPicker>
+
+		<label for="text" class="pb-1 label">
+			<span class="text-sm label-text">Border</span>
+		</label>
+		<ColorPicker type="border" {handleColor}></ColorPicker>
 	</form>
 </div>

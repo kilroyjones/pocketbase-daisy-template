@@ -9,8 +9,7 @@
 	};
 </script>
 
-<footer class="bg-base-100 bg-base-300">
-	<div class="label">You can drag these nodes to the pane below.</div>
+<footer class=" bg-base-100">
 	<div class="pb-10 nodes-container">
 		<div class="node">
 			<div

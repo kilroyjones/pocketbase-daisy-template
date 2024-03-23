@@ -7,7 +7,7 @@
 	export let isLoggedIn: boolean = false;
 </script>
 
-<div class="navbar bg-base-100">
+<div class="navbar">
 	<div class="flex-1">
 		<a href="/" class="text-xl btn btn-ghost">Roadmap Editor</a>
 		<div class="flex-none">

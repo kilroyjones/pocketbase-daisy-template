@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { ThemeStore } from '$lib/stores/theme.store';
-	import { onMount } from 'svelte';
 
 	const toggleTheme = () => {
 		ThemeStore.toggle();
@@ -15,13 +14,13 @@
 	>
 		<div
 			class="absolute w-5 h-5 duration-300 ease-in-out transform bg-white rounded-full shadow-md toggle-dot"
-			class:translate-x-7={$ThemeStore === 'dark'}
+			class:translate-x-7={$ThemeStore === 'cupcake'}
 		></div>
 		<div
 			class="absolute flex items-center justify-center w-5 h-5 duration-300 ease-in-out transform"
-			class:translate-x-7={$ThemeStore !== 'dark'}
+			class:translate-x-7={$ThemeStore !== 'cupcake'}
 		>
-			{#if $ThemeStore === 'light'}
+			{#if $ThemeStore === 'cupcake'}
 				<div class="text-white dark:text-black moon-icon" />
 			{:else}
 				<div class="sun-icon" />

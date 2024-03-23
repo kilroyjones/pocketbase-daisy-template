@@ -1,7 +1,7 @@
 <script lang="ts">
 	// Libraries
 	import { onMount, type ComponentType, type EventDispatcher } from 'svelte';
-	import { Controls, Panel, SvelteFlow, useSvelteFlow } from '@xyflow/svelte';
+	import { Controls, Panel, SvelteFlow, updateEdge, useSvelteFlow } from '@xyflow/svelte';
 
 	// Modules
 	import { EdgeStore, edges } from '$lib/stores/edges.store';
@@ -11,25 +11,24 @@
 	import ContentEditor from './editor/ContentEditor.svelte';
 	import Tray from './drawer/Tray.svelte';
 
-	// Types and variables
+	import { selectedEdge } from '$lib/stores/edges.store';
 	import '@xyflow/svelte/dist/style.css';
-	import type { DefaultEdgeOptions, EdgeTypes, Node, Viewport } from '@xyflow/svelte';
-	import type { NodeUnion } from '$lib/types';
-	import { showContentEditor } from '$lib/stores/ui.store';
+	import type { DefaultEdgeOptions, Edge, EdgeTypes, Node, Viewport } from '@xyflow/svelte';
+	import type { EdgeUnion, NodeUnion } from '$lib/types';
 	import { selectedNode } from '$lib/stores/nodes.store';
+	import { updated } from '$app/stores';
 
 	export let nodeTypes: Record<string, ComponentType>;
-	export let defaultEdgeOptions: DefaultEdgeOptions;
 	export let edgeTypes: EdgeTypes;
 	export let viewport: Viewport;
 
 	const { screenToFlowPosition } = useSvelteFlow();
-
 	const { updateNode, updateNodeData } = useSvelteFlow();
+
 	/**
 	 *
 	 */
-	const updateFlow = (event: CustomEvent<{ node: NodeUnion }>) => {
+	const updateNodes = (event: CustomEvent<{ node: NodeUnion }>) => {
 		const updatedNode = event.detail.node;
 
 		updateNode(
@@ -45,6 +44,18 @@
 		);
 
 		updateNodeData(updatedNode.id, updatedNode.data, { replace: false });
+	};
+
+	/**
+	 *
+	 */
+	const updateEdges = (event: CustomEvent<{ edge: EdgeUnion }>) => {
+		const updatedEdge = event.detail.edge;
+		let index: number = $edges.findIndex((e) => e.id === updatedEdge.id);
+		if (index !== -1) {
+			$edges[index] = updatedEdge;
+		}
+		console.log('here', updatedEdge);
 	};
 
 	/**
@@ -96,7 +107,6 @@
 		{nodeTypes}
 		{edges}
 		{edgeTypes}
-		{defaultEdgeOptions}
 		snapGrid={[20, 20]}
 		initialViewport={viewport}
 		maxZoom={5}
@@ -115,6 +125,11 @@
 		class="bg-base-100"
 		><Controls></Controls>
 	</SvelteFlow>
-	<ContentEditor {selectedNode} on:updateFlow={updateFlow}></ContentEditor>
+	<ContentEditor
+		{selectedEdge}
+		{selectedNode}
+		on:updateNodes={updateNodes}
+		on:updateEdges={updateEdges}
+	></ContentEditor>
 	<Tray></Tray>
 </div>

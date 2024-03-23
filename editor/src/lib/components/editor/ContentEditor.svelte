@@ -8,8 +8,10 @@
 	import NodeIconEditor from './nodes/NodeIconEditor.svelte';
 	import NodeListEditor from './nodes/NodeListEditor.svelte';
 	import NodeTextEditor from './nodes/NodeTextEditor.svelte';
+	import EdgeEditor from './edges/EdgeEditor.svelte';
 
 	export let selectedNode: any;
+	export let selectedEdge: any;
 
 	const toggleModal = () => {
 		showContentEditor.update((n) => !n);
@@ -21,7 +23,7 @@
 	style="max-width:{showContentEditor ? '400px' : '0px'};"
 >
 	<div
-		class="relative flex flex-col w-full pointer-events-auto bg-base-300"
+		class="relative flex flex-col w-full pointer-events-auto bg-base-200"
 		style="top: 100px; min-height: 400px;"
 	>
 		<button
@@ -39,21 +41,18 @@
 		{#if $showContentEditor}
 			<div class="w-full p-4 pr-10">
 				{#if $selectedNode?.type === 'nodeText'}
-					<NodeTextEditor on:updateFlow></NodeTextEditor>
+					<NodeTextEditor on:updateNodes></NodeTextEditor>
 				{/if}
 				{#if $selectedNode && $selectedNode.type == 'nodeIcon'}
-					<NodeIconEditor on:updateFlow></NodeIconEditor>
+					<NodeIconEditor on:updateNodes></NodeIconEditor>
 				{/if}
 				{#if $selectedNode && $selectedNode.type == 'nodeList'}
-					<NodeListEditor on:updateFlow></NodeListEditor>
+					<NodeListEditor on:updateNodes></NodeListEditor>
+				{/if}
+				{#if $selectedEdge}
+					<EdgeEditor on:updateEdges></EdgeEditor>
 				{/if}
 			</div>
 		{/if}
 	</div>
 </div>
-
-<style>
-	.modal-overlay {
-		pointer-events: none;
-	}
-</style>

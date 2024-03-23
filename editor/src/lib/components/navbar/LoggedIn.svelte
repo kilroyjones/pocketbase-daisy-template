@@ -18,7 +18,7 @@
 		</div>
 	</div>
 	<!-- {#if toggleMenu} -->
-	<ul class="menu menu-md dropdown-content mt-3 z-[1] p-2 bg-base-100 shadow rounded-box w-52">
+	<ul class="menu menu-md dropdown-content mt-3 z-[1] p-2 shadow rounded-box w-52">
 		<li><a href="/account/profile">Profile</a></li>
 
 		<form action="/account/logout" method="POST">

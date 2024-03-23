@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
-	// const dispatch = createEventDispatcher<{ updateFlow: { node: NodeUnion } }>();
+	// const dispatch = createEventDispatcher<{ updateNodes: { node: NodeUnion } }>();
 
 	import Remove from '$lib/components/icons/Remove.svelte';
 	import type { NodeList, NodeUnion } from '$lib/types';
 	import type { NodeProps } from '@xyflow/svelte';
 	import { selectedNode } from '$lib/stores/nodes.store';
-	const dispatch = createEventDispatcher<{ updateFlow: { node: NodeUnion } }>();
+	import ColorPicker from '../ColorPicker.svelte';
+	const dispatch = createEventDispatcher<{ updateNodes: { node: NodeUnion } }>();
 
 	let toAdd: string = '';
 
@@ -21,7 +22,7 @@
 		};
 		node.data = { ...node.data, items: [...node.data.items, newItem] };
 		toAdd = '';
-		dispatch('updateFlow', {
+		dispatch('updateNodes', {
 			node: node
 		});
 	};
@@ -32,7 +33,7 @@
 	const removeItem = (id: string) => {
 		const updatedItems = node.data.items.filter((item) => item.id !== id);
 		node.data = { ...node.data, items: updatedItems };
-		dispatch('updateFlow', {
+		dispatch('updateNodes', {
 			node: node
 		});
 	};
@@ -40,16 +41,32 @@
 	/**
 	 *
 	 */
-	const handleInput = () => {
-		dispatch('updateFlow', {
+	const handleUpdate = () => {
+		dispatch('updateNodes', {
 			node: node
 		});
+	};
+
+	const handleColor = (type: string, color: string) => {
+		switch (type) {
+			case 'foreground':
+				node.data.color.foreground = color;
+				break;
+			case 'background':
+				node.data.color.background = color;
+				break;
+			case 'border':
+				node.data.color.border = color;
+				break;
+		}
+		console.log(node.data.color);
+		handleUpdate();
 	};
 
 	$: node = $selectedNode as NodeList;
 </script>
 
-<div class="form-control" on:input={handleInput}>
+<div class="form-control" on:input={handleUpdate}>
 	<form class="form-control">
 		<div class="flex flex-wrap">
 			<label for="text" class="pb-1 label">
@@ -86,6 +103,23 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="divider"></div>
+
+		<label for="text" class="pb-1 label">
+			<span class="text-sm label-text">Foreground</span>
+		</label>
+		<ColorPicker type="foreground" {handleColor}></ColorPicker>
+
+		<label for="text" class="pb-1 label">
+			<span class="text-sm label-text">Background</span>
+		</label>
+		<ColorPicker type="background" {handleColor}></ColorPicker>
+
+		<label for="text" class="pb-1 label">
+			<span class="text-sm label-text">Border</span>
+		</label>
+		<ColorPicker type="border" {handleColor}></ColorPicker>
 
 		<div class="divider"></div>
 

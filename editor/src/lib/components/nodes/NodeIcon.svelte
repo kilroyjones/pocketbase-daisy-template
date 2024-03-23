@@ -7,13 +7,8 @@
 	import type { NodeIcon } from '$lib/types';
 	import { NodeStore } from '$lib/stores/nodes.store';
 
-	type NodeIconData = {
-		text: string;
-		icon: string;
-	};
-
 	export let isConnectable: NodeProps['isConnectable'];
-	export let data: NodeIconData;
+	export let data: NodeIcon['data'];
 	export let id: NodeProps['id'];
 	export let type: NodeProps['type'];
 	export let width: NodeProps['width'] = 0;
@@ -55,7 +50,10 @@
 
 <Handle type="target" position={Position.Left} style="background: #555;" {isConnectable} />
 
-<div class="flex justify-center p-2.5 border-2 rounded-lg border-accent align-center">
+<div
+	class="flex justify-center py-1 px-2 border-2 rounded-xl border-{node.data.color
+		.border} text-{node.data.color.foreground} bg-{node.data.color.background} align-center"
+>
 	<div class="mr-2">
 		<img class="object-cover rounded-md" src="https://placehold.co/24x24" alt="placeholder" />
 	</div>

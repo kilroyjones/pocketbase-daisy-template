@@ -3,9 +3,8 @@ import { get, writable } from 'svelte/store';
 
 // Types and constants
 import type { Node, XYPosition } from '@xyflow/svelte';
-import type { NodeIcon, NodeText, NodeUnion } from '$lib/types';
+import type { NodeUnion } from '$lib/types';
 import type { Writable } from 'svelte/store';
-import type { NodeProps } from '@xyflow/svelte';
 
 const loadInitialNodes = (): Node[] => {
 	const nodes = localStorage.getItem('nodes');
@@ -22,25 +21,34 @@ export const reset = (): void => {
 	nodes.set([]);
 };
 
-// export const selectedNode: Writable<NodeUnion | undefined> =
-export const selectedNode: Writable<NodeUnion | undefined> =
-	// export const selectedNode: Writable<NodeList | NodeText | NodeIcon | undefined> =
-	writable(undefined);
+export const selectedNode: Writable<NodeUnion | undefined> = writable(undefined);
 /**
  *
  */
+
+const defaultColorData = {
+	color: {
+		foreground: 'primary-content',
+		background: 'base-100',
+		border: 'primary-content'
+	}
+};
+
 const defaultTextData = {
-	text: 'Text'
+	text: 'Text',
+	color: { ...defaultColorData }
 };
 
 const defaultIconData = {
 	text: 'Icon',
-	icon: '<insert something here>'
+	icon: '<insert something here>',
+	color: { ...defaultColorData }
 };
 
 const defaultListData = {
 	text: 'List',
-	items: Array.from([])
+	items: Array.from([]),
+	color: { ...defaultColorData }
 };
 
 /**
