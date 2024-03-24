@@ -23,6 +23,12 @@
 	export let targetPosition: NodeProps['targetPosition'] = Position.Top;
 	export let zIndex: NodeProps['zIndex'];
 
+	const ids = ['a', 'b', 'c', 'd'];
+	const positionsAndIds: Array<[Position, string]> = Object.values(Position).map((value, index) => [
+		value,
+		ids[index]
+	]);
+
 	$: node = {
 		isConnectable,
 		data,
@@ -49,17 +55,21 @@
 	$: node && select();
 </script>
 
-<Handle
-	type="target"
-	position={Position.Left}
-	style="background: #555;"
-	{isConnectable}
-	onconnect={handleEdgeConnect}
-/>
+{#each positionsAndIds as [position, id]}
+	<Handle
+		{id}
+		type="source"
+		{position}
+		style="background: #555;"
+		class="w-2.5 h-2.5 opacity-30"
+		{isConnectable}
+		onconnect={handleEdgeConnect}
+	/>
+{/each}
 
 <div
 	class="flex justify-center py-2 px-3 border-2 rounded-xl border-{node.data.color
-		.border} text-{node.data.color.foreground} bg-{node.data.color.background} align-center"
+		.border} text-{node.data.color.foreground}     bg-{node.data.color.background} align-center"
 >
 	<div class="mr-2">
 		<img class="object-cover rounded-md" src="https://placehold.co/24x24" alt="placeholder" />
@@ -68,11 +78,3 @@
 		<p>{data['text']}</p>
 	</div>
 </div>
-
-<Handle
-	type="source"
-	position={Position.Right}
-	id="b"
-	{isConnectable}
-	onconnect={handleEdgeConnect}
-/>

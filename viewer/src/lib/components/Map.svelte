@@ -1,51 +1,25 @@
 <script lang="ts">
 	// Libraries
-	import { onMount, type ComponentType, type EventDispatcher } from 'svelte';
-	import { SvelteFlow, useSvelteFlow } from '@xyflow/svelte';
+	import { onMount, type ComponentType } from 'svelte';
+	import { ConnectionMode, Controls, SvelteFlow, useSvelteFlow } from '@xyflow/svelte';
 
 	// Modules
 	import { EdgeStore, edges } from '$lib/stores/edges.store';
 	import { NodeStore, nodes } from '$lib/stores/nodes.store';
 
-	// Components
-	import ContentEditor from './editor/ContentEditor.svelte';
-	import Tray from './drawer/Tray.svelte';
-
-	// Types and variables
+	import { selectedEdge } from '$lib/stores/edges.store';
 	import '@xyflow/svelte/dist/style.css';
-	import type { Node, Viewport } from '@xyflow/svelte';
-	import type { NodeUnion } from '$lib/types';
-	import { showContentEditor } from '$lib/stores/ui.store';
+	import type { DefaultEdgeOptions, EdgeTypes, Viewport } from '@xyflow/svelte';
+	import type { EdgeUnion, NodeUnion } from '$lib/types';
 	import { selectedNode } from '$lib/stores/nodes.store';
 
 	export let nodeTypes: Record<string, ComponentType>;
-	export let edgeTypes: Record<string, ComponentType>;
+	export let edgeTypes: EdgeTypes;
 	export let viewport: Viewport;
+	export let defaultEdgeOptions: DefaultEdgeOptions;
 
 	const { screenToFlowPosition } = useSvelteFlow();
-
-	const { updateNode, updateNodeData } = useSvelteFlow();
-	/**
-	 *
-	 */
-	const updateFlow = (event: CustomEvent<{ node: NodeUnion }>) => {
-		console.log('flow');
-		const updatedNode = event.detail.node;
-
-		updateNode(
-			updatedNode.id,
-			(node) => ({
-				...node, // Spread the existing node to preserve other properties
-				position: {
-					x: updatedNode.positionAbsoluteX, // New x coordinate
-					y: updatedNode.positionAbsoluteY // New y coordinate
-				}
-			}),
-			{ replace: false }
-		);
-
-		updateNodeData(updatedNode.id, updatedNode.data, { replace: false });
-	};
+	const { updateNode, updateNodeData, getEdge } = useSvelteFlow();
 
 	/**
 	 *
@@ -63,7 +37,6 @@
 	 */
 	const onDrop = (event: DragEvent) => {
 		event.preventDefault();
-		console.log('drop: ', event);
 
 		if (!event.dataTransfer) {
 			return null;
@@ -77,12 +50,27 @@
 
 		NodeStore.add(type, position);
 		$nodes = $nodes;
+		console.log($nodes);
+	};
+
+	/**
+	 *
+	 */
+	const handleKeypress = (event: KeyboardEvent) => {
+		if (event.key == 'Delete') {
+			if ($selectedNode) {
+				NodeStore.remove($selectedNode.id);
+			}
+			if ($selectedEdge) {
+				console.log('remove');
+				EdgeStore.remove($selectedEdge.id);
+			}
+		}
 	};
 
 	onMount(() => {
 		NodeStore.init();
 		EdgeStore.init();
-		console.log('Done');
 	});
 </script>
 
@@ -92,18 +80,29 @@
 
   TODO: Typew the nodeclick and such 
   -->
+
+<svelte:window on:keypress={handleKeypress} />
+
 <div style:height="100vh">
 	<SvelteFlow
+		connectionMode={ConnectionMode.Loose}
 		{nodes}
 		{nodeTypes}
 		{edges}
 		{edgeTypes}
+		{defaultEdgeOptions}
+		preventScrolling={false}
+		zoomOnDoubleClick={false}
+		zoomOnScroll={false}
+		snapGrid={[20, 20]}
 		initialViewport={viewport}
 		maxZoom={5}
 		minZoom={1}
 		on:nodeclick={(event) => {
-			// console.log(event);
-			// handleNodeSelection(event);
+			console.log(event);
+		}}
+		on:edgeclick={(event) => {
+			console.log('edge:', event);
 		}}
 		on:dragstart={(event) => {
 			console.log(event);
@@ -111,7 +110,6 @@
 		on:dragover={onDragOver}
 		on:drop={onDrop}
 		class="bg-base-100"
-	></SvelteFlow>
-	<ContentEditor {selectedNode} on:updateFlow={updateFlow}></ContentEditor>
-	<Tray />
+		><Controls></Controls>
+	</SvelteFlow>
 </div>

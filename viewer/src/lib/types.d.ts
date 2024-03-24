@@ -1,4 +1,5 @@
 import type { NodeProps, Position } from '@xyflow/svelte';
+import type { EdgeProps } from '@xyflow/svelte';
 
 /**
  *
@@ -55,24 +56,49 @@ export type ListItem = {
 	checked: boolean;
 };
 
+type Color = {
+	foreground: string;
+	background: string;
+	border: string;
+};
+
+type DataBase = {
+	color: Color;
+};
+
 export type NodeText = NodeProps & {
-	data: {
+	data: DataBase & {
 		text: string;
 	};
 };
 
+export type NodeTitle = NodeProps & {
+	data: DataBase & {
+		title: string;
+		description: string;
+	};
+};
+
 export type NodeIcon = NodeProps & {
-	data: {
+	data: Database & {
 		text: string;
 		icon: string;
 	};
 };
 
 export type NodeList = NodeProps & {
-	data: {
+	data: DataBase & {
 		text: string;
 		items: Array<ListItem>;
 	};
 };
 
 export type NodeUnion = NodeList | NodeText | NodeIcon;
+
+export type EdgeStep = EdgeProps & {
+	data: {
+		color: string;
+	};
+};
+
+export type EdgeUnion = EdgeStep;

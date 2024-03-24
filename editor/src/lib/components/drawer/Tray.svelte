@@ -51,6 +51,16 @@
 				<span class="label-text">List</span>
 			</label>
 		</div>
+
+		<div
+			class="flex justify-center p-2.5 border-2 rounded-lg border-accent align-center"
+			role="button"
+			tabindex="0"
+			on:dragstart={(event) => onDragStart(event, 'nodeTitle')}
+			draggable={true}
+		>
+			Title
+		</div>
 	</div>
 </footer>
 

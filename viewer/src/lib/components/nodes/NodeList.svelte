@@ -1,21 +1,16 @@
 <script lang="ts">
-	import { NodeStore } from '$lib/stores/nodes.store';
-	import type { ListItem } from '$lib/types';
-
 	// Libraries
 	import { Handle, Position } from '@xyflow/svelte';
+
+	// Modules
+	import { NodeStore } from '$lib/stores/nodes.store';
 
 	// Types and constants
 	import type { NodeProps } from '@xyflow/svelte';
 	import type { NodeList } from '$lib/types';
 
-	type NodeListData = {
-		text: string;
-		items: Array<ListItem>;
-	};
-
 	export let isConnectable: NodeProps['isConnectable'];
-	export let data: NodeListData;
+	export let data: NodeList['data'];
 	export let id: NodeProps['id'];
 	export let type: NodeProps['type'];
 	export let width: NodeProps['width'] = 0;
@@ -28,6 +23,12 @@
 	export let sourcePosition: NodeProps['sourcePosition'] = Position.Bottom;
 	export let targetPosition: NodeProps['targetPosition'] = Position.Top;
 	export let zIndex: NodeProps['zIndex'];
+
+	const ids = ['a', 'b', 'c', 'd'];
+	const positionsAndIds: Array<[Position, string]> = Object.values(Position).map((value, index) => [
+		value,
+		ids[index]
+	]);
 
 	$: node = {
 		isConnectable,
@@ -47,7 +48,6 @@
 	} satisfies NodeList;
 
 	const select = () => {
-		console.log('List: ', node.selected);
 		if (node.selected) {
 			NodeStore.update(node);
 		}
@@ -56,26 +56,30 @@
 	$: node && select();
 </script>
 
-<Handle type="target" position={Position.Left} style="background: #555;" {isConnectable} />
-
-<div class="flex flex-col justify-center p-2.5 border-2 rounded-lg border-accent align-center">
+{#each positionsAndIds as [position, id]}
+	<Handle
+		{id}
+		type="source"
+		{position}
+		style="background: #555;"
+		class="w-2.5 h-2.5 opacity-30"
+		{isConnectable}
+	/>
+{/each}
+<div
+	class="flex flex-col justify-center py-2 px-3 border-2 rounded-xl border-{node.data.color
+		.border} text-{node.data.color.foreground}   bg-{node.data.color.background} align-center"
+>
 	<div class="text-left">
 		<p>{data['text']}</p>
 	</div>
 
 	{#each data.items as item}
 		<div class="flex flex-col p-0 m-0">
-			<label class="p-0 m-0 cursor-pointer">
-				<input
-					id={item.id}
-					type="checkbox"
-					checked={item.checked}
-					class="w-2.5 h-2.5 mr-2 checkbox checkbox-lg checkbox-accent"
-				/>
+			<label class="flex items-center pt-1 m-0 cursor-pointer">
+				<input id={item.id} type="checkbox" checked={item.checked} class="w-3 h-3 mr-1 checkbox" />
 				<span class="top-0 text-xs">{item.text}</span>
 			</label>
 		</div>
 	{/each}
 </div>
-
-<Handle type="source" position={Position.Right} id="b" {isConnectable} />

@@ -3,6 +3,8 @@ export default {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	safelist: [
 		'bg-base-100',
+		'bg-base-200',
+		'bg-base-300',
 		'bg-primary',
 		'bg-success',
 		'bg-secondary',
@@ -10,6 +12,7 @@ export default {
 		'bg-error',
 		'bg-warning',
 		'bg-primary-content',
+		'bg-secondary-content',
 		'border-base-100',
 		'border-primary',
 		'border-success',

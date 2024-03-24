@@ -8,6 +8,7 @@
 	import NodeIconEditor from './nodes/NodeIconEditor.svelte';
 	import NodeListEditor from './nodes/NodeListEditor.svelte';
 	import NodeTextEditor from './nodes/NodeTextEditor.svelte';
+	import NodeTitleEditor from './nodes/NodeTitleEditor.svelte';
 	import EdgeEditor from './edges/EdgeEditor.svelte';
 
 	export let selectedNode: any;
@@ -48,6 +49,9 @@
 				{/if}
 				{#if $selectedNode && $selectedNode.type == 'nodeList'}
 					<NodeListEditor on:updateNodes></NodeListEditor>
+				{/if}
+				{#if $selectedNode && $selectedNode.type == 'nodeTitle'}
+					<NodeTitleEditor on:updateNodes></NodeTitleEditor>
 				{/if}
 				{#if $selectedEdge}
 					<EdgeEditor on:updateEdges></EdgeEditor>

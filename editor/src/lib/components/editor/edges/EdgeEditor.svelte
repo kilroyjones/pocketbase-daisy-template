@@ -47,9 +47,11 @@
 	 */
 	const handleColor = (type: string, color: string) => {
 		const colorVar = colors.get(color);
+		console.log(colorVar);
 		if (colorVar) {
-			edge.style = `stroke-width: ${edge.data.width}; stroke: oklch(var(${edge.data.color}))`;
-			console.log(edge.style);
+			edge.data.color = colorVar;
+			// edge.style = `stroke-width: ${edge.data.width}; stroke: oklch(var(${colorVar}})`;
+			// console.log('here', edge.style);
 		}
 		handleUpdate();
 	};

@@ -1,31 +1,9 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { ThemeStore } from '$lib/stores/theme.store';
 
-	let theme = 'light';
-
-	/**
-	 *
-	 */
-	function toggleTheme() {
-		theme = theme === 'light' ? 'dark' : 'light';
-		localStorage.setItem('theme', theme);
-		updateDaisyUITheme();
-	}
-
-	/**
-	 *
-	 */
-	function updateDaisyUITheme() {
-		document.documentElement.setAttribute('data-theme', theme);
-	}
-
-	/**
-	 *
-	 */
-	onMount(() => {
-		theme = localStorage.getItem('theme') || 'light';
-		updateDaisyUITheme();
-	});
+	const toggleTheme = () => {
+		ThemeStore.toggle();
+	};
 </script>
 
 <div class="flex items-center justify-center p-4">
@@ -36,13 +14,13 @@
 	>
 		<div
 			class="absolute w-5 h-5 duration-300 ease-in-out transform bg-white rounded-full shadow-md toggle-dot"
-			class:translate-x-7={theme === 'dark'}
+			class:translate-x-7={$ThemeStore === 'cupcake'}
 		></div>
 		<div
 			class="absolute flex items-center justify-center w-5 h-5 duration-300 ease-in-out transform"
-			class:translate-x-7={theme !== 'dark'}
+			class:translate-x-7={$ThemeStore !== 'cupcake'}
 		>
-			{#if theme === 'light'}
+			{#if $ThemeStore === 'cupcake'}
 				<div class="text-white dark:text-black moon-icon" />
 			{:else}
 				<div class="sun-icon" />

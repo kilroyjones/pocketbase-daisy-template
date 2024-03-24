@@ -7,13 +7,8 @@
 	import type { NodeIcon } from '$lib/types';
 	import { NodeStore } from '$lib/stores/nodes.store';
 
-	type NodeIconData = {
-		text: string;
-		icon: string;
-	};
-
 	export let isConnectable: NodeProps['isConnectable'];
-	export let data: NodeIconData;
+	export let data: NodeIcon['data'];
 	export let id: NodeProps['id'];
 	export let type: NodeProps['type'];
 	export let width: NodeProps['width'] = 0;
@@ -26,6 +21,12 @@
 	export let sourcePosition: NodeProps['sourcePosition'] = Position.Bottom;
 	export let targetPosition: NodeProps['targetPosition'] = Position.Top;
 	export let zIndex: NodeProps['zIndex'];
+
+	const ids = ['a', 'b', 'c', 'd'];
+	const positionsAndIds: Array<[Position, string]> = Object.values(Position).map((value, index) => [
+		value,
+		ids[index]
+	]);
 
 	$: node = {
 		isConnectable,
@@ -45,19 +46,29 @@
 	} satisfies NodeIcon;
 
 	const select = () => {
-		console.log(node);
 		if (node.selected) {
 			NodeStore.update(node);
 		}
-		console.log('asdfasdf');
 	};
 
 	$: node && select();
 </script>
 
-<Handle type="target" position={Position.Left} style="background: #555;" {isConnectable} />
+{#each positionsAndIds as [position, id]}
+	<Handle
+		{id}
+		type="source"
+		{position}
+		style="background: #555;"
+		class="w-2.5 h-2.5 opacity-30"
+		{isConnectable}
+	/>
+{/each}
 
-<div class="flex justify-center p-2.5 border-2 rounded-lg border-accent align-center">
+<div
+	class="flex justify-center py-2 px-3 border-2 rounded-xl border-{node.data.color
+		.border} text-{node.data.color.foreground}     bg-{node.data.color.background} align-center"
+>
 	<div class="mr-2">
 		<img class="object-cover rounded-md" src="https://placehold.co/24x24" alt="placeholder" />
 	</div>
@@ -65,5 +76,3 @@
 		<p>{data['text']}</p>
 	</div>
 </div>
-
-<Handle type="source" position={Position.Right} id="b" {isConnectable} />

@@ -1,7 +1,14 @@
 <script lang="ts">
 	// Libraries
 	import { onMount, type ComponentType, type EventDispatcher } from 'svelte';
-	import { Controls, Panel, SvelteFlow, updateEdge, useSvelteFlow } from '@xyflow/svelte';
+	import {
+		ConnectionMode,
+		Controls,
+		Panel,
+		SvelteFlow,
+		updateEdge,
+		useSvelteFlow
+	} from '@xyflow/svelte';
 
 	// Modules
 	import { EdgeStore, edges } from '$lib/stores/edges.store';
@@ -13,17 +20,17 @@
 
 	import { selectedEdge } from '$lib/stores/edges.store';
 	import '@xyflow/svelte/dist/style.css';
-	import type { DefaultEdgeOptions, Edge, EdgeTypes, Node, Viewport } from '@xyflow/svelte';
+	import type { DefaultEdgeOptions, EdgeTypes, Viewport } from '@xyflow/svelte';
 	import type { EdgeUnion, NodeUnion } from '$lib/types';
 	import { selectedNode } from '$lib/stores/nodes.store';
-	import { updated } from '$app/stores';
 
 	export let nodeTypes: Record<string, ComponentType>;
 	export let edgeTypes: EdgeTypes;
 	export let viewport: Viewport;
+	export let defaultEdgeOptions: DefaultEdgeOptions;
 
 	const { screenToFlowPosition } = useSvelteFlow();
-	const { updateNode, updateNodeData } = useSvelteFlow();
+	const { updateNode, updateNodeData, getEdge } = useSvelteFlow();
 
 	/**
 	 *
@@ -50,12 +57,16 @@
 	 *
 	 */
 	const updateEdges = (event: CustomEvent<{ edge: EdgeUnion }>) => {
-		const updatedEdge = event.detail.edge;
-		let index: number = $edges.findIndex((e) => e.id === updatedEdge.id);
-		if (index !== -1) {
-			$edges[index] = updatedEdge;
+		const toUpdateEdge = getEdge(event.detail.edge.id);
+		if (toUpdateEdge) {
+			toUpdateEdge.style = `stroke-width: 2; stroke: oklch(var(${event.detail.edge.data.color}}))`;
+			edges.update((currentEdges) => {
+				const filteredEdges = currentEdges.filter((e) => e.id != event.detail.edge.id);
+				return [...filteredEdges, toUpdateEdge];
+			});
+			EdgeStore.save();
+			$edges = $edges;
 		}
-		console.log('here', updatedEdge);
 	};
 
 	/**
@@ -87,6 +98,22 @@
 
 		NodeStore.add(type, position);
 		$nodes = $nodes;
+		console.log($nodes);
+	};
+
+	/**
+	 *
+	 */
+	const handleKeypress = (event: KeyboardEvent) => {
+		if (event.key == 'Delete') {
+			if ($selectedNode) {
+				NodeStore.remove($selectedNode.id);
+			}
+			if ($selectedEdge) {
+				console.log('remove');
+				EdgeStore.remove($selectedEdge.id);
+			}
+		}
 	};
 
 	onMount(() => {
@@ -101,12 +128,17 @@
 
   TODO: Typew the nodeclick and such 
   -->
+
+<svelte:window on:keypress={handleKeypress} />
+
 <div style:height="100vh">
 	<SvelteFlow
+		connectionMode={ConnectionMode.Loose}
 		{nodes}
 		{nodeTypes}
 		{edges}
 		{edgeTypes}
+		{defaultEdgeOptions}
 		snapGrid={[20, 20]}
 		initialViewport={viewport}
 		maxZoom={5}

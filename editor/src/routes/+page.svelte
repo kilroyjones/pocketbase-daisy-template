@@ -8,12 +8,14 @@
 	import NodeIcon from '$lib/components/nodes/NodeIcon.svelte';
 	import NodeList from '$lib/components/nodes/NodeList.svelte';
 	import EdgeStep from '$lib/components/edges/EdgeStep.svelte';
+	import NodeTitle from '$lib/components/nodes/NodeTitle.svelte';
 
 	// Types and constants
 	const nodeTypes = {
 		nodeIcon: NodeIcon,
 		nodeList: NodeList,
-		nodeText: NodeText
+		nodeText: NodeText,
+		nodeTitle: NodeTitle
 	};
 
 	const edgeTypes = {

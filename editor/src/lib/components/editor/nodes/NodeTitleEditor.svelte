@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { nodes, selectedNode } from '$lib/stores/nodes.store';
+	import { selectedNode } from '$lib/stores/nodes.store';
 	import type { NodeUnion, NodeText } from '$lib/types';
 	import { createEventDispatcher } from 'svelte';
 	import ColorPicker from '../ColorPicker.svelte';
@@ -7,7 +7,6 @@
 	const dispatch = createEventDispatcher<{ updateNodes: { node: NodeUnion } }>();
 
 	const handleUpdate = () => {
-		console.log('update', $nodes);
 		dispatch('updateNodes', {
 			node: node
 		});
@@ -25,7 +24,6 @@
 				node.data.color.border = color;
 				break;
 		}
-		console.log(node.data.color);
 		handleUpdate();
 	};
 
@@ -35,12 +33,22 @@
 <div class="form-control" on:input={handleUpdate}>
 	<form class="form-control">
 		<label for="text" class="pb-1 label">
-			<span class="text-sm label-text">Text</span>
+			<span class="text-sm label-text">Title</span>
 		</label>
 		<input
 			type="text"
 			placeholder="Your text here"
-			bind:value={node.data.text}
+			bind:value={node.data.title}
+			class="w-full max-w-xs input input-bordered"
+		/>
+
+		<label for="text" class="pb-1 label">
+			<span class="text-sm label-text">Description</span>
+		</label>
+		<input
+			type="text"
+			placeholder="Your text here"
+			bind:value={node.data.description}
 			class="w-full max-w-xs input input-bordered"
 		/>
 

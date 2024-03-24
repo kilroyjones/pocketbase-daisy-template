@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+
 	// Components
 	import { EdgeStore } from '$lib/stores/edges.store';
 	import { NodeStore } from '$lib/stores/nodes.store';
@@ -12,6 +14,10 @@
 		NodeStore.reset();
 		EdgeStore.reset();
 	};
+
+	const exportToFile = () => {
+		goto('/export');
+	};
 </script>
 
 <div class="navbar">
@@ -22,6 +28,10 @@
 		</div>
 		<div class="flex-none">
 			<button class="btn" on:click={reset}>Reset</button>
+		</div>
+
+		<div class="flex-none">
+			<button class="btn" on:click={exportToFile}>Export</button>
 		</div>
 	</div>
 	<div class="flex-none">

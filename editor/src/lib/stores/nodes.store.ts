@@ -15,11 +15,11 @@ export const nodes: Writable<Node[]> = writable([]);
 
 const save = () => {
 	localStorage.setItem('nodes', JSON.stringify(get(nodes)));
-	console.log('saved');
 };
 
 export const reset = (): void => {
 	nodes.set([]);
+	save();
 };
 
 export const selectedNode: Writable<NodeUnion | undefined> = writable(undefined);
@@ -40,10 +40,16 @@ const defaultTextData = {
 	color: { foreground: 'primary-content', background: 'base-100', border: 'base-100' }
 };
 
+const defaultTitleData = {
+	title: 'Title',
+	description: 'Description',
+	color: { foreground: 'primary-content', background: 'success', border: 'success' }
+};
+
 const defaultIconData = {
 	text: 'Icon',
 	icon: '<insert something here>',
-	color: { foreground: 'base-300', background: 'primary opacity-70', border: 'primary opacity-70' }
+	color: { foreground: 'base-300', background: 'primary', border: 'primar' }
 };
 
 const defaultListData = {
@@ -51,8 +57,8 @@ const defaultListData = {
 	items: Array.from([]),
 	color: {
 		foreground: 'base-300',
-		background: 'warning opacity-70',
-		border: 'warning border-opacity-70'
+		background: 'warning',
+		border: 'warning'
 	}
 };
 
@@ -67,6 +73,8 @@ const getDefaultData = (type: string) => {
 			return { ...defaultIconData };
 		case 'nodeList':
 			return { ...defaultListData };
+		case 'nodeTitle':
+			return { ...defaultTitleData };
 	}
 };
 
@@ -96,15 +104,20 @@ const add = (type: string, position: XYPosition) => {
  */
 const init = () => {
 	// Fix this setup
-	console.log('sadfads');
 	const loaded = loadInitialNodes();
 	nodes.set(loaded);
-	add('nodeText', { x: 60, y: 30 });
 };
 
-const remove = (id: string) => {};
+const remove = (id: string) => {
+	nodes.update((currentNodes) => {
+		const filteredNodes = currentNodes.filter((e) => e.id != id);
+		return [...filteredNodes];
+	});
+	save();
+};
 
 const update = (node: NodeUnion) => {
+	console.log(get(nodes));
 	selectedNode.update(() => {
 		return node;
 	});

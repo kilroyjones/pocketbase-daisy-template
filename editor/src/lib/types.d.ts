@@ -72,6 +72,13 @@ export type NodeText = NodeProps & {
 	};
 };
 
+export type NodeTitle = NodeProps & {
+	data: DataBase & {
+		title: string;
+		description: string;
+	};
+};
+
 export type NodeIcon = NodeProps & {
 	data: Database & {
 		text: string;

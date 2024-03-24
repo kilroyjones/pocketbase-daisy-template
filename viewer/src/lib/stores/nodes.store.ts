@@ -1,32 +1,65 @@
 // Libraries
-import { writable } from 'svelte/store';
+import { get, writable } from 'svelte/store';
 
 // Types and constants
 import type { Node, XYPosition } from '@xyflow/svelte';
-import type { NodeIcon, NodeText, NodeUnion } from '$lib/types';
+import type { NodeUnion } from '$lib/types';
 import type { Writable } from 'svelte/store';
-import type { NodeProps } from '@xyflow/svelte';
 
-export const nodes: Writable<Array<Node>> = writable([]);
-// export const selectedNode: Writable<NodeUnion | undefined> =
-export const selectedNode: Writable<NodeUnion | undefined> =
-	// export const selectedNode: Writable<NodeList | NodeText | NodeIcon | undefined> =
-	writable(undefined);
+const loadInitialNodes = (): Node[] => {
+	const nodes = localStorage.getItem('nodes');
+	return nodes ? JSON.parse(nodes) : [];
+};
+
+export const nodes: Writable<Node[]> = writable([]);
+
+const save = () => {
+	localStorage.setItem('nodes', JSON.stringify(get(nodes)));
+};
+
+export const reset = (): void => {
+	nodes.set([]);
+	save();
+};
+
+export const selectedNode: Writable<NodeUnion | undefined> = writable(undefined);
+
 /**
  *
  */
+const defaultColorData = {
+	color: {
+		foreground: 'primary-content',
+		background: 'base-100',
+		border: 'primary-content'
+	}
+};
+
 const defaultTextData = {
-	text: 'Text'
+	text: 'Text',
+	color: { foreground: 'primary-content', background: 'base-100', border: 'base-100' }
+};
+
+const defaultTitleData = {
+	title: 'Title',
+	description: 'Description',
+	color: { foreground: 'primary-content', background: 'success', border: 'success' }
 };
 
 const defaultIconData = {
 	text: 'Icon',
-	icon: '<insert something here>'
+	icon: '<insert something here>',
+	color: { foreground: 'base-300', background: 'primary', border: 'primar' }
 };
 
 const defaultListData = {
 	text: 'List',
-	items: Array.from([])
+	items: Array.from([]),
+	color: {
+		foreground: 'base-300',
+		background: 'warning',
+		border: 'warning'
+	}
 };
 
 /**
@@ -40,6 +73,8 @@ const getDefaultData = (type: string) => {
 			return { ...defaultIconData };
 		case 'nodeList':
 			return { ...defaultListData };
+		case 'nodeTitle':
+			return { ...defaultTitleData };
 	}
 };
 
@@ -48,7 +83,6 @@ const getDefaultData = (type: string) => {
  */
 const add = (type: string, position: XYPosition) => {
 	const defaultData = getDefaultData(type);
-	console.log(defaultData, type, position);
 	if (defaultData) {
 		nodes.update((currentNodes) => {
 			const newNode: Node = {
@@ -62,55 +96,38 @@ const add = (type: string, position: XYPosition) => {
 			return [...currentNodes, newNode];
 		});
 	}
+	save();
 };
 
 /**
  *
  */
 const init = () => {
-	// For testing
-	/////
-	nodes.update(() => [
-		{
-			id: '1',
-			type: 'nodeIcon',
-			data: { text: 'Icon' },
-			position: { x: 0, y: 0 }
-		},
-		{
-			id: '2',
-			type: 'nodeText',
-			data: { text: 'Text' },
-			position: { x: 0, y: 150 }
-		},
-		{
-			id: '3',
-			type: 'nodeList',
-			data: {
-				text: 'List',
-				items: [
-					{ id: '1', checked: false, text: 'item 1' },
-					{ id: '2', checked: true, text: 'item 2' }
-				]
-			},
-			position: { x: 150, y: 10 }
-		}
-	]);
+	// Fix this setup
+	const loaded = loadInitialNodes();
+	nodes.set(loaded);
 };
-const remove = (id: string) => {};
+
+const remove = (id: string) => {
+	nodes.update((currentNodes) => {
+		const filteredNodes = currentNodes.filter((e) => e.id != id);
+		return [...filteredNodes];
+	});
+	save();
+};
 
 const update = (node: NodeUnion) => {
-	console.log('Slected', node);
+	console.log(get(nodes));
 	selectedNode.update(() => {
-		console.log('h');
 		return node;
 	});
-	console.log('update');
+	save();
 };
 
 export const NodeStore = {
 	add,
 	init,
 	remove,
+	reset,
 	update
 };

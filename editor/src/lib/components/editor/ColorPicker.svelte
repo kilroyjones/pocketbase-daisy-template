@@ -5,19 +5,19 @@
 	export let type: string;
 
 	const colors = [
-		'base-100',
-		'primary-content',
+		'secondary-content',
 		'primary',
 		'secondary',
-		'success',
+		'base-100',
 		'info',
-		'warning',
+		'success',
 		'error'
 	];
 
 	const selectedColor = writable(colors[0]);
 
 	function selectColor(color: string) {
+		console.log('selected');
 		selectedColor.set(color);
 		handleColor(type, color);
 	}
@@ -26,12 +26,12 @@
 <div class="flex justify-between w-full gap-2">
 	{#each colors as color}
 		<button
-			class="color-box class:border-2 class:border-transparent hover:border-gray-300 bg-{color}"
+			class="color-box class:border-2 class:border-transparent border-white bg-{color}"
 			style="background-color: bg-primary;"
 			on:click={() => selectColor(color)}
 		>
 			{#if $selectedColor === color}
-				<div class="w-full h-full border-2 border-white rounded-full"></div>
+				<div class="w-full h-full border-2 border-black rounded-full"></div>
 			{/if}
 		</button>
 	{/each}

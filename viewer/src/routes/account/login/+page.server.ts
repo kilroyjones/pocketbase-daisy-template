@@ -8,10 +8,8 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({}) => {
 	if (pb.authStore.isValid) {
-		console.log('Here logged');
 		throw redirect(301, '/');
 	}
-	console.log('not logged');
 	return {};
 };
 

@@ -10,17 +10,24 @@ const loadInitialEdges = (): Edge[] => {
 export const edges: Writable<Array<Edge>> = writable(loadInitialEdges());
 export const selectedEdge: Writable<Edge | undefined> = writable(undefined);
 
-edges.subscribe(($edges) => {
-	localStorage.setItem('edges', JSON.stringify($edges));
-});
-
 export const reset = (): void => {
+	localStorage.setItem('edges', '');
 	edges.set([]);
+};
+
+export const save = () => {
+	localStorage.setItem('edges', JSON.stringify(get(edges)));
 };
 
 // const getColorVariables = () => {};
 
-const add = (sourceNode: string, targetNode: string, type: string) => {
+const add = (
+	sourceNode: string,
+	targetNode: string,
+	sourceHandle: string,
+	targetHardle: string,
+	type: string
+) => {
 	edges.update((currentEdges) => {
 		const filteredEdges = currentEdges.filter(
 			(edge) => !(edge.source === sourceNode && edge.target === targetNode)
@@ -31,16 +38,23 @@ const add = (sourceNode: string, targetNode: string, type: string) => {
 			type,
 			source: sourceNode,
 			target: targetNode,
+			sourceHandle: sourceHandle,
+			targetHandle: targetHardle,
 			data: {
 				width: 3,
 				color: 'base-300'
-			}
+			},
+			style: `stroke-width: 2; stroke: oklch(var(--b3}))`
 		};
-
+		save();
 		return [...filteredEdges, newEdge];
 	});
 
 	console.log(get(edges));
+};
+
+const update = () => {
+	save();
 };
 
 const init = () => {
@@ -48,35 +62,19 @@ const init = () => {
 	/////
 };
 
-const remove = (id: string) => {};
+const remove = (id: string) => {
+	edges.update((currentEdges) => {
+		const filteredEdges = currentEdges.filter((e) => e.id != id);
+		return [...filteredEdges];
+	});
+	save();
+};
 // const get = (id: string) => {};
 
 export const EdgeStore = {
 	add,
 	init,
 	remove,
-	reset
+	reset,
+	save
 };
-
-// const color = [
-// 	{ name: 'primary', variable: '--p' },
-// 	{ name: 'primary-content', variable: '--pc' },
-// 	{ name: 'secondary', variable: '--s' },
-// 	{ name: 'secondary-content', variable: '--sc' },
-// 	{ name: 'accent', variable: '--a' },
-// 	{ name: 'accent-content', variable: '--ac' },
-// 	{ name: 'neutral', variable: '--n' },
-// 	{ name: 'neutral-content', variable: '--nc' },
-// 	{ name: 'base-100', variable: '--b1' },
-// 	{ name: 'base-200', variable: '--b2' },
-// 	{ name: 'base-300', variable: '--b3' },
-// 	{ name: 'base-content', variable: '--bc' },
-// 	{ name: 'info', variable: '--in' },
-// 	{ name: 'info-content', variable: '--inc' },
-// 	{ name: 'success', variable: '--su' },
-// 	{ name: 'success-content', variable: '--suc' },
-// 	{ name: 'warning', variable: '--wa' },
-// 	{ name: 'warning-content', variable: '--wac' },
-// 	{ name: 'error', variable: '--er' },
-// 	{ name: 'error-content', variable: '--erc' }
-// ];
