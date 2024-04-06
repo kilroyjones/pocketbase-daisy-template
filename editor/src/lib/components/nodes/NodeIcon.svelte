@@ -2,11 +2,14 @@
 	// Libraries
 	import { Handle, Position } from '@xyflow/svelte';
 
-	// Types and constants
+	// Modules
+	import { handleEdgeConnect } from '$lib/actions/edge.actions';
+
+	// Types and variables
 	import type { NodeProps } from '@xyflow/svelte';
 	import type { NodeIcon } from '$lib/types';
-	import { NodeStore } from '$lib/stores/nodes.store';
-	import { handleEdgeConnect } from '$lib/actions/edge.actions';
+
+	import { selectedNode } from '$lib/stores/map.store';
 
 	export let isConnectable: NodeProps['isConnectable'];
 	export let data: NodeIcon['data'];
@@ -48,7 +51,7 @@
 
 	const select = () => {
 		if (node.selected) {
-			NodeStore.update(node);
+			$selectedNode = node;
 		}
 	};
 
@@ -72,7 +75,11 @@
 		.border} text-{node.data.color.foreground}     bg-{node.data.color.background} align-center"
 >
 	<div class="mr-2">
-		<img class="object-cover rounded-md" src="https://placehold.co/24x24" alt="placeholder" />
+		<img
+			class="object-cover w-6 h-6 rounded-md"
+			src={node.data.icon ? node.data.icon : 'https://placehold.co/24x24'}
+			alt="placeholder"
+		/>
 	</div>
 	<div class="flex-grow">
 		<p>{data['text']}</p>

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { selectedEdge } from '$lib/stores/edges.store';
+	import { selectedEdge } from '$lib/stores/map.store';
 	import { createEventDispatcher } from 'svelte';
 	import ColorPicker from '../ColorPicker.svelte';
-	import type { EdgeStep, EdgeUnion } from '$lib/types';
+	import type { EdgeSmooth, EdgeUnion } from '$lib/types';
 
 	const dispatch = createEventDispatcher<{ updateEdges: { edge: EdgeUnion } }>();
 
@@ -56,7 +56,7 @@
 		handleUpdate();
 	};
 
-	$: edge = $selectedEdge as EdgeStep;
+	$: edge = $selectedEdge as EdgeSmooth;
 </script>
 
 <div class="form-control" on:input={handleUpdate}>
@@ -68,7 +68,5 @@
 			<span class="text-sm label-text">Color</span>
 		</label>
 		<ColorPicker type="foreground" {handleColor}></ColorPicker>
-
-		<div class="divider"></div>
 	</form>
 </div>

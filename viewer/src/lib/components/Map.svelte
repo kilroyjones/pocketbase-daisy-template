@@ -1,87 +1,55 @@
 <script lang="ts">
 	// Libraries
+	import '@xyflow/svelte/dist/style.css';
 	import { onMount, type ComponentType } from 'svelte';
-	import { ConnectionMode, Controls, SvelteFlow, useSvelteFlow } from '@xyflow/svelte';
+	import { ConnectionMode, Controls, SvelteFlow, Panel } from '@xyflow/svelte';
 
 	// Modules
-	import { EdgeStore, edges } from '$lib/stores/edges.store';
-	import { NodeStore, nodes } from '$lib/stores/nodes.store';
+	import { EdgeStore, edges, selectedEdge } from '$lib/stores/edges.store';
+	import { NodeStore, nodes, selectedNode } from '$lib/stores/nodes.store';
 
-	import { selectedEdge } from '$lib/stores/edges.store';
-	import '@xyflow/svelte/dist/style.css';
-	import type { DefaultEdgeOptions, EdgeTypes, Viewport } from '@xyflow/svelte';
-	import type { EdgeUnion, NodeUnion } from '$lib/types';
-	import { selectedNode } from '$lib/stores/nodes.store';
+	// Types and variables
+	import type { DefaultEdgeOptions, EdgeTypes, Node, Viewport } from '@xyflow/svelte';
+	import ContentModal from './content/ContentModal.svelte';
+	import { showContent } from '$lib/stores/ui.store';
 
 	export let nodeTypes: Record<string, ComponentType>;
 	export let edgeTypes: EdgeTypes;
 	export let viewport: Viewport;
 	export let defaultEdgeOptions: DefaultEdgeOptions;
 
-	const { screenToFlowPosition } = useSvelteFlow();
-	const { updateNode, updateNodeData, getEdge } = useSvelteFlow();
-
 	/**
 	 *
 	 */
-	const onDragOver = (event: DragEvent) => {
-		event.preventDefault();
-
-		if (event.dataTransfer) {
-			event.dataTransfer.dropEffect = 'move';
-		}
-	};
-
-	/**
-	 *
-	 */
-	const onDrop = (event: DragEvent) => {
-		event.preventDefault();
-
-		if (!event.dataTransfer) {
-			return null;
-		}
-
-		const type = event.dataTransfer.getData('application/svelteflow');
-		const position = screenToFlowPosition({
-			x: event.clientX,
-			y: event.clientY
-		});
-
-		NodeStore.add(type, position);
-		$nodes = $nodes;
-		console.log($nodes);
-	};
-
-	/**
-	 *
-	 */
-	const handleKeypress = (event: KeyboardEvent) => {
-		if (event.key == 'Delete') {
-			if ($selectedNode) {
-				NodeStore.remove($selectedNode.id);
+	const handleNodeClick = (event: CustomEvent) => {
+		console.log(event);
+		const node = event.detail.node;
+		if (node) {
+			if ($showContent == false) {
+				$showContent = !$showContent;
 			}
-			if ($selectedEdge) {
-				console.log('remove');
-				EdgeStore.remove($selectedEdge.id);
-			}
+
+			selectedNode.set(node);
 		}
 	};
 
 	onMount(() => {
-		NodeStore.init();
-		EdgeStore.init();
+		NodeStore.init(undefined);
+		EdgeStore.init(undefined);
 	});
+
+	function run() {
+		console.log('sdf');
+	}
+
+	$: $nodes, run();
 </script>
 
 <!--
   👇 By default, the Svelte Flow container has a height of 100%.
   This means that the parent container needs a height to render the flow.
-
-  TODO: Typew the nodeclick and such 
-  -->
-
-<svelte:window on:keypress={handleKeypress} />
+  
+-->
 
 <div style:height="100vh">
 	<SvelteFlow
@@ -91,6 +59,7 @@
 		{edges}
 		{edgeTypes}
 		{defaultEdgeOptions}
+		on:nodeclick={handleNodeClick}
 		preventScrolling={false}
 		zoomOnDoubleClick={false}
 		zoomOnScroll={false}
@@ -98,18 +67,6 @@
 		initialViewport={viewport}
 		maxZoom={5}
 		minZoom={1}
-		on:nodeclick={(event) => {
-			console.log(event);
-		}}
-		on:edgeclick={(event) => {
-			console.log('edge:', event);
-		}}
-		on:dragstart={(event) => {
-			console.log(event);
-		}}
-		on:dragover={onDragOver}
-		on:drop={onDrop}
-		class="bg-base-100"
 		><Controls></Controls>
 	</SvelteFlow>
 </div>

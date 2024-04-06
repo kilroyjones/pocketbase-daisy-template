@@ -1,0 +1,337 @@
+{
+	"nodes": [
+		{
+			"id": "0.3112686162964078",
+			"type": "nodeTitle",
+			"position": {
+				"x": 540,
+				"y": 80
+			},
+			"data": {
+				"title": "LLMs",
+				"description": "Large language models",
+				"color": {
+					"foreground": "primary-content",
+					"background": "success",
+					"border": "success"
+				}
+			},
+			"origin": [0.5, 0],
+			"computed": {
+				"positionAbsolute": {
+					"x": 540,
+					"y": 80
+				},
+				"width": 231,
+				"height": 68
+			},
+			"selected": true,
+			"dragging": false
+		},
+		{
+			"id": "0.2340921694706266",
+			"type": "nodeText",
+			"position": {
+				"x": 720,
+				"y": 220
+			},
+			"data": {
+				"text": "Neural networks",
+				"color": {
+					"foreground": "primary-content",
+					"background": "base-100",
+					"border": "base-100"
+				}
+			},
+			"origin": [0.5, 0],
+			"computed": {
+				"positionAbsolute": {
+					"x": 720,
+					"y": 220
+				},
+				"width": 148,
+				"height": 44
+			},
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.8332380750622153",
+			"type": "nodeText",
+			"position": {
+				"x": 540,
+				"y": 220
+			},
+			"data": {
+				"text": "Fundamentals",
+				"color": {
+					"foreground": "base-100",
+					"background": "error",
+					"border": "base-100"
+				}
+			},
+			"origin": [0.5, 0],
+			"computed": {
+				"positionAbsolute": {
+					"x": 540,
+					"y": 220
+				},
+				"width": 131,
+				"height": 44
+			},
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.0605401088943458",
+			"type": "nodeText",
+			"position": {
+				"x": 360,
+				"y": 220
+			},
+			"data": {
+				"text": "Embeddings",
+				"color": {
+					"foreground": "primary-content",
+					"background": "base-100",
+					"border": "base-100"
+				}
+			},
+			"origin": [0.5, 0],
+			"computed": {
+				"positionAbsolute": {
+					"x": 360,
+					"y": 220
+				},
+				"width": 118,
+				"height": 44
+			},
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.6825524672792742",
+			"type": "nodeList",
+			"position": {
+				"x": 1000,
+				"y": 100
+			},
+			"data": {
+				"text": "Architecture",
+				"items": [
+					{
+						"id": "1",
+						"checked": false,
+						"text": "Understand layers"
+					},
+					{
+						"id": "2",
+						"checked": false,
+						"text": "Nodes"
+					},
+					{
+						"id": "3",
+						"checked": false,
+						"text": "Weights"
+					},
+					{
+						"id": "4",
+						"checked": false,
+						"text": "Activation "
+					}
+				],
+				"color": {
+					"foreground": "base-300",
+					"background": "warning",
+					"border": "warning"
+				}
+			},
+			"origin": [0.5, 0],
+			"computed": {
+				"positionAbsolute": {
+					"x": 1000,
+					"y": 100
+				},
+				"width": 143,
+				"height": 124
+			},
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.0470656146503019",
+			"type": "nodeList",
+			"position": {
+				"x": 1000,
+				"y": 260
+			},
+			"data": {
+				"text": "Training",
+				"items": [
+					{
+						"id": "1",
+						"checked": false,
+						"text": "Data cleaning"
+					},
+					{
+						"id": "2",
+						"checked": false,
+						"text": "Feed forward"
+					},
+					{
+						"id": "3",
+						"checked": false,
+						"text": "Batching"
+					},
+					{
+						"id": "4",
+						"checked": false,
+						"text": "Backpropagation"
+					}
+				],
+				"color": {
+					"foreground": "primary-content",
+					"background": "secondary",
+					"border": "secondary"
+				}
+			},
+			"origin": [0.5, 0],
+			"computed": {
+				"positionAbsolute": {
+					"x": 1000,
+					"y": 260
+				},
+				"width": 137,
+				"height": 124
+			},
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.7666515843455672",
+			"type": "nodeText",
+			"position": {
+				"x": 360,
+				"y": 300
+			},
+			"data": {
+				"text": "Text based",
+				"color": {
+					"foreground": "primary-content",
+					"background": "base-100",
+					"border": "base-100"
+				}
+			},
+			"origin": [0.5, 0],
+			"computed": {
+				"positionAbsolute": {
+					"x": 360,
+					"y": 300
+				},
+				"width": 107,
+				"height": 44
+			},
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.23535413518594117",
+			"type": "nodeText",
+			"position": {
+				"x": 180,
+				"y": 160
+			},
+			"data": {
+				"text": "Non-text based",
+				"color": {
+					"foreground": "primary-content",
+					"background": "base-100",
+					"border": "base-100"
+				}
+			},
+			"origin": [0.5, 0],
+			"computed": {
+				"positionAbsolute": {
+					"x": 180,
+					"y": 160
+				},
+				"width": 140,
+				"height": 44
+			},
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.18589512196339397",
+			"type": "nodeList",
+			"position": {
+				"x": 160,
+				"y": 280
+			},
+			"data": {
+				"text": "Creating",
+				"items": [
+					{
+						"id": "1",
+						"checked": false,
+						"text": "Words as vectors"
+					},
+					{
+						"id": "2",
+						"checked": false,
+						"text": "Word2Vec"
+					},
+					{
+						"id": "3",
+						"checked": false,
+						"text": "GloVe"
+					}
+				],
+				"color": {
+					"foreground": "base-300",
+					"background": "warning",
+					"border": "warning"
+				}
+			},
+			"origin": [0.5, 0],
+			"computed": {
+				"positionAbsolute": {
+					"x": 160,
+					"y": 280
+				},
+				"width": 136,
+				"height": 104
+			},
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.4012863282154009",
+			"type": "nodeText",
+			"position": {
+				"x": 540,
+				"y": 360
+			},
+			"data": {
+				"text": "Foundational models",
+				"color": {
+					"foreground": "base-100",
+					"background": "error",
+					"border": "base-100"
+				}
+			},
+			"origin": [0.5, 0],
+			"computed": {
+				"positionAbsolute": {
+					"x": 540,
+					"y": 360
+				},
+				"width": 181,
+				"height": 44
+			},
+			"selected": false,
+			"dragging": false
+		}
+	],
+	"edges": []
+}

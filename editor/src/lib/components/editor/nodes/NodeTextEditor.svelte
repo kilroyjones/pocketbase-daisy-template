@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { nodes, selectedNode } from '$lib/stores/nodes.store';
+	import { nodes, selectedNode } from '$lib/stores/map.store';
 	import type { NodeUnion, NodeText } from '$lib/types';
 	import { createEventDispatcher } from 'svelte';
 	import ColorPicker from '../ColorPicker.svelte';

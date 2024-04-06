@@ -4,10 +4,11 @@
 
 	// Modules
 	import { handleEdgeConnect } from '$lib/actions/edge.actions';
-	import { NodeStore } from '$lib/stores/nodes.store';
 
-	// Types and constants
+	// Types and variables
 	import type { NodeTitle } from '$lib/types';
+
+	import { selectedNode } from '$lib/stores/map.store';
 
 	export let isConnectable: NodeTitle['isConnectable'];
 	export let data: NodeTitle['data'];
@@ -49,7 +50,7 @@
 
 	const select = () => {
 		if (node.selected) {
-			NodeStore.update(node);
+			$selectedNode = node;
 		}
 	};
 
@@ -73,7 +74,11 @@
 		.data.color.foreground}  bg-{node.data.color.background}"
 >
 	<div class="flex items-center mr-2">
-		<img class="object-cover rounded-md" src="https://placehold.co/48x48" alt="placeholder" />
+		<img
+			class="object-cover w-12 h-12 rounded-md"
+			src={node.data.icon ? node.data.icon : 'https://placehold.co/48x48'}
+			alt="placeholder"
+		/>
 	</div>
 	<div class="flex flex-col justify-center">
 		<h1 class="mb-0 text-xl font-bold">{node.data.title}</h1>

@@ -55,14 +55,7 @@
 </script>
 
 {#each positionsAndIds as [position, id]}
-	<Handle
-		{id}
-		type="source"
-		{position}
-		style="background: #555;"
-		class="w-2.5 h-2.5 opacity-30"
-		{isConnectable}
-	/>
+	<Handle {id} type="source" {position} style="background: #555;" class="w-0 h-0" {isConnectable} />
 {/each}
 
 <div

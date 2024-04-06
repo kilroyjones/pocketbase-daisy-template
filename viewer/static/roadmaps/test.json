@@ -1,0 +1,320 @@
+{
+	"nodes": [
+		{
+			"id": "0.3112686162964078",
+			"type": "nodeTitle",
+			"position": { "x": 520, "y": 80 },
+			"data": {
+				"title": "LLMs",
+				"description": "Large language models",
+				"color": { "foreground": "secondary-content", "background": "base-100", "border": "error" },
+				"icon": "llm.png",
+				"content": "<div class=\"container px-4 mx-auto\"><h1 class=\"pb-5 text-2xl font-bold\">Understanding Large Language Models (LLMs)</h1><p class=\"mt-4 mb-4 text-balance\">Large Language Models (LLMs) are advanced artificial intelligence systems capable of understanding and generating human-like text. These models are trained on vast datasets of text from the internet, books, and other sources to learn language patterns, grammar, and context. As a result, LLMs can perform a wide range of language-based tasks, such as answering questions, writing essays, coding, and even composing poetry.</p><p class=\"mt-4 mb-4\">One of the key characteristics of LLMs is their ability to generate coherent and contextually relevant responses to prompts. This is achieved through their understanding of the nuances of language, including idioms, metaphors, and complex sentence structures. LLMs like OpenAI's GPT series have demonstrated remarkable capabilities in generating text that is often indistinguishable from that written by humans.</p><p class=\"mt-4 mb-4\">However, while LLMs offer incredible opportunities for enhancing human-machine interaction, they also raise important ethical and societal questions. Issues such as bias, misinformation, and the impact on jobs are central to the ongoing debate about the role of LLMs in society.</p><h2 class=\"my-4 mb-4 text-xl font-semibold\">References</h2><ul class=\"list-disc\"><li>Brown, T. B., et al. (2020). \"Language Models are Few-Shot Learners.\" <em>arXiv preprint arXiv:2005.14165</em>.</li><li class=\"mt-4\">Vaswani, A., et al. (2017). \"Attention is All You Need.\" <em>31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.</em></li></ul></div>",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 80 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.2340921694706266",
+			"type": "nodeText",
+			"position": { "x": 720, "y": 220 },
+			"data": {
+				"text": "Neural networks",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary-content"
+				},
+				"content": "<div class=\"container px-4 mx-auto\"><h1 class=\"pb-5 text-2xl font-bold\">Understanding Neural Networks</h1><p class=\"mt-4 mb-4 text-balance\">Large Language Models (LLMs) are advanced artificial intelligence systems capable of understanding and generating human-like text. These models are trained on vast datasets of text from the internet, books, and other sources to learn language patterns, grammar, and context. As a result, LLMs can perform a wide range of language-based tasks, such as answering questions, writing essays, coding, and even composing poetry.</p><p class=\"mt-4 mb-4\">One of the key characteristics of LLMs is their ability to generate coherent and contextually relevant responses to prompts. This is achieved through their understanding of the nuances of language, including idioms, metaphors, and complex sentence structures. LLMs like OpenAI's GPT series have demonstrated remarkable capabilities in generating text that is often indistinguishable from that written by humans.</p><p class=\"mt-4 mb-4\">However, while LLMs offer incredible opportunities for enhancing human-machine interaction, they also raise important ethical and societal questions. Issues such as bias, misinformation, and the impact on jobs are central to the ongoing debate about the role of LLMs in society.</p><h2 class=\"my-4 mb-4 text-xl font-semibold\">References</h2><ul class=\"list-disc\"><li>Brown, T. B., et al. (2020). \"Language Models are Few-Shot Learners.\" <em>arXiv preprint arXiv:2005.14165</em>.</li><li class=\"mt-4\">Vaswani, A., et al. (2017). \"Attention is All You Need.\" <em>31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.</em></li></ul></div>",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 720, "y": 220 }, "width": 148, "height": 44 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.8332380750622153",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 220 },
+			"data": {
+				"text": "Fundamentals",
+				"color": { "foreground": "secondary-content", "background": "base-100", "border": "error" },
+				"content": "<div class=\"container px-4 mx-auto\"><h1 class=\"pb-5 text-2xl font-bold\">Understanding Large Language Models (LLMs)</h1><p class=\"mt-4 mb-4 text-balance\">Large Language Models (LLMs) are advanced artificial intelligence systems capable of understanding and generating human-like text. These models are trained on vast datasets of text from the internet, books, and other sources to learn language patterns, grammar, and context. As a result, LLMs can perform a wide range of language-based tasks, such as answering questions, writing essays, coding, and even composing poetry.</p><p class=\"mt-4 mb-4\">One of the key characteristics of LLMs is their ability to generate coherent and contextually relevant responses to prompts. This is achieved through their understanding of the nuances of language, including idioms, metaphors, and complex sentence structures. LLMs like OpenAI's GPT series have demonstrated remarkable capabilities in generating text that is often indistinguishable from that written by humans.</p><p class=\"mt-4 mb-4\">However, while LLMs offer incredible opportunities for enhancing human-machine interaction, they also raise important ethical and societal questions. Issues such as bias, misinformation, and the impact on jobs are central to the ongoing debate about the role of LLMs in society.</p><h2 class=\"my-4 mb-4 text-xl font-semibold\">References</h2><ul class=\"list-disc\"><li>Brown, T. B., et al. (2020). \"Language Models are Few-Shot Learners.\" <em>arXiv preprint arXiv:2005.14165</em>.</li><li class=\"mt-4\">Vaswani, A., et al. (2017). \"Attention is All You Need.\" <em>31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.</em></li></ul></div>",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 220 }, "width": 131, "height": 44 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.0605401088943458",
+			"type": "nodeText",
+			"position": { "x": 360, "y": 220 },
+			"data": {
+				"text": "Embeddings",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "success"
+				},
+				"content": "<div class=\"container px-4 mx-auto\"><h1 class=\"pb-5 text-2xl font-bold\">Understanding Large Language Models (LLMs)</h1><p class=\"mt-4 mb-4 text-balance\">Large Language Models (LLMs) are advanced artificial intelligence systems capable of understanding and generating human-like text. These models are trained on vast datasets of text from the internet, books, and other sources to learn language patterns, grammar, and context. As a result, LLMs can perform a wide range of language-based tasks, such as answering questions, writing essays, coding, and even composing poetry.</p><p class=\"mt-4 mb-4\">One of the key characteristics of LLMs is their ability to generate coherent and contextually relevant responses to prompts. This is achieved through their understanding of the nuances of language, including idioms, metaphors, and complex sentence structures. LLMs like OpenAI's GPT series have demonstrated remarkable capabilities in generating text that is often indistinguishable from that written by humans.</p><p class=\"mt-4 mb-4\">However, while LLMs offer incredible opportunities for enhancing human-machine interaction, they also raise important ethical and societal questions. Issues such as bias, misinformation, and the impact on jobs are central to the ongoing debate about the role of LLMs in society.</p><h2 class=\"my-4 mb-4 text-xl font-semibold\">References</h2><ul class=\"list-disc\"><li>Brown, T. B., et al. (2020). \"Language Models are Few-Shot Learners.\" <em>arXiv preprint arXiv:2005.14165</em>.</li><li class=\"mt-4\">Vaswani, A., et al. (2017). \"Attention is All You Need.\" <em>31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.</em></li></ul></div>",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 360, "y": 220 }, "width": 118, "height": 44 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.6825524672792742",
+			"type": "nodeList",
+			"position": { "x": 1000, "y": 100 },
+			"data": {
+				"text": "Architecture",
+				"items": [
+					{ "id": "1", "checked": false, "text": "Understand layers" },
+					{ "id": "2", "checked": false, "text": "Nodes" },
+					{ "id": "3", "checked": false, "text": "Weights" },
+					{ "id": "4", "checked": false, "text": "Activation " }
+				],
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"content": "<div class=\"container px-4 mx-auto\"><h1 class=\"pb-5 text-2xl font-bold\">Understanding Large Language Models (LLMs)</h1><p class=\"mt-4 mb-4 text-balance\">Large Language Models (LLMs) are advanced artificial intelligence systems capable of understanding and generating human-like text. These models are trained on vast datasets of text from the internet, books, and other sources to learn language patterns, grammar, and context. As a result, LLMs can perform a wide range of language-based tasks, such as answering questions, writing essays, coding, and even composing poetry.</p><p class=\"mt-4 mb-4\">One of the key characteristics of LLMs is their ability to generate coherent and contextually relevant responses to prompts. This is achieved through their understanding of the nuances of language, including idioms, metaphors, and complex sentence structures. LLMs like OpenAI's GPT series have demonstrated remarkable capabilities in generating text that is often indistinguishable from that written by humans.</p><p class=\"mt-4 mb-4\">However, while LLMs offer incredible opportunities for enhancing human-machine interaction, they also raise important ethical and societal questions. Issues such as bias, misinformation, and the impact on jobs are central to the ongoing debate about the role of LLMs in society.</p><h2 class=\"my-4 mb-4 text-xl font-semibold\">References</h2><ul class=\"list-disc\"><li>Brown, T. B., et al. (2020). \"Language Models are Few-Shot Learners.\" <em>arXiv preprint arXiv:2005.14165</em>.</li><li class=\"mt-4\">Vaswani, A., et al. (2017). \"Attention is All You Need.\" <em>31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.</em></li></ul></div>",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 1000, "y": 100 }, "width": 143, "height": 124 },
+			"selected": true,
+			"dragging": false
+		},
+		{
+			"id": "0.0470656146503019",
+			"type": "nodeList",
+			"position": { "x": 1000, "y": 260 },
+			"data": {
+				"text": "Training",
+				"items": [
+					{ "id": "1", "checked": false, "text": "Data cleaning" },
+					{ "id": "2", "checked": false, "text": "Feed forward" },
+					{ "id": "3", "checked": false, "text": "Batching" },
+					{ "id": "4", "checked": false, "text": "Backpropagation" }
+				],
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "success"
+				},
+				"content": "<div class=\"container px-4 mx-auto\"><h1 class=\"pb-5 text-2xl font-bold\">Understanding Large Language Models (LLMs)</h1><p class=\"mt-4 mb-4 text-balance\">Large Language Models (LLMs) are advanced artificial intelligence systems capable of understanding and generating human-like text. These models are trained on vast datasets of text from the internet, books, and other sources to learn language patterns, grammar, and context. As a result, LLMs can perform a wide range of language-based tasks, such as answering questions, writing essays, coding, and even composing poetry.</p><p class=\"mt-4 mb-4\">One of the key characteristics of LLMs is their ability to generate coherent and contextually relevant responses to prompts. This is achieved through their understanding of the nuances of language, including idioms, metaphors, and complex sentence structures. LLMs like OpenAI's GPT series have demonstrated remarkable capabilities in generating text that is often indistinguishable from that written by humans.</p><p class=\"mt-4 mb-4\">However, while LLMs offer incredible opportunities for enhancing human-machine interaction, they also raise important ethical and societal questions. Issues such as bias, misinformation, and the impact on jobs are central to the ongoing debate about the role of LLMs in society.</p><h2 class=\"my-4 mb-4 text-xl font-semibold\">References</h2><ul class=\"list-disc\"><li>Brown, T. B., et al. (2020). \"Language Models are Few-Shot Learners.\" <em>arXiv preprint arXiv:2005.14165</em>.</li><li class=\"mt-4\">Vaswani, A., et al. (2017). \"Attention is All You Need.\" <em>31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.</em></li></ul></div>",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 1000, "y": 260 }, "width": 137, "height": 124 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.7666515843455672",
+			"type": "nodeText",
+			"position": { "x": 360, "y": 300 },
+			"data": {
+				"text": "Text based",
+				"color": { "foreground": "primary-content", "background": "base-100", "border": "info" },
+				"content": "<div class=\"container px-4 mx-auto\"><h1 class=\"pb-5 text-2xl font-bold\">Understanding Large Language Models (LLMs)</h1><p class=\"mt-4 mb-4 text-balance\">Large Language Models (LLMs) are advanced artificial intelligence systems capable of understanding and generating human-like text. These models are trained on vast datasets of text from the internet, books, and other sources to learn language patterns, grammar, and context. As a result, LLMs can perform a wide range of language-based tasks, such as answering questions, writing essays, coding, and even composing poetry.</p><p class=\"mt-4 mb-4\">One of the key characteristics of LLMs is their ability to generate coherent and contextually relevant responses to prompts. This is achieved through their understanding of the nuances of language, including idioms, metaphors, and complex sentence structures. LLMs like OpenAI's GPT series have demonstrated remarkable capabilities in generating text that is often indistinguishable from that written by humans.</p><p class=\"mt-4 mb-4\">However, while LLMs offer incredible opportunities for enhancing human-machine interaction, they also raise important ethical and societal questions. Issues such as bias, misinformation, and the impact on jobs are central to the ongoing debate about the role of LLMs in society.</p><h2 class=\"my-4 mb-4 text-xl font-semibold\">References</h2><ul class=\"list-disc\"><li>Brown, T. B., et al. (2020). \"Language Models are Few-Shot Learners.\" <em>arXiv preprint arXiv:2005.14165</em>.</li><li class=\"mt-4\">Vaswani, A., et al. (2017). \"Attention is All You Need.\" <em>31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.</em></li></ul></div>",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 360, "y": 300 }, "width": 107, "height": 44 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.23535413518594117",
+			"type": "nodeText",
+			"position": { "x": 180, "y": 160 },
+			"data": {
+				"text": "Non-text based",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"content": "<div class=\"container px-4 mx-auto\"><h1 class=\"pb-5 text-2xl font-bold\">Understanding Large Language Models (LLMs)</h1><p class=\"mt-4 mb-4 text-balance\">Large Language Models (LLMs) are advanced artificial intelligence systems capable of understanding and generating human-like text. These models are trained on vast datasets of text from the internet, books, and other sources to learn language patterns, grammar, and context. As a result, LLMs can perform a wide range of language-based tasks, such as answering questions, writing essays, coding, and even composing poetry.</p><p class=\"mt-4 mb-4\">One of the key characteristics of LLMs is their ability to generate coherent and contextually relevant responses to prompts. This is achieved through their understanding of the nuances of language, including idioms, metaphors, and complex sentence structures. LLMs like OpenAI's GPT series have demonstrated remarkable capabilities in generating text that is often indistinguishable from that written by humans.</p><p class=\"mt-4 mb-4\">However, while LLMs offer incredible opportunities for enhancing human-machine interaction, they also raise important ethical and societal questions. Issues such as bias, misinformation, and the impact on jobs are central to the ongoing debate about the role of LLMs in society.</p><h2 class=\"my-4 mb-4 text-xl font-semibold\">References</h2><ul class=\"list-disc\"><li>Brown, T. B., et al. (2020). \"Language Models are Few-Shot Learners.\" <em>arXiv preprint arXiv:2005.14165</em>.</li><li class=\"mt-4\">Vaswani, A., et al. (2017). \"Attention is All You Need.\" <em>31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.</em></li></ul></div>",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 180, "y": 160 }, "width": 140, "height": 44 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.18589512196339397",
+			"type": "nodeList",
+			"position": { "x": 160, "y": 280 },
+			"data": {
+				"text": "Creating",
+				"items": [
+					{ "id": "1", "checked": false, "text": "Words as vectors" },
+					{ "id": "2", "checked": false, "text": "Word2Vec" },
+					{ "id": "3", "checked": false, "text": "GloVe" }
+				],
+				"color": { "foreground": "secondary-content", "background": "base-100", "border": "info" },
+				"content": "<div class=\"container px-4 mx-auto\"><h1 class=\"pb-5 text-2xl font-bold\">Understanding Large Language Models (LLMs)</h1><p class=\"mt-4 mb-4 text-balance\">Large Language Models (LLMs) are advanced artificial intelligence systems capable of understanding and generating human-like text. These models are trained on vast datasets of text from the internet, books, and other sources to learn language patterns, grammar, and context. As a result, LLMs can perform a wide range of language-based tasks, such as answering questions, writing essays, coding, and even composing poetry.</p><p class=\"mt-4 mb-4\">One of the key characteristics of LLMs is their ability to generate coherent and contextually relevant responses to prompts. This is achieved through their understanding of the nuances of language, including idioms, metaphors, and complex sentence structures. LLMs like OpenAI's GPT series have demonstrated remarkable capabilities in generating text that is often indistinguishable from that written by humans.</p><p class=\"mt-4 mb-4\">However, while LLMs offer incredible opportunities for enhancing human-machine interaction, they also raise important ethical and societal questions. Issues such as bias, misinformation, and the impact on jobs are central to the ongoing debate about the role of LLMs in society.</p><h2 class=\"my-4 mb-4 text-xl font-semibold\">References</h2><ul class=\"list-disc\"><li>Brown, T. B., et al. (2020). \"Language Models are Few-Shot Learners.\" <em>arXiv preprint arXiv:2005.14165</em>.</li><li class=\"mt-4\">Vaswani, A., et al. (2017). \"Attention is All You Need.\" <em>31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.</em></li></ul></div>",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 160, "y": 280 }, "width": 136, "height": 104 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.4012863282154009",
+			"type": "nodeText",
+			"position": { "x": 560, "y": 360 },
+			"data": {
+				"text": "Foundational models",
+				"color": { "foreground": "secondary-content", "background": "base-100", "border": "error" },
+				"content": "<div class=\"container px-4 mx-auto\"><h1 class=\"pb-5 text-2xl font-bold\">Understanding Large Language Models (LLMs)</h1><p class=\"mt-4 mb-4 text-balance\">Large Language Models (LLMs) are advanced artificial intelligence systems capable of understanding and generating human-like text. These models are trained on vast datasets of text from the internet, books, and other sources to learn language patterns, grammar, and context. As a result, LLMs can perform a wide range of language-based tasks, such as answering questions, writing essays, coding, and even composing poetry.</p><p class=\"mt-4 mb-4\">One of the key characteristics of LLMs is their ability to generate coherent and contextually relevant responses to prompts. This is achieved through their understanding of the nuances of language, including idioms, metaphors, and complex sentence structures. LLMs like OpenAI's GPT series have demonstrated remarkable capabilities in generating text that is often indistinguishable from that written by humans.</p><p class=\"mt-4 mb-4\">However, while LLMs offer incredible opportunities for enhancing human-machine interaction, they also raise important ethical and societal questions. Issues such as bias, misinformation, and the impact on jobs are central to the ongoing debate about the role of LLMs in society.</p><h2 class=\"my-4 mb-4 text-xl font-semibold\">References</h2><ul class=\"list-disc\"><li>Brown, T. B., et al. (2020). \"Language Models are Few-Shot Learners.\" <em>arXiv preprint arXiv:2005.14165</em>.</li><li class=\"mt-4\">Vaswani, A., et al. (2017). \"Attention is All You Need.\" <em>31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.</em></li></ul></div>",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 560, "y": 360 }, "width": 181, "height": 44 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.809925619004388",
+			"type": "nodeText",
+			"position": { "x": 340, "y": 460 },
+			"data": {
+				"text": "Text",
+				"color": { "foreground": "primary-content", "background": "base-100", "border": "info" },
+				"content": "<div class=\"container px-4 mx-auto\"><h1 class=\"pb-5 text-2xl font-bold\">Understanding Large Language Models (LLMs)</h1><p class=\"mt-4 mb-4 text-balance\">Large Language Models (LLMs) are advanced artificial intelligence systems capable of understanding and generating human-like text. These models are trained on vast datasets of text from the internet, books, and other sources to learn language patterns, grammar, and context. As a result, LLMs can perform a wide range of language-based tasks, such as answering questions, writing essays, coding, and even composing poetry.</p><p class=\"mt-4 mb-4\">One of the key characteristics of LLMs is their ability to generate coherent and contextually relevant responses to prompts. This is achieved through their understanding of the nuances of language, including idioms, metaphors, and complex sentence structures. LLMs like OpenAI's GPT series have demonstrated remarkable capabilities in generating text that is often indistinguishable from that written by humans.</p><p class=\"mt-4 mb-4\">However, while LLMs offer incredible opportunities for enhancing human-machine interaction, they also raise important ethical and societal questions. Issues such as bias, misinformation, and the impact on jobs are central to the ongoing debate about the role of LLMs in society.</p><h2 class=\"my-4 mb-4 text-xl font-semibold\">References</h2><ul class=\"list-disc\"><li>Brown, T. B., et al. (2020). \"Language Models are Few-Shot Learners.\" <em>arXiv preprint arXiv:2005.14165</em>.</li><li class=\"mt-4\">Vaswani, A., et al. (2017). \"Attention is All You Need.\" <em>31st Conference on Neural Information Processing Systems (NIPS 2017), Long Beach, CA, USA.</em></li></ul></div>",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 340, "y": 460 }, "width": 60, "height": 44 },
+			"selected": false
+		}
+	],
+	"edges": [
+		{
+			"type": "edgeStep",
+			"source": "0.2340921694706266",
+			"sourceHandle": "a",
+			"target": "0.8332380750622153",
+			"targetHandle": "c",
+			"id": "xy-edge__0.2340921694706266a-0.8332380750622153c",
+			"selected": false
+		},
+		{
+			"type": "edgeStep",
+			"id": "0.06575878735468943",
+			"source": "0.3112686162964078",
+			"target": "0.8332380750622153",
+			"sourceHandle": "d",
+			"targetHandle": "b",
+			"data": { "width": 3, "color": "base-300" },
+			"style": "stroke-width: 2; stroke: oklch(var(--b3}))",
+			"selected": false
+		},
+		{
+			"type": "edgeStep",
+			"id": "0.7173834629582074",
+			"source": "0.8332380750622153",
+			"target": "0.0605401088943458",
+			"sourceHandle": "a",
+			"targetHandle": "c",
+			"data": { "width": 3, "color": "base-300" },
+			"style": "stroke-width: 2; stroke: oklch(var(--b3}))",
+			"selected": false
+		},
+		{
+			"type": "edgeStep",
+			"source": "0.2340921694706266",
+			"sourceHandle": "c",
+			"target": "0.6825524672792742",
+			"targetHandle": "a",
+			"id": "xy-edge__0.2340921694706266c-0.6825524672792742a",
+			"selected": false
+		},
+		{
+			"type": "edgeStep",
+			"id": "0.33336606266533786",
+			"source": "0.2340921694706266",
+			"target": "0.0470656146503019",
+			"sourceHandle": "c",
+			"targetHandle": "a",
+			"data": { "width": 3, "color": "base-300" },
+			"style": "stroke-width: 2; stroke: oklch(var(--b3}))",
+			"selected": false
+		},
+		{
+			"type": "edgeStep",
+			"id": "0.42502152819770367",
+			"source": "0.0605401088943458",
+			"target": "0.7666515843455672",
+			"sourceHandle": "d",
+			"targetHandle": "b",
+			"data": { "width": 3, "color": "base-300" },
+			"style": "stroke-width: 2; stroke: oklch(var(--b3}))",
+			"selected": false
+		},
+		{
+			"type": "edgeStep",
+			"id": "0.2047362797451222",
+			"source": "0.0605401088943458",
+			"target": "0.23535413518594117",
+			"sourceHandle": "a",
+			"targetHandle": "c",
+			"data": { "width": 3, "color": "base-300" },
+			"style": "stroke-width: 2; stroke: oklch(var(--b3}))",
+			"selected": false
+		},
+		{
+			"type": "edgeStep",
+			"source": "0.7666515843455672",
+			"sourceHandle": "d",
+			"target": "0.7258087032954463",
+			"targetHandle": "b",
+			"id": "xy-edge__0.7666515843455672d-0.7258087032954463b",
+			"selected": false
+		},
+		{
+			"type": "edgeStep",
+			"id": "0.41562975607129693",
+			"source": "0.8332380750622153",
+			"target": "0.4012863282154009",
+			"sourceHandle": "d",
+			"targetHandle": "b",
+			"data": { "width": 3, "color": "base-300" },
+			"style": "stroke-width: 2; stroke: oklch(var(--b3}))",
+			"selected": false
+		},
+		{
+			"type": "edgeStep",
+			"id": "0.05829203230718716",
+			"source": "0.18589512196339397",
+			"target": "0.7666515843455672",
+			"sourceHandle": "c",
+			"targetHandle": "a",
+			"data": { "width": 3, "color": "base-300" },
+			"style": "stroke-width: 2; stroke: oklch(var(--b3}))",
+			"selected": false
+		},
+		{
+			"source": "0.4012863282154009",
+			"sourceHandle": "a",
+			"target": "0.809925619004388",
+			"targetHandle": "c",
+			"id": "xy-edge__0.4012863282154009a-0.809925619004388c"
+		}
+	]
+}

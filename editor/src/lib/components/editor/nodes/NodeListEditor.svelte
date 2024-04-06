@@ -5,7 +5,7 @@
 	import Remove from '$lib/components/icons/Remove.svelte';
 	import type { NodeList, NodeUnion } from '$lib/types';
 	import type { NodeProps } from '@xyflow/svelte';
-	import { selectedNode } from '$lib/stores/nodes.store';
+	import { selectedNode } from '$lib/stores/map.store';
 	import ColorPicker from '../ColorPicker.svelte';
 	const dispatch = createEventDispatcher<{ updateNodes: { node: NodeUnion } }>();
 

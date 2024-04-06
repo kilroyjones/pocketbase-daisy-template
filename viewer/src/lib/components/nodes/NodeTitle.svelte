@@ -3,10 +3,11 @@
 	import { Handle, Position } from '@xyflow/svelte';
 
 	// Modules
-	import { NodeStore } from '$lib/stores/nodes.store';
+	import { NodeStore, nodes } from '$lib/stores/nodes.store';
 
 	// Types and constants
 	import type { NodeTitle } from '$lib/types';
+	import CompletedCheck from '../icons/CompletedCheck.svelte';
 
 	export let isConnectable: NodeTitle['isConnectable'];
 	export let data: NodeTitle['data'];
@@ -48,7 +49,7 @@
 
 	const select = () => {
 		if (node.selected) {
-			NodeStore.update(node);
+			NodeStore.update(node as unknown as any);
 		}
 	};
 
@@ -56,27 +57,29 @@
 </script>
 
 {#each positionsAndIds as [position, id]}
-	<Handle
-		{id}
-		type="source"
-		{position}
-		style="background: #555;"
-		class="w-2.5 h-2.5 opacity-30"
-		{isConnectable}
-	/>
+	<Handle {id} type="source" {position} style="background: #555;" class="w-0 h-0" {isConnectable} />
 {/each}
 
-<div
-	class="flex items-start px-3 py-2 border-2 rounded-xl border-{node.data.color.border} text-{node
-		.data.color.foreground}  bg-{node.data.color.background}"
->
-	<div class="flex items-center mr-2">
-		<img class="object-cover rounded-md" src="https://placehold.co/48x48" alt="placeholder" />
-	</div>
-	<div class="flex flex-col justify-center">
-		<h1 class="mb-0 text-xl font-bold">{node.data.title}</h1>
-		<div class="text-sm">
-			{node.data.description}
+<div class="relative">
+	<div
+		class="{node.data.status == 'completed'
+			? 'faded-out'
+			: ''} flex items-start px-3 py-2 border-2 rounded-xl border-{node.data.color.border}"
+	>
+		<div class="flex items-center mr-2">
+			<img class="rounded-md object-fit w-[48px]" src="/llm.png" alt="placeholder" />
+		</div>
+		<div class="flex flex-col justify-center">
+			<h1 class="mb-0 text-xl font-bold">{node.data.title}</h1>
+			<div class="text-sm">
+				{node.data.description}
+			</div>
 		</div>
 	</div>
+	{#if node.data.status == 'completed'}
+		<CompletedCheck></CompletedCheck>
+	{/if}
 </div>
+
+<style>
+</style>

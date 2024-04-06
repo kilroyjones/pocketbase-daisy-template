@@ -7,8 +7,9 @@
 	import NodeText from '$lib/components/nodes/NodeText.svelte';
 	import NodeIcon from '$lib/components/nodes/NodeIcon.svelte';
 	import NodeList from '$lib/components/nodes/NodeList.svelte';
-	import EdgeStep from '$lib/components/edges/EdgeStep.svelte';
+	import EdgeSmooth from '$lib/components/edges/EdgeSmooth.svelte';
 	import NodeTitle from '$lib/components/nodes/NodeTitle.svelte';
+	import Tray from '$lib/components/drawer/Tray.svelte';
 
 	// Types and constants
 	const nodeTypes = {
@@ -19,7 +20,7 @@
 	};
 
 	const edgeTypes = {
-		edgeStep: EdgeStep
+		EdgeSmooth: EdgeSmooth
 	};
 
 	const viewport: Viewport = {
@@ -29,7 +30,7 @@
 	};
 
 	const defaultEdgeOptions: DefaultEdgeOptions = {
-		type: 'edgeStep'
+		type: 'EdgeSmooth'
 	};
 
 	const snapGrid = [25, 25];
@@ -37,4 +38,5 @@
 
 <SvelteFlowProvider>
 	<Map {nodeTypes} {defaultEdgeOptions} {edgeTypes} {viewport}></Map>
-</SvelteFlowProvider>number
+</SvelteFlowProvider>
+<Tray></Tray>

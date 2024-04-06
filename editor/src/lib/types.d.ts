@@ -76,6 +76,7 @@ export type NodeTitle = NodeProps & {
 	data: DataBase & {
 		title: string;
 		description: string;
+		icon: string;
 	};
 };
 
@@ -95,10 +96,21 @@ export type NodeList = NodeProps & {
 
 export type NodeUnion = NodeList | NodeText | NodeIcon;
 
-export type EdgeStep = EdgeProps & {
+export type EdgeSmooth = EdgeProps & {
 	data: {
 		color: string;
 	};
 };
 
-export type EdgeUnion = EdgeStep;
+export type EdgeUnion = EdgeSmooth;
+
+export type Pane = {
+	w: number;
+	h: number;
+};
+
+export type MapData = {
+	nodes: any;
+	edges: any;
+	page: any;
+};

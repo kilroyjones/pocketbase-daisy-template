@@ -1,18 +1,17 @@
 <script lang="ts">
 	// Libraries
-	import { getBezierPath, getSmoothStepPath } from '@xyflow/svelte';
-	import daisyuiColors from 'daisyui/src/theming/themes';
+	import { getBezierPath } from '@xyflow/svelte';
 
 	// Modules
-	import { edges, selectedEdge } from '$lib/stores/edges.store';
+	import { edges, selectedEdge } from '$lib/stores/map.store';
 
 	// Components
 	import { BaseEdge } from '@xyflow/svelte';
 
 	// Types and constants
 	import type { EdgeProps } from '@xyflow/svelte';
-	import type { EdgeStep } from '$lib/types';
-	import { selectedNode } from '$lib/stores/nodes.store';
+	import type { EdgeSmooth } from '$lib/types';
+	import { selectedNode } from '$lib/stores/map.store';
 
 	export let id: string;
 	export let type: string;
@@ -89,7 +88,7 @@
 		targetY,
 		targetPosition,
 		targetHandleId
-	} satisfies EdgeStep;
+	} satisfies EdgeSmooth;
 
 	/**
 	 *
@@ -112,7 +111,6 @@
 			targetPosition
 		};
 
-		console.log(sourceX, sourceY, sourcePosition, targetX, targetY, targetPosition);
 		if (isBidirectionalEdge) {
 			path = getSpecialPath(edgePathParams, sourceX < targetX ? 25 : -25);
 		} else {

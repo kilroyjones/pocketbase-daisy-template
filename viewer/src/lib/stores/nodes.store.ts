@@ -6,9 +6,12 @@ import type { Node, XYPosition } from '@xyflow/svelte';
 import type { NodeUnion } from '$lib/types';
 import type { Writable } from 'svelte/store';
 
+/**
+ *
+ */
 const loadInitialNodes = (): Node[] => {
 	const nodes = localStorage.getItem('nodes');
-	return nodes ? JSON.parse(nodes) : [];
+	if (nodes) return nodes ? JSON.parse(nodes) : [];
 };
 
 export const nodes: Writable<Node[]> = writable([]);
@@ -102,10 +105,16 @@ const add = (type: string, position: XYPosition) => {
 /**
  *
  */
-const init = () => {
+const init = (initialNodes: Array<Node> | undefined) => {
 	// Fix this setup
-	const loaded = loadInitialNodes();
-	nodes.set(loaded);
+	if (initialNodes) {
+		localStorage.setItem('nodes', JSON.stringify(initialNodes));
+		const loaded = loadInitialNodes();
+		nodes.set(loaded);
+	} else {
+		const loaded = loadInitialNodes();
+		nodes.set(loaded);
+	}
 };
 
 const remove = (id: string) => {
@@ -116,11 +125,18 @@ const remove = (id: string) => {
 	save();
 };
 
-const update = (node: NodeUnion) => {
-	console.log(get(nodes));
+const update = (updatedNode: NodeUnion) => {
+	console.log(updatedNode);
+	// nodes.update((currentNodes) => {
+	// 	return currentNodes.map((node) => (node.id === updatedNode.id ? updatedNode : node));
+	// });
+	// selectedNode.set(updatedNode); // This line ensures $selectedNode is updated reactively
+	// save();
 	selectedNode.update(() => {
-		return node;
+		return updatedNode;
 	});
+	console.log(updatedNode);
+	console.log(get(nodes)[0]);
 	save();
 };
 

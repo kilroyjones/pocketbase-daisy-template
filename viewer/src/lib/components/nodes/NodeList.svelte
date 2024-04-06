@@ -57,14 +57,7 @@
 </script>
 
 {#each positionsAndIds as [position, id]}
-	<Handle
-		{id}
-		type="source"
-		{position}
-		style="background: #555;"
-		class="w-2.5 h-2.5 opacity-30"
-		{isConnectable}
-	/>
+	<Handle {id} type="source" {position} style="background: #555;" class="w-0 h-0" {isConnectable} />
 {/each}
 <div
 	class="flex flex-col justify-center py-2 px-3 border-2 rounded-xl border-{node.data.color

@@ -57,9 +57,15 @@ const update = () => {
 	save();
 };
 
-const init = () => {
-	// For testing
-	/////
+const init = (initialEdges: Array<Edge> | undefined) => {
+	// Fix this setup
+	if (initialEdges) {
+		localStorage.setItem('edges', JSON.stringify(initialEdges));
+		const loaded = loadInitialEdges();
+	} else {
+		const loaded = loadInitialEdges();
+		edges.set(loaded);
+	}
 };
 
 const remove = (id: string) => {

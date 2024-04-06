@@ -1,7 +1,6 @@
 <script lang="ts">
 	// Libraries
 	import { getBezierPath, getSmoothStepPath } from '@xyflow/svelte';
-	import daisyuiColors from 'daisyui/src/theming/themes';
 
 	// Modules
 	import { edges, selectedEdge } from '$lib/stores/edges.store';
@@ -112,7 +111,6 @@
 			targetPosition
 		};
 
-		console.log(sourceX, sourceY, sourcePosition, targetX, targetY, targetPosition);
 		if (isBidirectionalEdge) {
 			path = getSpecialPath(edgePathParams, sourceX < targetX ? 25 : -25);
 		} else {

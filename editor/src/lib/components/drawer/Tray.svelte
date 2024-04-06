@@ -1,4 +1,69 @@
 <script lang="ts">
+	import Check from '$lib/svgs/Check.svelte';
+
+	/**
+	 *
+	 */
+	const onDragStart = (event: DragEvent, nodeType: string) => {
+		if (!event.dataTransfer) {
+			return null;
+		}
+		event.dataTransfer.setData('application/svelteflow', nodeType);
+		event.dataTransfer.effectAllowed = 'move';
+	};
+</script>
+
+<footer class="sticky bottom-0 w-full pt-2 pb-2 bg-base-100">
+	<div class="flex items-center justify-start gap-2 p-2 overflow-x-auto">
+		<div
+			class="flex flex-col justify-center p-2.5 border-2 rounded-lg border-secondary items-center cursor-pointer h-14"
+			role="button"
+			tabindex="0"
+			on:dragstart={(event) => onDragStart(event, 'nodeText')}
+			draggable={true}
+		>
+			Text
+		</div>
+
+		<div
+			class="flex justify-center p-2.5 border-2 rounded-lg border-secondary items-center cursor-pointer h-14"
+			role="button"
+			tabindex="0"
+			on:dragstart={(event) => onDragStart(event, 'nodeIcon')}
+			draggable={true}
+		>
+			<div class="flex-shrink-0 mr-2">
+				<img class="object-cover rounded-md" src="https://placehold.co/24x24" alt="placeholder" />
+			</div>
+			<div class="flex-grow">
+				<p>Icon</p>
+			</div>
+		</div>
+
+		<div
+			class="flex justify-center p-2.5 border-2 rounded-lg border-secondary items-center cursor-pointer -36 h-14"
+			role="button"
+			tabindex="0"
+			on:dragstart={(event) => onDragStart(event, 'nodeList')}
+			draggable={true}
+		>
+			<Check></Check>
+			<p class="ml-2">List</p>
+		</div>
+
+		<div
+			class="flex justify-center p-2.5 border-2 rounded-lg border-secondary items-center cursor-pointer h-14"
+			role="button"
+			tabindex="0"
+			on:dragstart={(event) => onDragStart(event, 'nodeTitle')}
+			draggable={true}
+		>
+			Title
+		</div>
+	</div>
+</footer>
+
+<!-- <script lang="ts">
 	const onDragStart = (event: DragEvent, nodeType: string) => {
 		if (!event.dataTransfer) {
 			return null;
@@ -11,16 +76,14 @@
 
 <footer class=" bg-base-100">
 	<div class="pb-10 nodes-container">
-		<div class="node">
-			<div
-				class="flex flex-col justify-center p-2.5 border-2 rounded-lg border-accent align-center"
-				role="button"
-				tabindex="0"
-				on:dragstart={(event) => onDragStart(event, 'nodeText')}
-				draggable={true}
-			>
-				Text
-			</div>
+		<div
+			class="flex flex-col justify-center p-2.5 border-2 rounded-lg border-accent align-center"
+			role="button"
+			tabindex="0"
+			on:dragstart={(event) => onDragStart(event, 'nodeText')}
+			draggable={true}
+		>
+			Text
 		</div>
 
 		<div
@@ -93,4 +156,4 @@
 		cursor: grab;
 		white-space: nowrap;
 	}
-</style>
+</style> -->

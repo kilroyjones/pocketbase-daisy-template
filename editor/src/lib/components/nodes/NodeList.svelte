@@ -2,13 +2,12 @@
 	// Libraries
 	import { Handle, Position } from '@xyflow/svelte';
 
-	// Modules
-	import { NodeStore } from '$lib/stores/nodes.store';
-
-	// Types and constants
+	// Types and variables
 	import type { NodeProps } from '@xyflow/svelte';
 	import type { NodeList } from '$lib/types';
+
 	import { handleEdgeConnect } from '$lib/actions/edge.actions';
+	import { selectedNode } from '$lib/stores/map.store';
 
 	export let isConnectable: NodeProps['isConnectable'];
 	export let data: NodeList['data'];
@@ -50,7 +49,7 @@
 
 	const select = () => {
 		if (node.selected) {
-			NodeStore.update(node);
+			$selectedNode = node;
 		}
 	};
 

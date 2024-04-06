@@ -11,3 +11,7 @@
 		@apply w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1;
 	}
 }
+
+.faded-out {
+	filter: brightness(1.5) grayscale(0.9);
+}

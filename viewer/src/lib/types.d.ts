@@ -64,6 +64,8 @@ type Color = {
 
 type DataBase = {
 	color: Color;
+	content: string;
+	status: string;
 };
 
 export type NodeText = NodeProps & {
@@ -76,6 +78,7 @@ export type NodeTitle = NodeProps & {
 	data: DataBase & {
 		title: string;
 		description: string;
+		icon: string;
 	};
 };
 
@@ -93,7 +96,7 @@ export type NodeList = NodeProps & {
 	};
 };
 
-export type NodeUnion = NodeList | NodeText | NodeIcon;
+export type NodeUnion = NodeList | NodeText | NodeIcon | NodeTitle;
 
 export type EdgeStep = EdgeProps & {
 	data: {
