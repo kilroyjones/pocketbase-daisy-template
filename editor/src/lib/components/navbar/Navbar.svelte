@@ -2,6 +2,7 @@
 	// Components
 	import { MapStore, edges, nodes } from '$lib/stores/map.store';
 	import EditorIcon from '$lib/svgs/EditorIcon.svelte';
+	import type { MapData } from '$lib/types';
 
 	let fileInput: HTMLInputElement;
 
@@ -59,6 +60,23 @@
 	/**
 	 *
 	 */
+	const loadDemo = async () => {
+		try {
+			const result = await fetch('/roadmaps/test.json');
+			const mapData: MapData = await result.json();
+			if (mapData.nodes && mapData.edges) {
+				$nodes = mapData.nodes;
+				$edges = mapData.edges;
+				MapStore.save();
+			}
+		} catch (error: any) {
+			console.error('Error:', error);
+		}
+	};
+
+	/**
+	 *
+	 */
 	const reset = () => {
 		MapStore.resetMap();
 	};
@@ -77,6 +95,10 @@
 	<div class="justify-between flex-1">
 		<a href="/map" class="text-xl btn btn-ghost"><EditorIcon></EditorIcon>Roadmap Editor</a>
 		<div class="flex">
+			<div class="flex-none pr-4">
+				<button class="mr-10 btn btn-secondary" on:click={loadDemo}>Demo</button>
+			</div>
+
 			<div class="flex-none pr-4">
 				<button class="btn bg-warning" on:click={() => fileInput.click()}>Import</button>
 			</div>
