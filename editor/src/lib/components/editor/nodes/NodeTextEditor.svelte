@@ -3,11 +3,11 @@
 	import type { NodeUnion, NodeText } from '$lib/types';
 	import { createEventDispatcher } from 'svelte';
 	import ColorPicker from '../ColorPicker.svelte';
+	import Collapsible from '$lib/components/utilities/Collapsible.svelte';
 
 	const dispatch = createEventDispatcher<{ updateNodes: { node: NodeUnion } }>();
 
 	const handleUpdate = () => {
-		console.log('update', $nodes);
 		dispatch('updateNodes', {
 			node: node
 		});
@@ -25,7 +25,6 @@
 				node.data.color.border = color;
 				break;
 		}
-		console.log(node.data.color);
 		handleUpdate();
 	};
 
@@ -33,44 +32,24 @@
 </script>
 
 <div class="form-control" on:input={handleUpdate}>
-	<form class="form-control">
-		<label for="text" class="pb-1 label">
-			<span class="text-sm label-text">Text</span>
-		</label>
+	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+		<span slot="title">Basics</span>
+
 		<input
+			class="w-full mb-4 input input-bordered"
 			type="text"
-			placeholder="Your text here"
+			placeholder="Text"
 			bind:value={node.data.text}
-			class="w-full max-w-xs input input-bordered"
 		/>
 
-		<div class="divider"></div>
-
-		<label for="text" class="pb-1 label">
-			<span class="text-sm label-text">Foreground</span>
-		</label>
-		<ColorPicker type="foreground" {handleColor}></ColorPicker>
-
-		<label for="text" class="pb-1 label">
-			<span class="text-sm label-text">Background</span>
-		</label>
-		<ColorPicker type="background" {handleColor}></ColorPicker>
-
-		<label for="text" class="pb-1 label">
-			<span class="text-sm label-text">Border</span>
-		</label>
-		<ColorPicker type="border" {handleColor}></ColorPicker>
-
-		<div class="divider"></div>
-
-		<div class="flex gap-5 mt-3 flex-between">
+		<div class="flex gap-5 flex-between">
 			<div class="w-1/2">
 				<div class="flex items-center">
 					<label for="text text-xs" class="w-1/6">x:</label>
 					<input
 						type="number"
 						bind:value={node.positionAbsoluteX}
-						class="w-5/6 input input-bordered"
+						class="w-5/6 py-5 input input-bordered input-sm"
 					/>
 				</div>
 			</div>
@@ -81,10 +60,40 @@
 					<input
 						type="number"
 						bind:value={node.positionAbsoluteX}
-						class="w-5/6 input input-bordered"
+						class="w-5/6 py-5 input input-bordered input-sm"
 					/>
 				</div>
 			</div>
+			<div class="w-1/2"></div>
 		</div>
-	</form>
+	</Collapsible>
+
+	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+		<span slot="title">Colors</span>
+
+		<label for="text" class="pb-1 pl-0 label">
+			<span class="text-sm font-bold label-text">Foreground</span>
+		</label>
+		<ColorPicker type="foreground" {handleColor}></ColorPicker>
+
+		<label for="text" class="pb-1 pl-0 label">
+			<span class="text-sm font-bold label-text">Background</span>
+		</label>
+		<ColorPicker type="background" {handleColor}></ColorPicker>
+
+		<label for="text" class="pb-1 pl-0 label">
+			<span class="text-sm font-bold label-text">Border</span>
+		</label>
+		<ColorPicker type="border" {handleColor}></ColorPicker>
+	</Collapsible>
+
+	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+		<span slot="title">Content</span>
+		<textarea
+			class="w-full p-2 rounded-md"
+			placeholder="Add content"
+			bind:value={node.data.content}
+			rows="8"
+		/>
+	</Collapsible>
 </div>

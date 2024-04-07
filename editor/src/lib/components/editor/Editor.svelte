@@ -24,12 +24,9 @@
 
 <div
 	class="absolute top-0 right-0 flex h-full pointer-events-none"
-	style="max-width:{showEditor ? '400px' : '0px'};"
+	style="width:{$showEditor ? '400px' : '0px'};"
 >
-	<div
-		class="relative flex flex-col w-full pointer-events-auto bg-base-200"
-		style="top: 68px; min-height: 400px;"
-	>
+	<div class="relative flex flex-col w-full pointer-events-auto bg-base-200" style="top: 68px;">
 		<button
 			class="absolute z-10 p-2 translate-y-0 bg-accent text-neutral rounded-l-md focus:outline-none -left-10"
 			on:click={toggleModal}
@@ -43,8 +40,8 @@
 		</button>
 
 		{#if $showEditor}
-			<div class="w-full p-4 pr-10">
-				{#if selectedNode}
+			<div class="w-full">
+				{#if $selectedNode}
 					{#if $selectedNode?.type === 'nodeText'}
 						<NodeTextEditor on:updateNodes></NodeTextEditor>
 					{/if}

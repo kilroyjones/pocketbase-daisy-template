@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { selectedEdge } from '$lib/stores/map.store';
 	import { createEventDispatcher } from 'svelte';
+	import Collapsible from '$lib/components/utilities/Collapsible.svelte';
 	import ColorPicker from '../ColorPicker.svelte';
 	import type { EdgeSmooth, EdgeUnion } from '$lib/types';
 
@@ -60,13 +61,12 @@
 </script>
 
 <div class="form-control" on:input={handleUpdate}>
-	<form class="form-control">
-		<label for="text" class="pb-1 label">
-			<span class="text-sm label-text">Style</span>
-		</label>
-		<label for="text" class="pb-1 label">
-			<span class="text-sm label-text">Color</span>
+	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+		<span slot="title">Colors</span>
+
+		<label for="text" class="pb-1 pl-0 label">
+			<span class="text-sm font-bold label-text">Color</span>
 		</label>
 		<ColorPicker type="foreground" {handleColor}></ColorPicker>
-	</form>
+	</Collapsible>
 </div>

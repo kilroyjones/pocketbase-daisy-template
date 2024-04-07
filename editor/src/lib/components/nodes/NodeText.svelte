@@ -3,7 +3,8 @@
 	import { Handle, Position } from '@xyflow/svelte';
 
 	// Modules
-	import { selectedNode } from '$lib/stores/map.store';
+	import { MapStore, selectedNode } from '$lib/stores/map.store';
+	import { handleEdgeConnect } from '$lib/actions/edge.actions';
 
 	// Types and constants
 	import type { NodeText } from '$lib/types';
@@ -48,6 +49,7 @@
 
 	const select = () => {
 		if (node.selected) {
+			MapStore.resetSelection();
 			$selectedNode = node;
 		}
 	};
@@ -56,8 +58,17 @@
 </script>
 
 {#each positionsAndIds as [position, id]}
-	<Handle {id} type="source" {position} style="background: #555;" class="w-0 h-0" {isConnectable} />
+	<Handle
+		{id}
+		type="source"
+		{position}
+		style="background: #555;"
+		class="w-0 h-0"
+		{isConnectable}
+		onconnect={handleEdgeConnect}
+	/>
 {/each}
+
 <div
 	class="flex justify-center py-2 px-3 border-2 rounded-xl border-{node.data.color
 		.border} text-{node.data.color.foreground} bg-{node.data.color.background} align-center"

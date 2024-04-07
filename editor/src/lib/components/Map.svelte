@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Libraries
-	import { ConnectionMode, Controls, SvelteFlow, useSvelteFlow } from '@xyflow/svelte';
+	import { ConnectionMode, SvelteFlow, useSvelteFlow } from '@xyflow/svelte';
 	import '@xyflow/svelte/dist/style.css';
 
 	// Modules
@@ -23,8 +23,7 @@
 	export let viewport: Viewport;
 	export let defaultEdgeOptions: DefaultEdgeOptions;
 
-	const { screenToFlowPosition } = useSvelteFlow();
-	const { updateNode, updateNodeData, getEdge, fitBounds, fitView } = useSvelteFlow();
+	const { updateNode, updateNodeData, getEdge, screenToFlowPosition } = useSvelteFlow();
 
 	/**
 	 *
@@ -51,15 +50,17 @@
 	 *
 	 */
 	const updateEdges = (event: CustomEvent<{ edge: EdgeUnion }>) => {
+		console.log('EVENT', event);
 		const toUpdateEdge = getEdge(event.detail.edge.id);
+		console.log('TEST', toUpdateEdge);
 		if (toUpdateEdge) {
-			toUpdateEdge.style = `stroke-width: 2; stroke: oklch(var(${event.detail.edge.data.color}}))`;
+			toUpdateEdge.style = `stroke-width: 2; stroke: oklch(var(${event.detail.edge.data.color}));`;
 			edges.update((currentEdges) => {
-				const filteredEdges = currentEdges.filter((e) => e.id != event.detail.edge.id);
+				const filteredEdges = currentEdges.filter((e) => e.id != toUpdateEdge.id);
 				return [...filteredEdges, toUpdateEdge];
 			});
-			MapStore.save();
 			$edges = $edges;
+			MapStore.save();
 		}
 	};
 
@@ -132,6 +133,9 @@
 		initialViewport={viewport}
 		maxZoom={5}
 		minZoom={1}
+		on:nodeclick={() => {
+			MapStore.resetSelection();
+		}}
 		on:paneclick={() => {
 			MapStore.resetSelection();
 			$selectedPane = {

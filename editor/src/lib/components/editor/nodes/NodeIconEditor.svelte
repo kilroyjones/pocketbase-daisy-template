@@ -3,6 +3,7 @@
 	import { createEventDispatcher } from 'svelte';
 	import { MapStore, selectedNode } from '$lib/stores/map.store';
 	import ColorPicker from '../ColorPicker.svelte';
+	import Collapsible from '$lib/components/utilities/Collapsible.svelte';
 
 	let fileInput: HTMLInputElement;
 
@@ -76,15 +77,14 @@
 </script>
 
 <div class="form-control" on:input={handleUpdate}>
-	<form class="form-control">
-		<label for="text" class="pb-1 label">
-			<span class="text-xs label-text">Text</span>
-		</label>
+	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+		<span slot="title">Basics</span>
+
 		<input
-			type="text"
-			placeholder="Your text here"
-			bind:value={node.data.text}
 			class="w-full mb-4 input input-bordered"
+			type="text"
+			placeholder="Text"
+			bind:value={node.data.text}
 		/>
 
 		<input
@@ -95,15 +95,23 @@
 			bind:this={fileInput}
 			on:change={handleImageUpload}
 		/>
-		{#if node.data.icon != ''}
-			<button class="btn btn-error" on:click={removeImage}>Remove image</button>
-		{:else}
-			<button class="btn btn-primary" on:click={() => fileInput.click()}>Upload Image</button>
-		{/if}
 
-		<div class="divider"></div>
+		<input
+			type="file"
+			id="imageInput"
+			accept="image/*"
+			class="hidden"
+			bind:this={fileInput}
+			on:change={handleImageUpload}
+		/>
 
-		<div class="flex gap-5 mt-3 flex-between">
+		<div class="flex gap-5 flex-between">
+			{#if node.data.icon != ''}
+				<button class="btn btn-error" on:click={removeImage}>Remove image</button>
+			{:else}
+				<button class="btn btn-primary" on:click={() => fileInput.click()}>Upload Image</button>
+			{/if}
+
 			<div class="w-1/2">
 				<div class="flex items-center">
 					<label for="text text-xs" class="w-1/6">x:</label>
@@ -126,22 +134,34 @@
 				</div>
 			</div>
 		</div>
+	</Collapsible>
 
-		<div class="divider"></div>
+	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+		<span slot="title">Colors</span>
 
-		<label for="text" class="pb-1 label">
-			<span class="text-sm label-text">Foreground</span>
+		<label for="text" class="pb-1 pl-0 label">
+			<span class="text-sm font-bold label-text">Foreground</span>
 		</label>
 		<ColorPicker type="foreground" {handleColor}></ColorPicker>
 
-		<label for="text" class="pb-1 label">
-			<span class="text-sm label-text">Background</span>
+		<label for="text" class="pb-1 pl-0 label">
+			<span class="text-sm font-bold label-text">Background</span>
 		</label>
 		<ColorPicker type="background" {handleColor}></ColorPicker>
 
-		<label for="text" class="pb-1 label">
-			<span class="text-sm label-text">Border</span>
+		<label for="text" class="pb-1 pl-0 label">
+			<span class="text-sm font-bold label-text">Border</span>
 		</label>
 		<ColorPicker type="border" {handleColor}></ColorPicker>
-	</form>
+	</Collapsible>
+
+	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+		<span slot="title">Content</span>
+		<textarea
+			class="w-full p-2 rounded-md"
+			placeholder="Add content"
+			bind:value={node.data.content}
+			rows="8"
+		/>
+	</Collapsible>
 </div>

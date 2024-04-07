@@ -48,6 +48,7 @@ export type NodeBase = {
 	width: number;
 	height: number;
 	link: any;
+	content: string;
 };
 
 export type ListItem = {

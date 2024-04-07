@@ -3,8 +3,11 @@
 	import type { NodeUnion, NodeText } from '$lib/types';
 	import { createEventDispatcher } from 'svelte';
 	import ColorPicker from '../ColorPicker.svelte';
+	import Collapsible from '$lib/components/utilities/Collapsible.svelte';
 
 	let fileInput: HTMLInputElement;
+
+	let showBasics: string = '';
 
 	const dispatch = createEventDispatcher<{ updateNodes: { node: NodeUnion } }>();
 
@@ -81,25 +84,21 @@
 </script>
 
 <div class="form-control" on:input={handleUpdate}>
-	<form class="form-control">
-		<label for="text" class="pb-1 label">
-			<span class="text-sm label-text">Title</span>
-		</label>
+	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+		<span slot="title">Basics</span>
+
 		<input
+			class="w-full mb-4 input input-bordered"
 			type="text"
-			placeholder="Your text here"
+			placeholder="Title"
 			bind:value={node.data.title}
-			class="w-full input input-bordered"
 		/>
 
-		<label for="text" class="pb-1 label">
-			<span class="text-sm label-text">Description</span>
-		</label>
 		<input
-			type="text"
-			placeholder="Your text here"
-			bind:value={node.data.description}
 			class="w-full mb-4 input input-bordered"
+			type="text"
+			placeholder="Description"
+			bind:value={node.data.description}
 		/>
 
 		<input
@@ -110,32 +109,14 @@
 			bind:this={fileInput}
 			on:change={handleImageUpload}
 		/>
-		{#if node.data.icon != ''}
-			<button class="btn btn-error" on:click={removeImage}>Remove image</button>
-		{:else}
-			<button class="btn btn-primary" on:click={() => fileInput.click()}>Upload Image</button>
-		{/if}
 
-		<div class="divider"></div>
+		<div class="flex gap-5 flex-between">
+			{#if node.data.icon != ''}
+				<button class="btn btn-error" on:click={removeImage}>Remove image</button>
+			{:else}
+				<button class="btn btn-primary" on:click={() => fileInput.click()}>Upload Image</button>
+			{/if}
 
-		<label for="text" class="pb-1 label">
-			<span class="text-sm label-text">Foreground</span>
-		</label>
-		<ColorPicker type="foreground" {handleColor}></ColorPicker>
-
-		<label for="text" class="pb-1 label">
-			<span class="text-sm label-text">Background</span>
-		</label>
-		<ColorPicker type="background" {handleColor}></ColorPicker>
-
-		<label for="text" class="pb-1 label">
-			<span class="text-sm label-text">Border</span>
-		</label>
-		<ColorPicker type="border" {handleColor}></ColorPicker>
-
-		<div class="divider"></div>
-
-		<div class="flex gap-5 mt-3 flex-between">
 			<div class="w-1/2">
 				<div class="flex items-center">
 					<label for="text text-xs" class="w-1/6">x:</label>
@@ -158,5 +139,34 @@
 				</div>
 			</div>
 		</div>
-	</form>
+	</Collapsible>
+
+	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+		<span slot="title">Colors</span>
+
+		<label for="text" class="pb-1 pl-0 label">
+			<span class="text-sm font-bold label-text">Foreground</span>
+		</label>
+		<ColorPicker type="foreground" {handleColor}></ColorPicker>
+
+		<label for="text" class="pb-1 pl-0 label">
+			<span class="text-sm font-bold label-text">Background</span>
+		</label>
+		<ColorPicker type="background" {handleColor}></ColorPicker>
+
+		<label for="text" class="pb-1 pl-0 label">
+			<span class="text-sm font-bold label-text">Border</span>
+		</label>
+		<ColorPicker type="border" {handleColor}></ColorPicker>
+	</Collapsible>
+
+	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+		<span slot="title">Content</span>
+		<textarea
+			class="w-full p-2 rounded-md"
+			placeholder="Add content"
+			bind:value={node.data.content}
+			rows="8"
+		/>
+	</Collapsible>
 </div>

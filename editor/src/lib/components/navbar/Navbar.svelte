@@ -1,10 +1,7 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-
 	// Components
 	import { MapStore, edges, nodes } from '$lib/stores/map.store';
 	import EditorIcon from '$lib/svgs/EditorIcon.svelte';
-	import type { MapData } from '$lib/types';
 
 	let fileInput: HTMLInputElement;
 
@@ -37,16 +34,6 @@
 	 *
 	 */
 	const importFromFile = async (event: Event) => {
-		// const response = await fetch('/roadmaps/test.json');
-		// if (response.ok) {
-		// 	const data: MapData | undefined = await response.json();
-		// 	if (data) {
-		// 		MapStore.initialize(data);
-		// 	}
-		// } else {
-		// 	console.error('Failed to fetch data', response.status);
-		// }
-
 		const element = event.currentTarget as HTMLInputElement;
 		console.log(element);
 		if (element.files) {
@@ -57,7 +44,7 @@
 					const mapData = JSON.parse(e.target?.result as string);
 					$nodes = mapData.nodes;
 					$edges = mapData.edges;
-					mapData.save();
+					MapStore.save();
 				} catch (error) {
 					console.error('Error parsing JSON:', error);
 				}
@@ -92,7 +79,6 @@
 		<div class="flex">
 			<div class="flex-none pr-4">
 				<button class="btn bg-warning" on:click={() => fileInput.click()}>Import</button>
-				<!-- <button class="btn bg-warning" on:click={importFromFile}>Import</button> -->
 			</div>
 
 			<div class="flex-none pr-4">

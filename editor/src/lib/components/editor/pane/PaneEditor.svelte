@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Pane } from '$lib/types';
 	import ColorPicker from '../ColorPicker.svelte';
+	import Collapsible from '$lib/components/utilities/Collapsible.svelte';
 	import { createEventDispatcher } from 'svelte';
 	import { selectedPane } from '$lib/stores/map.store';
 
@@ -29,26 +30,9 @@
 </script>
 
 <div class="form-control" on:input={handleUpdate}>
-	<form class="form-control">
-		<label for="text" class="pb-1 label">
-			<span class="text-sm label-text">Project title</span>
-		</label>
-		<input type="text" placeholder="Your text here" class="w-full max-w-xs input input-bordered" />
+	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+		<span slot="title">Basics</span>
 
-		<div class="flex gap-5 mt-3 flex-between">
-			<div class="w-1/2">
-				<div class="flex items-center">
-					<label for="text text-xs" class="w-1/6">w:</label>
-					<input type="number" class="w-5/6 input input-bordered" />
-				</div>
-			</div>
-
-			<div class="w-1/2">
-				<div class="flex items-center">
-					<label for="text text-xs" class="w-1/6">y:</label>
-					<input type="number" class="w-5/6 input input-bordered" />
-				</div>
-			</div>
-		</div>
-	</form>
+		<input class="w-full mb-4 input input-bordered" type="text" placeholder="Project title" />
+	</Collapsible>
 </div>
