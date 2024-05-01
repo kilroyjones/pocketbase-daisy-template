@@ -28,6 +28,7 @@
 
 	/**
 	 *
+	 * @param event
 	 */
 	const updateNodes = (event: CustomEvent<{ node: NodeUnion }>) => {
 		const updatedNode = event.detail.node;

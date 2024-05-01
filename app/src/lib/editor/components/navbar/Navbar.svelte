@@ -6,6 +6,7 @@
 	import { mode } from '$lib/stores/ui.store';
 	import EditorIcon from '$lib/svgs/EditorIcon.svelte';
 	import type { MapData } from '$lib/types';
+	import Map from '../Map.svelte';
 
 	let fileInput: HTMLInputElement;
 
@@ -65,9 +66,10 @@
 	 */
 	const loadDemo = async () => {
 		try {
-			const result = await fetch('/roadmaps/test.json');
+			const result = await fetch('/roadmaps/llm-draft.json');
 			const mapData: MapData = await result.json();
-			if (mapData.nodes && mapData.edges) {
+			console.log(mapData);
+			if (mapData.nodes || mapData.edges) {
 				$nodes = mapData.nodes;
 				$edges = mapData.edges;
 				MapStore.save();

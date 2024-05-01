@@ -8,7 +8,7 @@
 	// Types and variables
 	import type { NodeTitle } from '$lib/types';
 
-	import { selectedNode } from '$lib/stores/map.store';
+	import { MapStore, selectedNode } from '$lib/stores/map.store';
 
 	export let isConnectable: NodeTitle['isConnectable'];
 	export let data: NodeTitle['data'];
@@ -50,6 +50,7 @@
 
 	const select = () => {
 		if (node.selected) {
+			MapStore.resetSelection();
 			$selectedNode = node;
 		}
 	};

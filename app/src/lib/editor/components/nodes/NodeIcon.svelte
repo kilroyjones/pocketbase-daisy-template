@@ -9,7 +9,7 @@
 	import type { NodeProps } from '@xyflow/svelte';
 	import type { NodeIcon } from '$lib/types';
 
-	import { selectedNode } from '$lib/stores/map.store';
+	import { MapStore, selectedNode } from '$lib/stores/map.store';
 
 	export let isConnectable: NodeProps['isConnectable'];
 	export let data: NodeIcon['data'];
@@ -51,6 +51,7 @@
 
 	const select = () => {
 		if (node.selected) {
+			MapStore.resetSelection();
 			$selectedNode = node;
 		}
 	};

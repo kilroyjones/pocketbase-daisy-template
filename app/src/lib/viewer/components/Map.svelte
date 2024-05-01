@@ -1,7 +1,7 @@
 <script lang="ts">
 	// Libraries and modules
-	import { ConnectionMode, SvelteFlow, useSvelteFlow } from '@xyflow/svelte';
-	import { MapStore, edges, nodes, selectedPane } from '$lib/stores/map.store';
+	import { Controls, MiniMap, ConnectionMode, SvelteFlow } from '@xyflow/svelte';
+	import { edges, nodes } from '$lib/stores/map.store';
 	import '@xyflow/svelte/dist/style.css';
 
 	// Types and variables
@@ -57,4 +57,12 @@
 		maxZoom={5}
 		minZoom={1}
 	></SvelteFlow>
+	<Controls />
+	<MiniMap
+		nodeStrokeWidth={3}
+		class={'bg-base-100'}
+		maskColor={'#bbbbbb'}
+		nodeColor={'#33ee0f88'}
+		nodeStrokeColor={'#ffffffff'}
+	/>
 </div>

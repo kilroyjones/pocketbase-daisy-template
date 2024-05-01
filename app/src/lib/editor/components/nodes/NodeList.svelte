@@ -7,7 +7,7 @@
 	import type { NodeList } from '$lib/types';
 
 	import { handleEdgeConnect } from '$lib/editor/actions/edge.actions';
-	import { selectedNode } from '$lib/stores/map.store';
+	import { MapStore, selectedNode } from '$lib/stores/map.store';
 
 	export let isConnectable: NodeProps['isConnectable'];
 	export let data: NodeList['data'];
@@ -49,6 +49,7 @@
 
 	const select = () => {
 		if (node.selected) {
+			MapStore.resetSelection();
 			$selectedNode = node;
 		}
 	};
