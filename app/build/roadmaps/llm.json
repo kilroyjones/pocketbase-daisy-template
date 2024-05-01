@@ -1,0 +1,714 @@
+{
+	"nodes": [
+		{
+			"id": "0.3112686162964078",
+			"type": "nodeTitle",
+			"position": { "x": 520, "y": 80 },
+			"data": {
+				"title": "Family",
+				"description": "",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 80 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964079",
+			"type": "nodeTitle",
+			"position": { "x": 520, "y": 150 },
+			"data": {
+				"title": "Tokenizer",
+				"description": "",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 150 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964080",
+			"type": "nodeTitle",
+			"position": { "x": 520, "y": 220 },
+			"data": {
+				"title": "Attention",
+				"description": "",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 220 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964081",
+			"type": "nodeTitle",
+			"position": { "x": 520, "y": 290 },
+			"data": {
+				"title": "Traditional positional embedding method",
+				"description": "the impact of RoPE",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 290 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964082",
+			"type": "nodeTitle",
+			"position": { "x": 520, "y": 360 },
+			"data": {
+				"title": "Context Window",
+				"description": "",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 360 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964083",
+			"type": "nodeTitle",
+			"position": { "x": 520, "y": 430 },
+			"data": {
+				"title": "Instruct",
+				"description": "",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 430 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964084",
+			"type": "nodeTitle",
+			"position": { "x": 520, "y": 500 },
+			"data": {
+				"title": "Fine-tuning",
+				"description": "",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 500 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964085",
+			"type": "nodeTitle",
+			"position": { "x": 520, "y": 570 },
+			"data": {
+				"title": "Acceleration framework",
+				"description": "",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 570 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964086",
+			"type": "nodeIcon",
+			"position": { "x": 520, "y": 80 },
+			"data": {
+				"text": "QLoRA",
+				"description": "",
+				"color": { "foreground": "secondary-content", "background": "base-100", "border": "info" },
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 80 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964087",
+			"type": "nodeIcon",
+			"position": { "x": 520, "y": 150 },
+			"data": {
+				"text": "RLHF",
+				"description": "",
+				"color": { "foreground": "secondary-content", "background": "base-100", "border": "info" },
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 150 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964088",
+			"type": "nodeIcon",
+			"position": { "x": 520, "y": 220 },
+			"data": {
+				"text": "Encoder",
+				"description": "",
+				"color": { "foreground": "secondary-content", "background": "base-100", "border": "info" },
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 220 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964089",
+			"type": "nodeIcon",
+			"position": { "x": 520, "y": 290 },
+			"data": {
+				"text": "Self-attention",
+				"description": "",
+				"color": { "foreground": "secondary-content", "background": "base-100", "border": "info" },
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 290 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964090",
+			"type": "nodeIcon",
+			"position": { "x": 520, "y": 360 },
+			"data": {
+				"text": "RoPE",
+				"description": "",
+				"color": { "foreground": "secondary-content", "background": "base-100", "border": "info" },
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 360 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964091",
+			"type": "nodeIcon",
+			"position": { "x": 520, "y": 430 },
+			"data": {
+				"text": "Parameter-wise optimization",
+				"description": "",
+				"color": { "foreground": "secondary-content", "background": "base-100", "border": "info" },
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 430 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964092",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 80 },
+			"data": {
+				"text": "Decoder",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 80 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964093",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 150 },
+			"data": {
+				"text": "Encoder Decoder",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 150 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964094",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 220 },
+			"data": {
+				"text": "Vanilla Transformer",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 220 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964095",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 290 },
+			"data": {
+				"text": "GPT",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 290 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964096",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 360 },
+			"data": {
+				"text": "LLaMA",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 360 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964097",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 430 },
+			"data": {
+				"text": "PaLM",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 430 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964098",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 500 },
+			"data": {
+				"text": "T5",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 500 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964099",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 570 },
+			"data": {
+				"text": "BERT",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 570 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964100",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 640 },
+			"data": {
+				"text": "BART",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 640 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964101",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 710 },
+			"data": {
+				"text": "Multi-head attention",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 710 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964102",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 780 },
+			"data": {
+				"text": "Masked attention",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 780 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964103",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 850 },
+			"data": {
+				"text": "Multi-Query Attention",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 850 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964104",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 920 },
+			"data": {
+				"text": "Grouped Query Attention",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 920 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964105",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 990 },
+			"data": {
+				"text": "ALiBi",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 990 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964106",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 1060 },
+			"data": {
+				"text": "Positional Interpolation",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 1060 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964107",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 1130 },
+			"data": {
+				"text": "SFT",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 1130 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964108",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 1200 },
+			"data": {
+				"text": "Self-reward Model",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 1200 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964109",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 1270 },
+			"data": {
+				"text": "Flash Attention",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 1270 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964110",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 1340 },
+			"data": {
+				"text": "One-bit LLM",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 1340 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964111",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 1410 },
+			"data": {
+				"text": "Triton",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 1410 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964112",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 1480 },
+			"data": {
+				"text": "CUDA",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 1480 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.3112686162964113",
+			"type": "nodeText",
+			"position": { "x": 520, "y": 1550 },
+			"data": {
+				"text": "Mixture of Experts",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "primary"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 520, "y": 1550 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		}
+	]
+}
