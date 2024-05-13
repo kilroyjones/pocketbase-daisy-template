@@ -58,11 +58,4 @@
 		minZoom={1}
 	></SvelteFlow>
 	<Controls />
-	<MiniMap
-		nodeStrokeWidth={3}
-		class={'bg-base-100'}
-		maskColor={'#bbbbbb'}
-		nodeColor={'#33ee0f88'}
-		nodeStrokeColor={'#ffffffff'}
-	/>
 </div>

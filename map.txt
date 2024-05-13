@@ -1,0 +1,235 @@
+- Fine-tuning
+    - Framework
+        - [LLama factory](https://arxiv.org/pdf/2403.13372)
+    - methods
+        - QLoRA
+        - [ReFT](https://arxiv.org/abs/2404.03592)
+        - [PERL](https://arxiv.org/abs/2403.10704) (RLHF)
+    - Instruct
+        - [CantTalkAboutThis](https://arxiv.org/pdf/2404.03820)
+        - [Instruct Hierarchy](https://www.notion.so/image-generation-91ecc8433c8f45969b0ae71a3d665a10?pvs=21)
+    - RLHF
+        - [COOL RLHF](https://arxiv.org/abs/2403.17297) (InternLM2)
+    - SFT
+    - DPO
+        - [Iterative Reasoning Preference Optimization](https://arxiv.org/abs/2404.19733)
+        - [Trust Region DPO](https://arxiv.org/abs/2404.09656)
+        - [DR-PO](https://arxiv.org/pdf/2404.08495)
+        - [DNO](https://arxiv.org/abs/2404.03715)
+        - [Preference Tree](https://arxiv.org/abs/2404.02078)
+        - [sDPO](https://arxiv.org/abs/2403.19270)
+    - PPO
+    - Self-reward Model
+        - [Self-Improvement Via Imagination](https://arxiv.org/abs/2404.12253)
+        - [Self Critique pipeline](https://arxiv.org/abs/2404.02893)
+- Model Augmentation
+    - Mixture of Experts
+        - Sparse MoE
+        - Multi-Head MoE
+        - [JET-MoE](https://arxiv.org/abs/2404.07413)
+        - [Mixture of Depths](https://arxiv.org/abs/2404.02258)
+    - Model Merging
+        - [Evolutionary Optimization of Model Merging Recipes](https://arxiv.org/abs/2403.13187)
+- acceleration framework
+    - parameter wise optimization
+        - Flash Attention
+        - 1 bit LLM
+    - Token-wise optimization
+        - [Rho-1](https://arxiv.org/abs/2404.07965)
+        - [Medusa](https://arxiv.org/abs/2404.19737) - Multi-token prediction
+    - Triton
+    - CUDA
+    - inference-wise
+        - EAGLE
+        - [Kangaroo](https://arxiv.org/abs/2404.18911)
+        - [LayerSkip](https://arxiv.org/abs/2404.16710)
+        - [DeeperLayer](https://arxiv.org/html/2403.17887v1)
+- Training optimization
+    - Chinchilla
+    - [Pre-training Small Base LMs with Fewer Tokens](https://arxiv.org/abs/2404.08634)
+    - Synthetic data
+        - overview paper https://arxiv.org/abs/2404.07503
+        - Phi-3
+        - Orca
+        - [LLM2LLM](https://arxiv.org/pdf/2403.15042)
+- Context Window
+    - [IN2 Training](https://arxiv.org/abs/2404.16811)
+    - [Megalodon](https://arxiv.org/abs/2404.08801)
+    - [Feedback Attention](https://arxiv.org/abs/2404.09173)
+    - [Infini-attention](https://arxiv.org/pdf/2404.07143)
+    - [RULER](https://arxiv.org/abs/2404.06654) - Context Eval
+- Extension
+    - AI agents
+        - [importance of chain-of-X and AI agents](https://arxiv.org/pdf/2403.15371) - Can large language models explore in-context?
+        - Chain-of-X
+            - [LM as Compilers](https://huggingface.co/papers/2404.02575)
+            - [Quiet-STaR](https://arxiv.org/abs/2403.09629)
+        - 
+    - Web-agents
+        - [Autocrawler](https://arxiv.org/abs/2404.12753)
+        - [OSWorld](https://x.com/AlexReibman/status/1784844434682560721)
+        - [AutoWebGLM](https://arxiv.org/abs/2404.03648)
+        - [AIOS](https://arxiv.org/abs/2403.16971)
+    - Game Agents
+        - [SIMA](https://arxiv.org/pdf/2404.10179)
+        - JARVIS-1
+    - RAG
+        - [RAFT](https://arxiv.org/pdf/2403.10131)
+        - Data Distillation
+            - [Stream of Search](https://arxiv.org/abs/2404.03683) - Symbolic search
+            - [Gecko](https://arxiv.org/abs/2403.20327) - text emdeddings distilled
+            - [LLMLingua-2](https://arxiv.org/pdf/2403.12968)
+    - Mobile
+        - [OpenELM](https://machinelearning.apple.com/research/openelm)
+        - [Octopus v2](https://arxiv.org/abs/2404.01744)
+        - [Phi-3-mini](https://arxiv.org/abs/2404.14219)
+        - [Pre-training Small LMs with Fewer Tokens](https://arxiv.org/abs/2404.08634)
+        - [Transformer-Lite](https://arxiv.org/abs/2403.20041)
+- Prompting papers
+    - [Adveserial prompting](https://arxiv.org/abs/2404.16873)
+
+Transformer Architecture family 
+
+- 
+
+Other non-Transformer arch
+
+- RWKV
+    - [Eagle and Finch](https://arxiv.org/abs/2404.05892)
+- Mamba
+    - [Jamba](https://arxiv.org/abs/2403.19887)
+    - MambaFormer
+    - [Cobra](https://arxiv.org/abs/2403.14520) (MMLLM)
+    - [BiGS](https://arxiv.org/abs/2212.10544)
+- Griffin
+    - [Recurrent Gemma](https://arxiv.org/abs/2404.07839)
+Transformer (decoder-only)
+
+- Family
+    - Encoder
+    - Decoder
+    - Encoder Decoder
+        - Vanilla Transformer
+        - GPT
+        - LLaMA
+        - PaLM
+        - T5 (?)
+        - BERT
+        - BART
+        - LLM2Vec
+- Tokenizer
+- basic Attention
+    - self-attention
+    - Multi-head attention ~~(Scaled Dot-Product Attention)~~
+        - Masked attention
+    - Multi-Query Attention (PaLM)
+    - Grouped Query Attention
+- Traditional Positional embedding method (the impact of RoPE)
+    - [RoPE](https://arxiv.org/abs/2104.09864)
+        - [ALiBi](https://arxiv.org/pdf/2108.12409)
+        - [Positional Interpolation](https://arxiv.org/pdf/2306.15595)
+- Fine-tuning
+    - Framework
+        - [LLama factory](https://arxiv.org/pdf/2403.13372)
+    - methods
+        - QLoRA
+        - [ReFT](https://arxiv.org/abs/2404.03592)
+        - [PERL](https://arxiv.org/abs/2403.10704) (RLHF)
+    - Instruct
+        - [CantTalkAboutThis](https://arxiv.org/pdf/2404.03820)
+        - [Instruct Hierarchy](https://www.notion.so/image-generation-91ecc8433c8f45969b0ae71a3d665a10?pvs=21)
+    - RLHF
+        - [COOL RLHF](https://arxiv.org/abs/2403.17297) (InternLM2)
+    - SFT
+    - DPO
+        - [Iterative Reasoning Preference Optimization](https://arxiv.org/abs/2404.19733)
+        - [Trust Region DPO](https://arxiv.org/abs/2404.09656)
+        - [DR-PO](https://arxiv.org/pdf/2404.08495)
+        - [DNO](https://arxiv.org/abs/2404.03715)
+        - [Preference Tree](https://arxiv.org/abs/2404.02078)
+        - [sDPO](https://arxiv.org/abs/2403.19270)
+    - PPO
+    - Self-reward Model
+        - [Self-Improvement Via Imagination](https://arxiv.org/abs/2404.12253)
+        - [Self Critique pipeline](https://arxiv.org/abs/2404.02893)
+- Model Augmentation
+    - Mixture of Experts
+        - Sparse MoE
+        - Multi-Head MoE
+        - [JET-MoE](https://arxiv.org/abs/2404.07413)
+        - [Mixture of Depths](https://arxiv.org/abs/2404.02258)
+    - Model Merging
+        - [Evolutionary Optimization of Model Merging Recipes](https://arxiv.org/abs/2403.13187)
+- acceleration framework
+    - parameter wise optimization
+        - Flash Attention
+        - 1 bit LLM
+    - Token-wise optimization
+        - [Rho-1](https://arxiv.org/abs/2404.07965)
+        - [Medusa](https://arxiv.org/abs/2404.19737) - Multi-token prediction
+    - Triton
+    - CUDA
+    - inference-wise
+        - EAGLE
+        - [Kangaroo](https://arxiv.org/abs/2404.18911)
+        - [LayerSkip](https://arxiv.org/abs/2404.16710)
+        - [DeeperLayer](https://arxiv.org/html/2403.17887v1)
+- Training optimization
+    - Chinchilla
+    - [Pre-training Small Base LMs with Fewer Tokens](https://arxiv.org/abs/2404.08634)
+    - Synthetic data
+        - overview paper https://arxiv.org/abs/2404.07503
+        - Phi-3
+        - Orca
+        - [LLM2LLM](https://arxiv.org/pdf/2403.15042)
+- Context Window
+    - [IN2 Training](https://arxiv.org/abs/2404.16811)
+    - [Megalodon](https://arxiv.org/abs/2404.08801)
+    - [Feedback Attention](https://arxiv.org/abs/2404.09173)
+    - [Infini-attention](https://arxiv.org/pdf/2404.07143)
+    - [RULER](https://arxiv.org/abs/2404.06654) - Context Eval
+- Extension
+    - AI agents
+        - [importance of chain-of-X and AI agents](https://arxiv.org/pdf/2403.15371) - Can large language models explore in-context?
+        - Chain-of-X
+            - [LM as Compilers](https://huggingface.co/papers/2404.02575)
+            - [Quiet-STaR](https://arxiv.org/abs/2403.09629)
+        - 
+    - Web-agents
+        - [Autocrawler](https://arxiv.org/abs/2404.12753)
+        - [OSWorld](https://x.com/AlexReibman/status/1784844434682560721)
+        - [AutoWebGLM](https://arxiv.org/abs/2404.03648)
+        - [AIOS](https://arxiv.org/abs/2403.16971)
+    - Game Agents
+        - [SIMA](https://arxiv.org/pdf/2404.10179)
+        - JARVIS-1
+    - RAG
+        - [RAFT](https://arxiv.org/pdf/2403.10131)
+        - Data Distillation
+            - [Stream of Search](https://arxiv.org/abs/2404.03683) - Symbolic search
+            - [Gecko](https://arxiv.org/abs/2403.20327) - text emdeddings distilled
+            - [LLMLingua-2](https://arxiv.org/pdf/2403.12968)
+    - Mobile
+        - [OpenELM](https://machinelearning.apple.com/research/openelm)
+        - [Octopus v2](https://arxiv.org/abs/2404.01744)
+        - [Phi-3-mini](https://arxiv.org/abs/2404.14219)
+        - [Pre-training Small LMs with Fewer Tokens](https://arxiv.org/abs/2404.08634)
+        - [Transformer-Lite](https://arxiv.org/abs/2403.20041)
+- Prompting papers
+    - [Adveserial prompting](https://arxiv.org/abs/2404.16873)
+
+Transformer Architecture family 
+
+- 
+
+Other non-Transformer arch
+
+- RWKV
+    - [Eagle and Finch](https://arxiv.org/abs/2404.05892)
+- Mamba
+    - [Jamba](https://arxiv.org/abs/2403.19887)
+    - MambaFormer
+    - [Cobra](https://arxiv.org/abs/2403.14520) (MMLLM)
+    - [BiGS](https://arxiv.org/abs/2212.10544)
+- Griffin
+    - [Recurrent Gemma](https://arxiv.org/abs/2404.07839)

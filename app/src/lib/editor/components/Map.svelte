@@ -8,7 +8,6 @@
 
 	// Components
 	import Editor from './editor/Editor.svelte';
-	import Tray from './drawer/Tray.svelte';
 
 	// Types and variables
 	import type { ComponentType } from 'svelte';
@@ -25,6 +24,8 @@
 	export let defaultEdgeOptions: DefaultEdgeOptions;
 
 	const { updateNode, updateNodeData, getEdge, screenToFlowPosition } = useSvelteFlow();
+
+	let multiselect = false;
 
 	/**
 	 *
@@ -45,6 +46,8 @@
 			{ replace: false }
 		);
 
+		MapStore.save();
+
 		updateNodeData(updatedNode.id, updatedNode.data, { replace: false });
 	};
 
@@ -52,9 +55,7 @@
 	 *
 	 */
 	const updateEdges = (event: CustomEvent<{ edge: EdgeUnion }>) => {
-		console.log('EVENT', event);
 		const toUpdateEdge = getEdge(event.detail.edge.id);
-		console.log('TEST', toUpdateEdge);
 		if (toUpdateEdge) {
 			toUpdateEdge.style = `stroke-width: 2; stroke: oklch(var(${event.detail.edge.data.color}));`;
 			edges.update((currentEdges) => {
@@ -82,6 +83,7 @@
 	 */
 	const onDrop = (event: DragEvent) => {
 		event.preventDefault();
+		console.log('Done');
 
 		if (!event.dataTransfer) {
 			return null;
@@ -115,11 +117,45 @@
 
 	/**
 	 *
+	 * @param event
+	 */
+	const handleKeydown = (event: KeyboardEvent) => {
+		if (event.key == 'Shift') {
+			multiselect = true;
+		}
+	};
+
+	/**
+	 *
+	 * @param event
+	 */
+	const handleKeyup = (event: KeyboardEvent) => {
+		if (event.key == 'Shift') {
+			multiselect = false;
+		}
+	};
+
+	/**
+	 *
 	 */
 	const handleSelectNode = (event: CustomEvent) => {
+		console.log(multiselect);
+		if (multiselect == false) {
+			if ($selectedNode?.id == event.detail.node.id) {
+				$showEditor = true;
+			} else {
+				MapStore.resetSelection();
+				if ($selectedNode) {
+					$selectedNode.selected = false;
+				}
+				$selectedNode = event.detail.node;
+				$showEditor = true;
+			}
+		}
+	};
+
+	const handleDragEnd = (event: CustomEvent) => {
 		MapStore.resetSelection();
-		$selectedNode = event.detail.node;
-		$showEditor = true;
 	};
 </script>
 
@@ -130,7 +166,7 @@
   TODO: Typew the nodeclick and such 
   -->
 
-<svelte:window on:keypress={handleKeypress} />
+<svelte:window on:keypress={handleKeypress} on:keydown={handleKeydown} on:keyup={handleKeyup} />
 
 <div style:height="100vh">
 	<SvelteFlow
@@ -142,7 +178,7 @@
 		{defaultEdgeOptions}
 		snapGrid={[20, 20]}
 		initialViewport={viewport}
-		maxZoom={5}
+		maxZoom={1}
 		minZoom={1}
 		on:nodeclick={(event) => handleSelectNode(event)}
 		on:paneclick={() => {
@@ -156,6 +192,7 @@
 			console.log(event);
 		}}
 		on:dragover={onDragOver}
+		on:dragend={handleDragEnd}
 		on:drop={onDrop}
 		class="bg-base-100"
 	></SvelteFlow>

@@ -40,11 +40,13 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@dagrejs/dagre": "^1.1.2",
 		"@sveltejs/adapter-static": "^3.0.1",
 		"@types/culori": "^2.1.0",
 		"@types/eventsource": "^1.1.15",
 		"@xyflow/svelte": "^0.0.38",
 		"culori": "^4.0.1",
+		"dagrejs": "^0.2.1",
 		"eventsource": "^2.0.2",
 		"pocketbase": "^0.21.1"
 	}

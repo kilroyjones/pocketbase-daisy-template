@@ -62,7 +62,7 @@
 		type="source"
 		{position}
 		style="background: #555;"
-		class="w-2.5 h-2.5 opacity-30"
+		class="w-0.5 h-0.5 opacity-00"
 		{isConnectable}
 		onconnect={handleEdgeConnect}
 	/>

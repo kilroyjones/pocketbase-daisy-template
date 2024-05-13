@@ -6,7 +6,6 @@
 	import { mode } from '$lib/stores/ui.store';
 	import EditorIcon from '$lib/svgs/EditorIcon.svelte';
 	import type { MapData } from '$lib/types';
-	import Map from '../Map.svelte';
 
 	let fileInput: HTMLInputElement;
 
