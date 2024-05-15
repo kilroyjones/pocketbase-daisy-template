@@ -54,7 +54,7 @@ const addNode = (type: string, position: XYPosition) => {
 				data: defaultData,
 				origin: [0.5, 0.0]
 			};
-
+			selectedNode.set(newNode as unknown as NodeUnion);
 			return [...currentNodes, newNode];
 		});
 	}

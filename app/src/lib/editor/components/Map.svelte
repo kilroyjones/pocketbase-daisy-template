@@ -95,6 +95,7 @@
 			y: event.clientY
 		});
 
+		MapStore.resetSelection();
 		MapStore.addNode(type, position);
 		$nodes = $nodes;
 		console.log($nodes);
@@ -139,18 +140,15 @@
 	 *
 	 */
 	const handleSelectNode = (event: CustomEvent) => {
-		console.log(multiselect);
-		if (multiselect == false) {
-			if ($selectedNode?.id == event.detail.node.id) {
-				$showEditor = true;
-			} else {
-				MapStore.resetSelection();
-				if ($selectedNode) {
-					$selectedNode.selected = false;
-				}
-				$selectedNode = event.detail.node;
-				$showEditor = true;
+		if ($selectedNode?.id == event.detail.node.id) {
+			$showEditor = true;
+		} else {
+			MapStore.resetSelection();
+			if ($selectedNode) {
+				$selectedNode.selected = false;
 			}
+			$selectedNode = event.detail.node;
+			$showEditor = true;
 		}
 	};
 

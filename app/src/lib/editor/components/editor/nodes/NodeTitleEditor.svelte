@@ -55,16 +55,19 @@
 			img.onload = () => {
 				const canvas = document.createElement('canvas');
 				const ctx = canvas.getContext('2d');
-
 				const scaleFactor = 512 / img.width;
 				canvas.width = 512;
 				canvas.height = img.height * scaleFactor;
 
-				ctx?.drawImage(img, 0, 0, canvas.width, canvas.height);
-				const base64Image = canvas.toDataURL('image/jpeg');
-				console.log(base64Image);
-				node.data.icon = base64Image;
-				handleUpdate();
+				if (ctx) {
+					ctx.fillStyle = 'rgba(0,0,0,0)'; // Transparent background
+					ctx.fillRect(0, 0, canvas.width, canvas.height);
+					ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+					const base64Image = canvas.toDataURL('image/png');
+					console.log(base64Image);
+					node.data.icon = base64Image;
+					handleUpdate();
+				}
 			};
 			img.src = e.target?.result as string;
 		};
