@@ -63,7 +63,7 @@
 					<label for="text text-xs" class="w-1/6">y:</label>
 					<input
 						type="number"
-						bind:value={node.positionAbsoluteX}
+						bind:value={node.positionAbsoluteY}
 						class="w-5/6 py-5 input input-bordered input-sm"
 					/>
 				</div>
