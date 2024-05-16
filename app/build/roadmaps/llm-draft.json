@@ -64,7 +64,7 @@
 			"dragging": false
 		},
 		{
-			"id": "0.6445686162964079",
+			"id": "0.64457686162964079",
 			"type": "nodeTitle",
 			"position": { "x": 700, "y": 100 },
 			"data": {
@@ -86,7 +86,7 @@
 		},
 
 		{
-			"id": "0.6445686162964079",
+			"id": "0.689886162964079",
 			"type": "nodeTitle",
 			"position": { "x": 700, "y": 100 },
 			"data": {
@@ -107,7 +107,7 @@
 			"dragging": false
 		},
 		{
-			"id": "0.6445686162964079",
+			"id": "0.686162964079",
 			"type": "nodeTitle",
 			"position": { "x": 700, "y": 100 },
 			"data": {
@@ -128,7 +128,7 @@
 			"dragging": false
 		},
 		{
-			"id": "0.6445686162964079",
+			"id": "0.6686162964079",
 			"type": "nodeTitle",
 			"position": { "x": 700, "y": 100 },
 			"data": {
@@ -149,7 +149,7 @@
 			"dragging": false
 		},
 		{
-			"id": "0.6445686162964079",
+			"id": "0.6945686162964079",
 			"type": "nodeTitle",
 			"position": { "x": 700, "y": 100 },
 			"data": {
@@ -170,7 +170,7 @@
 			"dragging": false
 		},
 		{
-			"id": "0.6445686162964079",
+			"id": "0.6845686162964079",
 			"type": "nodeTitle",
 			"position": { "x": 700, "y": 100 },
 			"data": {
@@ -189,219 +189,7 @@
 			"computed": { "positionAbsolute": { "x": 700, "y": 100 }, "width": 231, "height": 68 },
 			"selected": false,
 			"dragging": false
-		},
-		[
-			{
-				"id": "1.123456789",
-				"type": "nodeIcon",
-				"position": { "x": 100, "y": 100 },
-				"data": {
-					"title": "Encoder",
-					"description": "",
-					"color": {
-						"foreground": "secondary-content",
-						"background": "base-100",
-						"border": "error"
-					},
-					"icon": "",
-					"content": "",
-					"status": "inProgress"
-				},
-				"origin": [0.5, 0],
-				"computed": { "positionAbsolute": { "x": 100, "y": 100 }, "width": 231, "height": 68 },
-				"selected": false,
-				"dragging": false
-			},
-			{
-				"id": "2.234567890",
-				"type": "nodeIcon",
-				"position": { "x": 350, "y": 100 },
-				"data": {
-					"title": "Decoder",
-					"description": "",
-					"color": {
-						"foreground": "secondary-content",
-						"background": "base-100",
-						"border": "error"
-					},
-					"icon": "",
-					"content": "",
-					"status": "inProgress"
-				},
-				"origin": [0.5, 0],
-				"computed": { "positionAbsolute": { "x": 350, "y": 100 }, "width": 231, "height": 68 },
-				"selected": false,
-				"dragging": false
-			},
-			{
-				"id": "3.345678901",
-				"type": "nodeTitle",
-				"position": { "x": 370, "y": 200 },
-				"data": {
-					"title": "Prefix decoder",
-					"description": "",
-					"color": {
-						"foreground": "secondary-content",
-						"background": "base-100",
-						"border": "error"
-					},
-					"icon": "",
-					"content": "",
-					"status": "inProgress"
-				},
-				"origin": [0.5, 0],
-				"computed": { "positionAbsolute": { "x": 370, "y": 200 }, "width": 231, "height": 68 },
-				"selected": false,
-				"dragging": false
-			},
-			{
-				"id": "4.456789012",
-				"type": "nodeTitle",
-				"position": { "x": 370, "y": 300 },
-				"data": {
-					"title": "Casual decoder",
-					"description": "",
-					"color": {
-						"foreground": "secondary-content",
-						"background": "base-100",
-						"border": "error"
-					},
-					"icon": "",
-					"content": "",
-					"status": "inProgress"
-				},
-				"origin": [0.5, 0],
-				"computed": { "positionAbsolute": { "x": 370, "y": 300 }, "width": 231, "height": 68 },
-				"selected": false,
-				"dragging": false
-			},
-			{
-				"id": "5.567890123",
-				"type": "nodeIcon",
-				"position": { "x": 600, "y": 100 },
-				"data": {
-					"title": "MoE",
-					"description": "",
-					"color": {
-						"foreground": "secondary-content",
-						"background": "base-100",
-						"border": "error"
-					},
-					"icon": "",
-					"content": "",
-					"status": "inProgress"
-				},
-				"origin": [0.5, 0],
-				"computed": { "positionAbsolute": { "x": 600, "y": 100 }, "width": 231, "height": 68 },
-				"selected": false,
-				"dragging": false
-			},
-			{
-				"id": "6.678901234",
-				"type": "nodeTitle",
-				"position": { "x": 620, "y": 200 },
-				"data": {
-					"title": "DeepSeekMoE",
-					"description": "",
-					"color": {
-						"foreground": "secondary-content",
-						"background": "base-100",
-						"border": "error"
-					},
-					"icon": "",
-					"content": "",
-					"status": "inProgress"
-				},
-				"origin": [0.5, 0],
-				"computed": { "positionAbsolute": { "x": 620, "y": 200 }, "width": 231, "height": 68 },
-				"selected": false,
-				"dragging": false
-			},
-			{
-				"id": "7.789012345",
-				"type": "nodeTitle",
-				"position": { "x": 620, "y": 300 },
-				"data": {
-					"title": "Sparse MoE",
-					"description": "",
-					"color": {
-						"foreground": "secondary-content",
-						"background": "base-100",
-						"border": "error"
-					},
-					"icon": "",
-					"content": "",
-					"status": "inProgress"
-				},
-				"origin": [0.5, 0],
-				"computed": { "positionAbsolute": { "x": 620, "y": 300 }, "width": 231, "height": 68 },
-				"selected": false,
-				"dragging": false
-			},
-			{
-				"id": "8.890123456",
-				"type": "nodeTitle",
-				"position": { "x": 620, "y": 400 },
-				"data": {
-					"title": "Multi-Head MoE",
-					"description": "",
-					"color": {
-						"foreground": "secondary-content",
-						"background": "base-100",
-						"border": "error"
-					},
-					"icon": "",
-					"content": "",
-					"status": "inProgress"
-				},
-				"origin": [0.5, 0],
-				"computed": { "positionAbsolute": { "x": 620, "y": 400 }, "width": 231, "height": 68 },
-				"selected": false,
-				"dragging": false
-			},
-			{
-				"id": "9.901234567",
-				"type": "nodeTitle",
-				"position": { "x": 620, "y": 500 },
-				"data": {
-					"title": "JET-MoE",
-					"description": "",
-					"color": {
-						"foreground": "secondary-content",
-						"background": "base-100",
-						"border": "error"
-					},
-					"icon": "",
-					"content": "",
-					"status": "inProgress"
-				},
-				"origin": [0.5, 0],
-				"computed": { "positionAbsolute": { "x": 620, "y": 500 }, "width": 231, "height": 68 },
-				"selected": false,
-				"dragging": false
-			},
-			{
-				"id": "10.012345678",
-				"type": "nodeTitle",
-				"position": { "x": 620, "y": 600 },
-				"data": {
-					"title": "Mixture of Depths",
-					"description": "",
-					"color": {
-						"foreground": "secondary-content",
-						"background": "base-100",
-						"border": "error"
-					},
-					"icon": "",
-					"content": "",
-					"status": "inProgress"
-				},
-				"origin": [0.5, 0],
-				"computed": { "positionAbsolute": { "x": 620, "y": 600 }, "width": 231, "height": 68 },
-				"selected": false,
-				"dragging": false
-			}
-		]
+		}
 	],
 	"edges": []
 }
