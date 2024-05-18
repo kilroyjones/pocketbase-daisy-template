@@ -1,0 +1,195 @@
+{
+	"nodes": [
+		{
+			"id": "0.3112686162964079",
+			"type": "nodeTitle",
+			"position": { "x": 100, "y": 100 },
+			"data": {
+				"title": "Transformer architectures",
+				"description": "",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 100, "y": 100 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.4223686162964079",
+			"type": "nodeTitle",
+			"position": { "x": 300, "y": 100 },
+			"data": {
+				"title": "Tokenizer",
+				"description": "",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 300, "y": 100 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.5334686162964079",
+			"type": "nodeTitle",
+			"position": { "x": 500, "y": 100 },
+			"data": {
+				"title": "Positional encoders",
+				"description": "",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 500, "y": 100 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.64457686162964079",
+			"type": "nodeTitle",
+			"position": { "x": 700, "y": 100 },
+			"data": {
+				"title": "Basic attention",
+				"description": "",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 700, "y": 100 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+
+		{
+			"id": "0.689886162964079",
+			"type": "nodeTitle",
+			"position": { "x": 700, "y": 100 },
+			"data": {
+				"title": "Training",
+				"description": "",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 700, "y": 100 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.686162964079",
+			"type": "nodeTitle",
+			"position": { "x": 700, "y": 100 },
+			"data": {
+				"title": "Inferencing",
+				"description": "",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 700, "y": 100 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.6686162964079",
+			"type": "nodeTitle",
+			"position": { "x": 700, "y": 100 },
+			"data": {
+				"title": "Size reduction",
+				"description": "",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 700, "y": 100 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.6945686162964079",
+			"type": "nodeTitle",
+			"position": { "x": 700, "y": 100 },
+			"data": {
+				"title": "Interpretability",
+				"description": "",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 700, "y": 100 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		},
+		{
+			"id": "0.6845686162964079",
+			"type": "nodeTitle",
+			"position": { "x": 700, "y": 100 },
+			"data": {
+				"title": "Coding libraries",
+				"description": "",
+				"color": {
+					"foreground": "secondary-content",
+					"background": "base-100",
+					"border": "error"
+				},
+				"icon": "",
+				"content": "",
+				"status": "inProgress"
+			},
+			"origin": [0.5, 0],
+			"computed": { "positionAbsolute": { "x": 700, "y": 100 }, "width": 231, "height": 68 },
+			"selected": false,
+			"dragging": false
+		}
+	],
+	"edges": []
+}
