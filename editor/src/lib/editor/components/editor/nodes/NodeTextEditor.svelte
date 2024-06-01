@@ -36,7 +36,7 @@
 </script>
 
 <div class="form-control" on:input={handleUpdate}>
-	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+	<Collapsible>
 		<span slot="title">Basics</span>
 
 		<input
@@ -91,7 +91,7 @@
 		<ColorPicker type="border" {handleColor}></ColorPicker>
 	</Collapsible>
 
-	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+	<Collapsible>
 		<span slot="title">Content</span>
 		<textarea
 			class="w-full p-2 rounded-md"

@@ -5,10 +5,10 @@
 	export let type: string;
 
 	const colors = [
+		'base-content',
 		'secondary-content',
 		'primary',
 		'secondary',
-		'base-100',
 		'info',
 		'success',
 		'error'
@@ -26,7 +26,7 @@
 <div class="flex justify-between w-full gap-2">
 	{#each colors as color}
 		<button
-			class="color-box class:border-2 class:border-transparent border-white bg-{color}"
+			class="color-box border-2 border-base-content bg-{color}"
 			style="background-color: bg-primary;"
 			on:click={() => selectColor(color)}
 		>

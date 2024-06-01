@@ -75,11 +75,11 @@
 		.data.color.foreground}  bg-{node.data.color.background}"
 >
 	<div class="flex items-center mr-2">
-		<img
-			class="object-cover w-12 h-12 rounded-md"
-			src={node.data.icon ? node.data.icon : 'https://placehold.co/48x48'}
-			alt="placeholder"
-		/>
+		{#if node.data.icon && node.data.icon != ''}
+			<div class="object-cover w-12 h-12 rounded-md">{@html node.data.icon}</div>
+		{:else}
+			<div class="object-cover w-12 h-12 rounded-md bg-primary">&nbsp;</div>
+		{/if}
 	</div>
 	<div class="flex flex-col justify-center">
 		<h1 class="mb-0 text-xl font-bold">{node.data.title}</h1>

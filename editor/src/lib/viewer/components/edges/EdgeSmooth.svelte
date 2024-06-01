@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Libraries
-	import { getBezierPath } from '@xyflow/svelte';
+	import { getBezierPath, getSmoothStepPath } from '@xyflow/svelte';
 
 	// Modules
 	import { edges, selectedEdge } from '$lib/stores/map.store';
@@ -114,7 +114,7 @@
 		if (isBidirectionalEdge) {
 			path = getSpecialPath(edgePathParams, sourceX < targetX ? 25 : -25);
 		} else {
-			[path] = getBezierPath(edgePathParams);
+			[path] = getSmoothStepPath(edgePathParams);
 		}
 	}
 

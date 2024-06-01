@@ -65,7 +65,7 @@
 	 */
 	const loadDemo = async () => {
 		try {
-			const result = await fetch('/roadmaps/llm-A7-linear-tree-5.json');
+			const result = await fetch('/roadmaps/demo.json');
 			const mapData: MapData = await result.json();
 			console.log(mapData);
 			if (mapData.nodes || mapData.edges) {
@@ -113,15 +113,15 @@
 			</div>
 
 			<div class="flex-none pr-4">
-				<button class="btn bg-warning" on:click={() => fileInput.click()}>Import</button>
+				<button class="btn btn-warning" on:click={() => fileInput.click()}>Import</button>
 			</div>
 
 			<div class="flex-none pr-4">
-				<button class="btn bg-primary" on:click={exportToFile}>Export</button>
+				<button class="btn btn-primary" on:click={exportToFile}>Export</button>
 			</div>
 
 			<div class="flex-none pr-4">
-				<button class="btn bg-error" on:click={reset}>Reset</button>
+				<button class="btn btn-error" on:click={reset}>Reset</button>
 			</div>
 		</div>
 	</div>

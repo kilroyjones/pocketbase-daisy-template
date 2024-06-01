@@ -1,6 +1,6 @@
 <script lang="ts">
 	// Libraries
-	import { getBezierPath, getSmoothStepPath } from '@xyflow/svelte';
+	import { getSmoothStepPath } from '@xyflow/svelte';
 
 	// Modules
 	import { edges, selectedEdge } from '$lib/stores/map.store';

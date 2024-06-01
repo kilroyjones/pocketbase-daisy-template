@@ -34,47 +34,70 @@
 		handleUpdate();
 	};
 
-	/**
-	 *
-	 */
-	const handleImageUpload = (event: Event) => {
+	// /**
+	//  *
+	//  */
+	// const handleImageUpload = (event: Event) => {
+	// 	const file = (event.target as HTMLInputElement).files?.[0];
+	// 	if (!file) {
+	// 		console.error('No file selected.');
+	// 		return;
+	// 	}
+
+	// 	const reader = new FileReader();
+	// 	reader.onload = (e: ProgressEvent<FileReader>) => {
+	// 		const img = new Image();
+	// 		img.onload = () => {
+	// 			const canvas = document.createElement('canvas');
+	// 			const ctx = canvas.getContext('2d');
+	// 			const scaleFactor = 512 / img.width;
+	// 			canvas.width = 512;
+	// 			canvas.height = img.height * scaleFactor;
+
+	// 			if (ctx) {
+	// 				ctx.fillStyle = 'rgba(0,0,0,0)'; // Transparent background
+	// 				ctx.fillRect(0, 0, canvas.width, canvas.height);
+	// 				ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+	// 				const base64Image = canvas.toDataURL('image/png');
+	// 				console.log(base64Image);
+	// 				node.data.icon = base64Image;
+	// 				handleUpdate();
+	// 			}
+	// 		};
+	// 		img.src = e.target?.result as string;
+	// 	};
+	// 	reader.readAsDataURL(file);
+	// };
+
+	// /**
+	//  *
+	//  */
+	// const removeImage = () => {
+	// 	node.data.icon = '';
+	// 	console.log('sdfasdf', node.data.icon);
+	// 	handleUpdate();
+	// 	MapStore.save();
+	// };
+
+	const handleImageUpload = async (event: Event) => {
 		const file = (event.target as HTMLInputElement).files?.[0];
 		if (!file) {
 			console.error('No file selected.');
 			return;
 		}
 
-		const reader = new FileReader();
-		reader.onload = (e: ProgressEvent<FileReader>) => {
-			const img = new Image();
-			img.onload = () => {
-				const canvas = document.createElement('canvas');
-				const ctx = canvas.getContext('2d');
-				const scaleFactor = 512 / img.width;
-				canvas.width = 512;
-				canvas.height = img.height * scaleFactor;
+		if (file.type !== 'image/svg+xml') {
+			console.error('File is not an SVG.');
+			return;
+		}
 
-				if (ctx) {
-					ctx.fillStyle = 'rgba(0,0,0,0)'; // Transparent background
-					ctx.fillRect(0, 0, canvas.width, canvas.height);
-					ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-					const base64Image = canvas.toDataURL('image/png');
-					console.log(base64Image);
-					node.data.icon = base64Image;
-					handleUpdate();
-				}
-			};
-			img.src = e.target?.result as string;
-		};
-		reader.readAsDataURL(file);
+		const text = await file.text();
+		node.data.icon = text;
+		handleUpdate();
 	};
 
-	/**
-	 *
-	 */
 	const removeImage = () => {
 		node.data.icon = '';
-		console.log('sdfasdf', node.data.icon);
 		handleUpdate();
 		MapStore.save();
 	};
@@ -116,6 +139,14 @@
 				<button class="btn btn-error" on:click={removeImage}>Remove image</button>
 			{:else}
 				<button class="btn btn-primary" on:click={() => fileInput.click()}>Upload Image</button>
+				<input
+					type="file"
+					id="svgInput"
+					accept="image/svg+xml"
+					class="hidden"
+					bind:this={fileInput}
+					on:change={handleImageUpload}
+				/>
 			{/if}
 
 			<div class="w-1/2">
@@ -142,7 +173,7 @@
 		</div>
 	</Collapsible>
 
-	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+	<Collapsible>
 		<span slot="title">Colors</span>
 
 		<label for="text" class="pb-1 pl-0 label">
@@ -161,7 +192,7 @@
 		<ColorPicker type="border" {handleColor}></ColorPicker>
 	</Collapsible>
 
-	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+	<Collapsible>
 		<span slot="title">Content</span>
 		<textarea
 			class="w-full p-2 rounded-md"

@@ -145,7 +145,7 @@
 		</div>
 	</Collapsible>
 
-	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+	<Collapsible>
 		<span slot="title">Colors</span>
 
 		<label for="text" class="pb-1 pl-0 label">
@@ -164,7 +164,7 @@
 		<ColorPicker type="border" {handleColor}></ColorPicker>
 	</Collapsible>
 
-	<Collapsible on:toggle={({ detail }) => console.log('Collapsible state:', detail.isOpen)}>
+	<Collapsible>
 		<span slot="title">Content</span>
 		<textarea
 			class="w-full p-2 rounded-md"

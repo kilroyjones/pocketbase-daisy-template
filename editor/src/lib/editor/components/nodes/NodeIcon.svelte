@@ -76,11 +76,11 @@
 		.border} text-{node.data.color.foreground}     bg-{node.data.color.background} align-center"
 >
 	<div class="mr-2">
-		<img
-			class="object-cover w-6 h-6 rounded-md"
-			src={node.data.icon ? node.data.icon : 'https://placehold.co/24x24'}
-			alt="placeholder"
-		/>
+		{#if node.data.icon && node.data.icon != ''}
+			<div class="object-cover w-6 h-6 rounded-md">{@html node.data.icon}</div>
+		{:else}
+			<div class="object-cover w-6 h-6 rounded-md bg-primary">&nbsp;</div>
+		{/if}
 	</div>
 	<div class="flex-grow">
 		<p>{data['text']}</p>

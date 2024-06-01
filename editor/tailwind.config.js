@@ -11,6 +11,7 @@ export default {
 		'bg-info',
 		'bg-error',
 		'bg-warning',
+		'bg-base-content',
 		'bg-primary-content',
 		'bg-secondary-content',
 		'border-base-100',
@@ -21,6 +22,8 @@ export default {
 		'border-error',
 		'border-warning',
 		'border-primary-content',
+		'border-base-content',
+		'text-base-content',
 		'text-base-100',
 		'text-primary',
 		'text-success',
@@ -35,7 +38,7 @@ export default {
 	},
 	plugins: [require('daisyui')],
 	daisyui: {
-		themes: ['cupcake']
+		themes: ['synthwave']
 	}
 };
 //
